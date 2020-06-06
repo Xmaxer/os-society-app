@@ -2,14 +2,14 @@ import React, {Component, useEffect} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import {Redirect, Route} from 'react-router-dom'
 import {LinearProgress} from '@material-ui/core';
-import useAuthenticatedMutation from "./hooks/useAuthenticatedMutation";
+import useMutationApi from "./hooks/useMutationApi";
 import {IS_AUTHENTICATED_QUERY} from "./assets/queries";
 
 const useStyles = makeStyles(theme => ({}));
 
 function UnProtectedRoute({component: Component, ...rest}) {
 
-    const {data, handleMutation} = useAuthenticatedMutation({query: IS_AUTHENTICATED_QUERY});
+    const {data, handleMutation} = useMutationApi({query: IS_AUTHENTICATED_QUERY});
 
     useEffect(() => {
         handleMutation()
