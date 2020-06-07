@@ -38,36 +38,6 @@ const theme = createMuiTheme({
             root: {
                 backgroundColor: generatedPalette.palette.tertiary.main
             }
-
-        },
-        MuiTextField: {
-            root: {
-                '& .MuiInput-underline:after': {
-                    borderBottomColor: generatedPalette.palette.tertiary.main
-                },
-                '& .MuiInput-underline:before': {
-                    borderBottomColor: generatedPalette.palette.secondary.light
-                },
-                '& .MuiInput-underline:hover:before': {
-                    borderBottomColor: generatedPalette.palette.secondary.dark
-                },
-                '& .MuiInput-root': {
-                    color: generatedPalette.palette.tertiary.main
-                },
-                '& label.Mui-focused': {
-                    color: generatedPalette.palette.tertiary.main
-                },
-                '& label': {
-                    color: generatedPalette.palette.secondary.light
-                },
-            }
-        },
-        MuiButton: {
-            contained: {
-                '&:hover': {
-                    backgroundColor: generatedPalette.palette.tertiary.main
-                }
-            }
         }
     }
 });

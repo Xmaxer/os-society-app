@@ -8,9 +8,10 @@ import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import {Formik} from 'formik';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import useAuthenticatedMutation from "../hooks/useAuthenticatedMutation";
+import useApi from "../hooks/useApi";
 import {LOGIN_MUTATION} from "../assets/queries";
 import {HOME_ROUTE} from "../assets/routes";
+import {StyledButton, StyledTextField} from "../assets/styledComponents";
 
 const useStyles = makeStyles(theme => ({
     background: {
@@ -89,7 +90,7 @@ function LoginPage() {
     const classes = useStyles();
     const history = useHistory();
 
-    const {handleMutation} = useAuthenticatedMutation({query: LOGIN_MUTATION});
+    const {handleCall} = useApi({query: LOGIN_MUTATION});
 
     const handleSuccess = (data) => {
         if (data && data.login && data.login.token) {
@@ -112,19 +113,19 @@ function LoginPage() {
                 </Box>
                 <Formik initialValues={{username: '', password: ''}} onSubmit={(values, {setSubmitting}) => {
                     setSubmitting(true);
-                    handleMutation({...values}, () => {
-                        setSubmitting(false)
-                    }, handleSuccess);
+                    handleCall({variables: {...values}, handleComplete: () => {
+                            setSubmitting(false)
+                        }, handleSuccess: handleSuccess});
                 }}>
                     {({values, handleChange, handleSubmit, isSubmitting}) => (
                         <form onSubmit={handleSubmit} className={classes.form}>
-                            <TextField label={"Username"} value={values.username} onChange={handleChange} required
+                            <StyledTextField label={"Username"} value={values.username} onChange={handleChange} required
                                        name={"username"} spellCheck={false}/>
-                            <TextField label={"password"} type={'password'} value={values.password}
+                            <StyledTextField label={"password"} type={'password'} value={values.password}
                                        onChange={handleChange} required name={"password"}/>
-                            <Button variant={'contained'} className={classes.loginButton} type={'submit'}
+                            <StyledButton variant={'contained'} className={classes.loginButton} type={'submit'}
                                     disabled={isSubmitting}>{isSubmitting ? <CircularProgress size={"1.2rem"}
-                                                                                              className={classes.circularProgress}/> : "Login"}</Button>
+                                                                                              className={classes.circularProgress}/> : "Login"}</StyledButton>
                         </form>
                     )}
                 </Formik>

@@ -2,22 +2,22 @@ import React, {Component, useEffect} from 'react';
 import {Redirect, Route} from 'react-router-dom'
 import {makeStyles} from '@material-ui/core/styles';
 import {LinearProgress} from '@material-ui/core';
-import useMutationApi from "./hooks/useMutationApi";
+import useApi from "./hooks/useApi";
 import {IS_AUTHENTICATED_QUERY} from "./assets/queries";
+import Header from "./components/Header";
 
 const useStyles = makeStyles(theme => ({
     root: {
-        display: 'flex',
         width: '100%'
     }
 }));
 
 function ProtectedRoute({component: Component, ...rest}) {
     const classes = useStyles();
-    const {data, handleMutation} = useMutationApi({query: IS_AUTHENTICATED_QUERY});
+    const {data, handleCall} = useApi({query: IS_AUTHENTICATED_QUERY});
 
     useEffect(() => {
-        handleMutation()
+        handleCall({})
     }, []);
 
     if (data === null || data.isAuthenticated === null) {
@@ -30,6 +30,7 @@ function ProtectedRoute({component: Component, ...rest}) {
             render={props => {
                 if (data && data.isAuthenticated) {
                     return <div className={classes.root}>
+                        <Header/>
                         <Component {...props} />
                     </div>;
                 } else {

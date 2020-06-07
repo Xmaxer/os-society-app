@@ -6,6 +6,7 @@ dependencies:
   '@testing-library/jest-dom': 4.2.4
   '@testing-library/react': 9.5.0_react-dom@16.13.1+react@16.13.1
   '@testing-library/user-event': 7.2.1
+  date-fns: 2.14.0
   formik: 2.1.4_react@16.13.1
   graphql-hooks: 4.4.2_react@16.13.1
   react: 16.13.1
@@ -3932,6 +3933,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-YTWYI9se1P55u58gL5GkQHW4P6VJBJ5iBT+B5a7i2Tjadhv52paJG0qHX4A0OR6/t52odI64KP2YvFpkDOi3eQ==
+  /date-fns/2.14.0:
+    dev: false
+    resolution:
+      integrity: sha512-1zD+68jhFgDIM0rF05rcwYO8cExdNqxjq4xP1QKM60Q45mnO6zaMWB4tOzrIr4M4GSLntsKeE4c9Bdl2jhL/yw==
   /debug/2.6.9:
     dependencies:
       ms: 2.0.0
@@ -11974,6 +11979,7 @@ specifiers:
   '@testing-library/jest-dom': 4.2.4
   '@testing-library/react': 9.5.0
   '@testing-library/user-event': 7.2.1
+  date-fns: 2.14.0
   formik: 2.1.4
   graphql-hooks: 4.4.2
   react: 16.13.1

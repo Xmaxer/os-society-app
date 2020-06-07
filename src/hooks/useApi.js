@@ -1,11 +1,12 @@
 import React, {useContext, useState} from 'react'
 import {useHistory} from 'react-router-dom'
-import {ClientContext, useMutation} from 'graphql-hooks'
+import {ClientContext, useMutation, useManualQuery} from 'graphql-hooks'
 import {useGlobalState} from "../state/state";
 import {ADD_ERRORS} from "../state/actions";
 import {API_OFFLINE_ERROR} from "../assets/routes";
+import {MUTATION_OPERATION} from "../assets/operations";
 
-function useMutationApi({query}) {
+function useApi({query}) {
 
     const [{}, dispatch] = useGlobalState();
     const history = useHistory();
@@ -20,12 +21,13 @@ function useMutationApi({query}) {
     const [loading, setLoading] = useState(null);
     const [error, setError] = useState(null);
     const [data, setData] = useState(null);
+    const [mutationCall] = useMutation(query.query);
+    const [queryCall] = useManualQuery(query.query);
+    const call = query.type === MUTATION_OPERATION ? mutationCall : queryCall;
 
-    const [mutation] = useMutation(query);
-
-    const handleMutation = (variables, handleComplete, handleSuccess, handleError) => {
+    const handleCall = ({variables = {}, handleComplete, handleSuccess, handleError}) => {
         setLoading(true);
-        mutation({variables: {...variables}}).then((response) => {
+        call({variables: {...variables}}).then((response) => {
             if (!response.error) {
                 setData(response.data);
                 if (handleSuccess) handleSuccess(response.data);
@@ -47,7 +49,7 @@ function useMutationApi({query}) {
         });
     };
 
-    return {handleMutation, mutation, loading, error, data}
+    return {handleCall, call, loading, error, data}
 }
 
-export default useMutationApi
+export default useApi

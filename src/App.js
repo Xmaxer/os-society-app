@@ -17,10 +17,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import ApiDownPage from "./pages/ApiDownPage";
 
 const client = new GraphQLClient({
-    url: 'http://' + process.env.REACT_APP_SERVER_HOST_NAME + ":" + process.env.REACT_APP_SERVER_PORT + '/api',
-    onError: ({operation, result}) => {
-        console.log(result)
-    }
+    url: 'http://' + process.env.REACT_APP_SERVER_HOST_NAME + ":" + process.env.REACT_APP_SERVER_PORT + '/api'
 });
 
 function App() {
