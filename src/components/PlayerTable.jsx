@@ -13,6 +13,8 @@ import {PLAYERS_QUERY} from "../assets/queries";
 import parseISO from 'date-fns/parseISO'
 import format from 'date-fns/format'
 import differenceInDays from 'date-fns/differenceInDays'
+import subDays from 'date-fns/subDays'
+import formatISO from 'date-fns/formatISO'
 import {
     ORDER_ASC,
     ORDER_BY_CREATED_AT,
@@ -121,6 +123,8 @@ function PlayerTable(props) {
         }
 
         let convertedRanks = null;
+        let start_join_date = null;
+        let end_join_date = null;
 
         if (ranks) {
             convertedRanks = ranks && Object.entries(ranks).map((rank, i) => {
@@ -132,6 +136,9 @@ function PlayerTable(props) {
             });
         }
 
+        if (days && days[0] !== 0) start_join_date = formatISO(subDays(Date.now(), days[0]));
+        if (days && days[1] !== 2000) end_join_date = formatISO(subDays(Date.now(), days[1]));
+
         handleCall({
             variables: {
                 order: order,
@@ -139,7 +146,9 @@ function PlayerTable(props) {
                 first: rowsPerPage,
                 skip: page * rowsPerPage,
                 rank_contains: convertedRanks,
-                username_or_previous_name_contains: search
+                username_or_previous_name_contains: search,
+                start_join_date: start_join_date,
+                end_join_date: end_join_date
             }, handleSuccess: handleGetPlayersSuccess
         })
     };
@@ -161,7 +170,7 @@ function PlayerTable(props) {
                         loading ?
                             [...Array(rowsPerPage)].map((e, i) => {
                                 return (
-                                    <TableRow key={e}>
+                                    <TableRow key={i}>
                                         <TableCell width={'10%'}>
                                             <Skeleton className={classes.skeleton}/>
                                         </TableCell>
@@ -222,7 +231,7 @@ function PlayerTable(props) {
                     }
                 </TableBody>
                 <TableFooter className={classes.tableFooter}>
-                    <TableRow>
+                    <TableRow key={'pagination'}>
                         <TablePagination
                             rowsPerPage={rowsPerPage}
                             rowsPerPageOptions={[50, 100, 200, 500]}

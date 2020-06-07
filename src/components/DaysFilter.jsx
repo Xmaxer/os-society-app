@@ -18,6 +18,10 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+function valueLabelFormat(value) {
+    return value === 2000 ? "Infinity" : value;
+}
+
 function DaysFilter(props) {
     const classes = useStyles();
     const {handler} = props;
@@ -40,7 +44,7 @@ function DaysFilter(props) {
                           value={daysValues}
                           onChange={handleDaysFilterChange}
                           className={classes.slider}
-                          valueLabelDisplay={'on'}/>
+                          valueLabelDisplay={'on'} valueLabelFormat={valueLabelFormat}/>
         </div>
 
     );

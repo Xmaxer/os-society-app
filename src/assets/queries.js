@@ -25,10 +25,10 @@ export const IS_AUTHENTICATED_QUERY = {
 
 export const PLAYERS_QUERY = {
     type: QUERY_OPERATION,
-    query: `query Players($order: OrderEnum, $order_by: PlayerOrderEnum, $username_contains: String, $previous_name_contains: String, $username_or_previous_name_contains: String, $first: Int, $skip: Int, $rank_contains: [Int!])
+    query: `query Players($order: OrderEnum, $order_by: PlayerOrderEnum, $username_contains: String, $previous_name_contains: String, $username_or_previous_name_contains: String, $first: Int, $skip: Int, $rank_contains: [Int!], $start_join_date: ISO8601DateTime, $end_join_date: ISO8601DateTime)
 {
   
-  players (order: {order: $order, orderBy: $order_by}, filter: {usernameContains: $username_contains, previousNameContains: $previous_name_contains, usernameOrPreviousNameContains: $username_or_previous_name_contains, rankContains: $rank_contains}, first: $first, skip: $skip){
+  players (order: {order: $order, orderBy: $order_by}, filter: {usernameContains: $username_contains, previousNameContains: $previous_name_contains, usernameOrPreviousNameContains: $username_or_previous_name_contains, rankContains: $rank_contains, startJoinDate: $start_join_date, endJoinDate: $end_join_date}, first: $first, skip: $skip){
             id
     username
     previousNames
@@ -37,7 +37,6 @@ export const PLAYERS_QUERY = {
     updatedAt
     comment
     joinDate
-
   }
   totalPlayers
 }`
