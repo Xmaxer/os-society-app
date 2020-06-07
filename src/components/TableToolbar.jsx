@@ -1,15 +1,16 @@
 import React, {useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import {StyledTextField} from "../assets/styledComponents";
+import {StyledButton} from "../assets/styledComponents";
 import DaysFilter from "./DaysFilter";
 import FilterListIcon from '@material-ui/icons/FilterList';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import SearchIcon from '@material-ui/icons/Search';
 import CloseIcon from '@material-ui/icons/Close';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Collapse from '@material-ui/core/Collapse';
 import Paper from '@material-ui/core/Paper';
+import clsx from 'clsx';
+import RankFilter from "./RankFilter";
+import SearchField from "./SearchField";
 
 const useStyles = makeStyles(theme => ({
     toolbar: {
@@ -25,7 +26,21 @@ const useStyles = makeStyles(theme => ({
         minHeight: 64,
         width: 80,
         '&:hover': {
-            backgroundColor: theme.palette.tertiary.main
+            color: theme.palette.secondary.light,
+            backgroundColor: theme.palette.primary.dark,
+            border: '2px solid ' + theme.palette.tertiary.main
+        }
+    },
+    filterButtonActive: {
+        color: theme.palette.secondary.light,
+        backgroundColor: theme.palette.primary.dark,
+        border: '2px solid ' + theme.palette.tertiary.main,
+        borderBottom: 'none',
+        '&:hover': {
+            color: theme.palette.secondary.light,
+            backgroundColor: theme.palette.primary.dark,
+            border: '2px solid ' + theme.palette.tertiary.main,
+            borderBottom: 'none'
         }
     },
     closeButton: {
@@ -34,32 +49,72 @@ const useStyles = makeStyles(theme => ({
     paperFilter: {
         backgroundColor: theme.palette.primary.dark,
         width: '100%',
-        minHeight: 80
+        minHeight: 100,
+        display: 'flex',
+        justifyContent: 'flex-start',
+        '& > *': {
+            marginLeft: 40,
+            marginTop: 15
+        },
+        border: '2px solid ' + theme.palette.tertiary.main,
     },
     collapseContainer: {
         flexShrink: 0
+    },
+    apply: {
+        marginLeft: 'auto',
+        marginRight: 20,
+        alignSelf: 'flex-end',
+        marginBottom: 20,
     }
 }));
+
+let days = null;
+let ranks = null;
+let search = null;
 
 function TableToolbar(props) {
     const classes = useStyles();
     const [openFilter, setOpenFilter] = useState(false);
 
+
+    const {handleApplyFilters} = props;
+
     const handleOpenFilter = (event) => {
         setOpenFilter(!openFilter)
     };
 
+    const handleApply = () => {
+        handleApplyFilters(days, ranks, search);
+    };
+
+    const handleSearch = (newValue) => {
+        search = newValue;
+        handleApply();
+    };
 
     return (<>
             <Toolbar className={classes.toolbar}>
-                <StyledTextField placeholder={"search usernames"} InputProps={{startAdornment: <InputAdornment position={"start"}><SearchIcon/></InputAdornment>, endAdornment: <InputAdornment position={"end"}><IconButton className={classes.closeButton} disableRipple disableTouchRipple disableFocusRipple><CloseIcon/></IconButton></InputAdornment>}}/>
-                <IconButton className={classes.filterButton} onClick={handleOpenFilter}>
-                    <FilterListIcon/>
+                <SearchField handler={handleSearch}/>
+                <IconButton
+                    className={openFilter ? clsx(classes.filterButton, classes.filterButtonActive) : classes.filterButton}
+                    onClick={handleOpenFilter}>
+                    {
+                        openFilter ? <CloseIcon/> : <FilterListIcon/>
+                    }
                 </IconButton>
             </Toolbar>
-            <Collapse in={Boolean(openFilter)} addEndListener={() => {}} className={classes.collapseContainer}>
+            <Collapse in={Boolean(openFilter)} addEndListener={() => {
+            }} className={classes.collapseContainer}>
                 <Paper className={classes.paperFilter} square>
-                    <DaysFilter/>
+                    <DaysFilter handler={(newDays) => {
+                        days = newDays
+                    }}/>
+                    <RankFilter handler={(newRanks) => {
+                        ranks = newRanks
+                    }}/>
+                    <StyledButton variant={'contained'} className={classes.apply}
+                                  onClick={handleApply}>Apply</StyledButton>
                 </Paper>
             </Collapse>
         </>

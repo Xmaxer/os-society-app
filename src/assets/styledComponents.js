@@ -1,5 +1,8 @@
-import {Button, TextField, Slider} from '@material-ui/core'
-import {withStyles} from '@material-ui/core/styles';
+import React from 'react';
+import {Button, Slider, TextField} from '@material-ui/core'
+import {makeStyles, withStyles} from '@material-ui/core/styles';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
 export const StyledButton = withStyles(theme => ({
     text: {
@@ -40,5 +43,53 @@ export const StyledTextField = withStyles(theme => ({
 }))(TextField);
 
 export const StyledSlider = withStyles(theme => ({
-
+    valueLabel: {
+        top: 22,
+        '& *': {
+            background: 'transparent',
+            color: theme.palette.secondary.light,
+        },
+    },
+    colorPrimary: {
+        color: theme.palette.secondary.light
+    },
+    active: {
+        color: theme.palette.tertiary.main,
+        '& span': {
+            color: theme.palette.tertiary.main,
+        }
+    }
 }))(Slider);
+
+export const StyledCheckBox = withStyles(theme => ({
+    checked: {
+        color: theme.palette.tertiary.main
+    },
+    colorPrimary: {
+        color: theme.palette.secondary.main,
+        "&.Mui-checked": {
+            color: theme.palette.tertiary.main
+        }
+    }
+}))(Checkbox);
+
+const useFormControlLabelStyles = makeStyles(theme => ({
+    root: {
+        color: theme.palette.secondary.light
+    }
+}));
+
+export default function StyledCheckBoxWithLabel(props) {
+    const {label, name, checkedHandler, checked} = props;
+    const classes = useFormControlLabelStyles();
+    const handleChange = (event) => {
+        checkedHandler(event)
+    };
+
+    return (
+        <FormControlLabel
+            control={<StyledCheckBox checked={checked} name={name} onChange={handleChange} color={'primary'}/>}
+            label={label} classes={{root: classes.root}}/>
+
+    )
+}

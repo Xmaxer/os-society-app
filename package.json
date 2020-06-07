@@ -17,7 +17,8 @@
     "graphql-hooks": "4.4.2",
     "universal-cookie": "4.0.3",
     "formik": "2.1.4",
-    "date-fns": "2.14.0"
+    "date-fns": "2.14.0",
+    "clsx": "1.1.1"
   },
   "scripts": {
     "install-modules": "pnpm install",
