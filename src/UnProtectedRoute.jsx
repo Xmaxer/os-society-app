@@ -12,7 +12,7 @@ function UnProtectedRoute({component: Component, ...rest}) {
     const {data, handleCall} = useApi({query: IS_AUTHENTICATED_QUERY});
 
     useEffect(() => {
-        handleCall({})
+        handleCall()
     }, []);
 
     if (data === null || data.isAuthenticated === null) {

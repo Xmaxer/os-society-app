@@ -2,15 +2,15 @@ import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import {StyledButton} from "../assets/styledComponents";
+import useApi from "../hooks/useApi";
+import {LOGOUT_MUTATION} from "../assets/queries";
+import {useHistory} from "react-router-dom"
+import {LOGIN_ROUTE} from "../assets/routes";
 
 const useStyles = makeStyles(theme => ({
     root: {
-      flexGrow: 1
+        flexGrow: 1
     },
     appbar: {
         height: 80,
@@ -32,12 +32,23 @@ const useStyles = makeStyles(theme => ({
 
 function Header() {
     const classes = useStyles();
+    const history = useHistory();
+    const {handleCall} = useApi({query: LOGOUT_MUTATION});
+
+    const handleLogout = (event) => {
+        handleCall({handleSuccess: handleSuccess});
+    };
+
+    const handleSuccess = (data) => {
+        if (data && data.logout && data.logout.success)
+            history.push(LOGIN_ROUTE)
+    };
 
     return (
         <AppBar position={'static'} className={classes.appbar}>
             <Toolbar className={classes.toolbar}>
                 <img src={"/images/oss-logo-large.png"} alt={"OSS Logo"} className={classes.logo}/>
-                <StyledButton className={classes.logoutButton}>Logout</StyledButton>
+                <StyledButton className={classes.logoutButton} onClick={handleLogout}>Logout</StyledButton>
             </Toolbar>
         </AppBar>
     );

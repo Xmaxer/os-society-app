@@ -171,28 +171,7 @@ function PlayerTable(props) {
                             [...Array(rowsPerPage)].map((e, i) => {
                                 return (
                                     <TableRow key={i}>
-                                        <TableCell width={'10%'}>
-                                            <Skeleton className={classes.skeleton}/>
-                                        </TableCell>
-                                        <TableCell width={'10%'}>
-                                            <Skeleton className={classes.skeleton}/>
-                                        </TableCell>
-                                        <TableCell width={'5%'}>
-                                            <Skeleton className={classes.skeleton}/>
-                                        </TableCell>
-                                        <TableCell width={'5%'}>
-                                            <Skeleton className={classes.skeleton}/>
-                                        </TableCell>
-                                        <TableCell width={'10%'}>
-                                            <Skeleton className={classes.skeleton}/>
-                                        </TableCell>
-                                        <TableCell width={'10%'}>
-                                            <Skeleton className={classes.skeleton}/>
-                                        </TableCell>
-                                        <TableCell width={'20%'}>
-                                            <Skeleton className={classes.skeleton}/>
-                                        </TableCell>
-                                        <TableCell width={'30%'}>
+                                        <TableCell width={'100%'} colSpan={8}>
                                             <Skeleton className={classes.skeleton}/>
                                         </TableCell>
                                     </TableRow>

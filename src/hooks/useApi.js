@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react'
 import {useHistory} from 'react-router-dom'
-import {ClientContext, useMutation, useManualQuery} from 'graphql-hooks'
+import {ClientContext, useManualQuery, useMutation} from 'graphql-hooks'
 import {useGlobalState} from "../state/state";
 import {ADD_ERRORS} from "../state/actions";
 import {API_OFFLINE_ERROR} from "../assets/routes";
@@ -25,9 +25,9 @@ function useApi({query}) {
     const [queryCall] = useManualQuery(query.query);
     const call = query.type === MUTATION_OPERATION ? mutationCall : queryCall;
 
-    const handleCall = ({variables = {}, handleComplete, handleSuccess, handleError}) => {
+    const handleCall = ({variables = {}, handleComplete, handleSuccess, handleError} = {}) => {
         setLoading(true);
-        call({variables: {...variables}}).then((response) => {
+        call(variables ? {variables: {...variables}} : {}).then((response) => {
             if (!response.error) {
                 setData(response.data);
                 if (handleSuccess) handleSuccess(response.data);
