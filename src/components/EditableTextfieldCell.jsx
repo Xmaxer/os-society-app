@@ -8,7 +8,7 @@ import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 const useStyles = makeStyles(theme => ({}));
 
-function EditableTextfieldCell({defaultValue, name, id, multiline = false, ...rest}) {
+function EditableTextfieldCell({defaultValue, name, id, multiline = false, maxLength = 20, ...rest}) {
     const classes = useStyles();
 
     const [value, setValue] = useState(defaultValue);
@@ -29,7 +29,9 @@ function EditableTextfieldCell({defaultValue, name, id, multiline = false, ...re
 
     const handleClickAway = () => {
         setEdit(false);
-        handleCall({variables: {id: id, [name]: value}})
+        if (defaultValue !== value) {
+            handleCall({variables: {id: id, [name]: value}})
+        }
     };
 
     const handleChange = (event) => {
@@ -41,8 +43,8 @@ function EditableTextfieldCell({defaultValue, name, id, multiline = false, ...re
             {
                 edit ? <ClickAwayListener onClickAway={handleClickAway}>
                     <div><StyledTextField onKeyDown={handleSubmit} name={name}
-                                          multiline={multiline} autoFocus={true} inputProps={{maxLength: 20}}
-                                          onChange={handleChange} value={value}/></div>
+                                          multiline={multiline} autoFocus={true} inputProps={{maxLength: maxLength}}
+                                          onChange={handleChange} value={value} fullWidth={true}/></div>
                 </ClickAwayListener> : value
             }
         </TableCell>

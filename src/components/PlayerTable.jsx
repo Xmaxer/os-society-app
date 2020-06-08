@@ -202,9 +202,9 @@ function PlayerTable(props) {
                                         </TableCell>
                                         <EditableMultiSelectCell width={'20%'} defaultValue={player.previousNames}
                                                                  id={player.id} name={"previous_names"}/>
-                                        <TableCell width={'25%'}>
-                                            {player.comment}
-                                        </TableCell>
+                                        <EditableTextfieldCell width={'25%'} defaultValue={player.comment}
+                                                               id={player.id} name={"comment"} multiline={true}
+                                                               maxLength={200}/>
                                     </TableRow>
                                 )
                             })
