@@ -26,7 +26,8 @@ function SearchField(props) {
     };
 
     const handleClearSearch = (event) => {
-        setValue("")
+        setValue("");
+        handler("");
     };
 
     const handleChange = (event) => {

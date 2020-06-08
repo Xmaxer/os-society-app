@@ -28,6 +28,7 @@ import TablePaginationOptions from "./TablePaginationOptions";
 import EditableTextfieldCell from "./EditableTextfieldCell";
 import EditableDatePickerCell from "./EditableDatePickerCell";
 import EditableAutcompleteCell from "./EditableAutcompleteCell";
+import EditableMultiSelectCell from "./EditableMultiSelectCell";
 
 const useStyles = makeStyles(theme => ({
     table: {
@@ -92,6 +93,7 @@ function computeDays(datetime) {
     return differenceInDays(Date.now(), parseISO(datetime)).toString() + " days"
 }
 
+const rowsPerPageOptions = [25, 50, 75, 100];
 function PlayerTable(props) {
 
     const classes = useStyles();
@@ -99,7 +101,7 @@ function PlayerTable(props) {
     const [order, setOrder] = useState(ORDER_DESC);
     const [orderBy, setOrderBy] = useState(ORDER_BY_CREATED_AT);
     const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(100);
+    const [rowsPerPage, setRowsPerPage] = React.useState(rowsPerPageOptions[0]);
     const [players, setPlayers] = useState([]);
     const [totalPlayers, setTotalPlayers] = useState(0);
     const {handleCall, loading} = useApi({query: PLAYERS_QUERY});
@@ -198,9 +200,8 @@ function PlayerTable(props) {
                                         <TableCell width={'10%'}>
                                             {formatDateTimeFromString(player.updatedAt)}
                                         </TableCell>
-                                        <TableCell width={'20%'}>
-                                            {"NAMES HERE"}
-                                        </TableCell>
+                                        <EditableMultiSelectCell width={'20%'} defaultValue={player.previousNames}
+                                                                 id={player.id} name={"previous_names"}/>
                                         <TableCell width={'25%'}>
                                             {player.comment}
                                         </TableCell>
@@ -213,7 +214,7 @@ function PlayerTable(props) {
                     <TableRow key={'pagination'}>
                         <TablePagination
                             rowsPerPage={rowsPerPage}
-                            rowsPerPageOptions={[50, 100, 200, 500]}
+                            rowsPerPageOptions={rowsPerPageOptions}
                             count={totalPlayers}
                             page={page}
                             onChangePage={handlePageChange}
