@@ -44,7 +44,7 @@ export const PLAYERS_QUERY = {
 
 export const PLAYER_MUTATION = {
     type: MUTATION_OPERATION,
-    query: `mutation Player($username: String!, $join_date: ISO8601DateTime!, $rank: Int!, $comment: String, $previous_names: [String!], $id: ID){
+    query: `mutation Player($username: String, $join_date: ISO8601DateTime, $rank: Int, $comment: String, $previous_names: [String!], $id: ID){
   player(input: {playerDetails: {username: $username, rank: $rank, joinDate: $join_date, previousNames: $previous_names, comment: $comment, id: $id}}) {
     player {
       username

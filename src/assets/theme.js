@@ -38,8 +38,13 @@ const theme = createMuiTheme({
             root: {
                 backgroundColor: generatedPalette.palette.tertiary.main
             }
+        },
+        MuiPickersDate: {
+            root: {
+                color: generatedPalette.palette.tertiary.main
+            }
         }
-    }
+    },
 });
 
 export default theme;

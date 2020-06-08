@@ -25,6 +25,8 @@ import {
 import Skeleton from '@material-ui/lab/Skeleton';
 import SortableTableHead from "./SortableTableHead";
 import TablePaginationOptions from "./TablePaginationOptions";
+import EditableTextfieldCell from "./EditableTextfieldCell";
+import EditableDatePickerCell from "./EditableDatePickerCell";
 
 const useStyles = makeStyles(theme => ({
     table: {
@@ -180,12 +182,10 @@ function PlayerTable(props) {
                             : players.map((player, index) => {
                                 return (
                                     <TableRow key={player.id}>
-                                        <TableCell width={'10%'}>
-                                            {player.username}
-                                        </TableCell>
-                                        <TableCell width={'10%'}>
-                                            {formatDateTimeFromString(player.joinDate)}
-                                        </TableCell>
+                                        <EditableTextfieldCell defaultValue={player.username} id={player.id}
+                                                               name={'username'} width={'10%'}/>
+                                        <EditableDatePickerCell width={'10%'} defaultValue={player.joinDate}
+                                                                id={player.id} name={'join_date'}/>
                                         <TableCell width={'5%'}>
                                             {player.rank}
                                         </TableCell>
