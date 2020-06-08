@@ -27,6 +27,7 @@ import SortableTableHead from "./SortableTableHead";
 import TablePaginationOptions from "./TablePaginationOptions";
 import EditableTextfieldCell from "./EditableTextfieldCell";
 import EditableDatePickerCell from "./EditableDatePickerCell";
+import EditableAutcompleteCell from "./EditableAutcompleteCell";
 
 const useStyles = makeStyles(theme => ({
     table: {
@@ -186,9 +187,8 @@ function PlayerTable(props) {
                                                                name={'username'} width={'10%'}/>
                                         <EditableDatePickerCell width={'10%'} defaultValue={player.joinDate}
                                                                 id={player.id} name={'join_date'}/>
-                                        <TableCell width={'5%'}>
-                                            {player.rank}
-                                        </TableCell>
+                                        <EditableAutcompleteCell width={'10%'} defaultValue={player.rank} id={player.id}
+                                                                 name={"rank"}/>
                                         <TableCell width={'5%'}>
                                             {computeDays(player.joinDate)}
                                         </TableCell>
@@ -201,7 +201,7 @@ function PlayerTable(props) {
                                         <TableCell width={'20%'}>
                                             {"NAMES HERE"}
                                         </TableCell>
-                                        <TableCell width={'30%'}>
+                                        <TableCell width={'25%'}>
                                             {player.comment}
                                         </TableCell>
                                     </TableRow>
