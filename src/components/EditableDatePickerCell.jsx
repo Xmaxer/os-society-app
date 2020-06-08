@@ -53,9 +53,10 @@ export const datePickerTheme = createMuiTheme({
     disabled: {}
 });
 
-function formatDateTime(datetime) {
-    return format(datetime, "dd/MM/yyyy hh:mm:ss")
+function formatDate(datetime) {
+    return format(datetime, "dd/MM/yyyy")
 }
+
 
 function EditableDatePickerCell({defaultValue, name, id, ...rest}) {
 
@@ -93,7 +94,7 @@ function EditableDatePickerCell({defaultValue, name, id, ...rest}) {
                                                     value={value} onChange={handleChange}/>
                             </div>
                         </ClickAwayListener>
-                    </ThemeProvider> : formatDateTime(value)
+                    </ThemeProvider> : formatDate(value)
                 }
             </TableCell>
         </MuiPickersUtilsProvider>
