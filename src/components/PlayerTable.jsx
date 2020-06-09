@@ -20,13 +20,14 @@ import {
     ORDER_DESC
 } from "../assets/filters";
 import Skeleton from '@material-ui/lab/Skeleton';
-import SortableTableHead from "./SortableTableHead";
+import SortableTableHead, {headers} from "./SortableTableHead";
 import TablePaginationOptions from "./TablePaginationOptions";
 import PlayerTableRow from "./PlayerTableRow";
 
 const useStyles = makeStyles(theme => ({
     table: {
-        minWidth: 500
+        minWidth: 500,
+        borderCollapse: 'separate'
     },
     tableContainer: {
         overflowY: 'auto',
@@ -152,17 +153,29 @@ function PlayerTable(props) {
         setRowsPerPage(parseInt(event.target.value, 10));
     };
 
+    const handleAddNewPlayer = (data) => {
+        if (data && data.player && data.player.player) {
+            getPlayers()
+        }
+    }
+
+    const handleDeletePlayer = (data) => {
+        if (data && data.deletePlayer && data.deletePlayer.player) {
+            getPlayers()
+        }
+    }
     return (
         <TableContainer component={Paper} className={classes.tableContainer}>
             <Table size={"small"} className={classes.table}>
-                <SortableTableHead orderBy={orderBy} order={order} handleSort={handleSort}/>
+                <SortableTableHead orderBy={orderBy} order={order} handleSort={handleSort}
+                                   handleAddNewPlayer={handleAddNewPlayer}/>
                 <TableBody className={classes.tableBody}>
                     {
                         loading ?
                             [...Array(rowsPerPage)].map((e, i) => {
                                 return (
                                     <TableRow key={i}>
-                                        <TableCell width={'100%'} colSpan={8}>
+                                        <TableCell width={'100%'} colSpan={headers.length}>
                                             <Skeleton className={classes.skeleton}/>
                                         </TableCell>
                                     </TableRow>
@@ -170,7 +183,7 @@ function PlayerTable(props) {
                             })
                             : players.map((player, index) => {
                                 return (
-                                    <PlayerTableRow defaultPlayer={player} key={index}/>
+                                    <PlayerTableRow defaultPlayer={player} key={index} onDelete={handleDeletePlayer}/>
                                 )
                             })
                     }
@@ -185,7 +198,7 @@ function PlayerTable(props) {
                             onChangePage={handlePageChange}
                             onChangeRowsPerPage={handleRowsPerPageChange}
                             ActionsComponent={TablePaginationOptions}
-                            colSpan={8}
+                            colSpan={headers.length}
                             classes={{selectRoot: classes.paginationSelectRoot, caption: classes.paginationCaption}}
                         />
                     </TableRow>

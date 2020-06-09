@@ -11,7 +11,7 @@ import {StyledTextField} from "../assets/styledComponents";
 const useStyles = makeStyles(theme => ({
     option: {
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     optionText: {
         marginLeft: 5

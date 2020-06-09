@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
             borderBottomColor: theme.palette.secondary.light
         },
         '&:hover:not($disabled):before': {
-            borderBottomColor: theme.palette.primary.main + " !important",
+            borderBottomColor: theme.palette.primary.light + " !important",
         },
         color: theme.palette.tertiary.main,
         '& label.Mui-focused': {
@@ -95,7 +95,8 @@ function EditableDatePickerCell({defaultValue, name, id, onChange, ...rest}) {
                                 <KeyboardDatePicker InputProps={{classes: {root: classes.root}}}
                                                     TextFieldComponent={StyledTextField} variant={'inline'}
                                                     format={"dd/MM/yyyy"} name={name} label={"Player's Join Date"}
-                                                    value={value} onChange={handleChange}/>
+                                                    value={value} onChange={handleChange}
+                                                    maxDate={Date.now()}/>
                             </div>
                         </ClickAwayListener>
                     </ThemeProvider> : formatDate(value)

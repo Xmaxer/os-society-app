@@ -8,6 +8,8 @@ import {StyledIconButton, StyledTextField} from "../assets/styledComponents";
 import Chip from '@material-ui/core/Chip';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import AddIcon from '@material-ui/icons/Add';
+import CloseIcon from '@material-ui/icons/Close';
+import Tooltip from '@material-ui/core/Tooltip';
 
 const useStyles = makeStyles(theme => ({
     textfield: {
@@ -23,12 +25,18 @@ const useStyles = makeStyles(theme => ({
         marginBottom: 5
     },
     addIcon: {
-        marginLeft: 20
+        marginLeft: 'auto',
     },
     container: {
         display: 'flex',
+    },
+    chipContainer: {
+        display: 'flex',
         alignItems: 'center',
         flexFlow: 'wrap'
+    },
+    autocomplete: {
+        flexGrow: 1
     }
 }));
 
@@ -70,6 +78,9 @@ function EditableMultiSelectCell({defaultValue, name, id, ...rest}) {
         }
     }
 
+    const handleCancel = () => {
+        setEdit(false)
+    }
     const onEnter = (event) => {
         if (event.key === 'Enter') {
             const val = event.target.value;
@@ -84,42 +95,52 @@ function EditableMultiSelectCell({defaultValue, name, id, ...rest}) {
     return (
         <TableCell {...rest}>
             {
-                edit ? <ClickAwayListener onClickAway={handleClickAway}>
-                    <Autocomplete multiple={true}
-                                  renderInput={(params) => <StyledTextField autoFocus={true}
-                                                                            className={classes.textfield} {...params}
-                                                                            label={"Previous names"}
-                                                                            onKeyDown={onEnter}/>}
-                                  options={[]}
-                                  getOptionLabel={getOptionLabel}
-                                  onChange={handleChange}
-                                  value={value}
-                                  renderTags={(tagValue, getTagProps) =>
-                                      tagValue.map((option, index) => (
-                                          <Chip
-                                              label={option}
-                                              {...getTagProps({index})}
-                                              className={classes.chip}
-                                              key={name}
-                                          />
-                                      ))
-                                  }
-                    />
-                </ClickAwayListener> : <div className={classes.container}>
-                    {
-                        value.map((pname) => (
-                            <Chip
-                                label={pname}
-                                className={classes.chip}
-                                onDelete={() => handleDelete(pname)}
-                                key={pname}
-                            />
-                        ))
-                    }
-                    <StyledIconButton onClick={handleEdit} className={classes.addIcon}>
-                        <AddIcon/>
-                    </StyledIconButton>
-                </div>
+                edit ? <div className={classes.container}><ClickAwayListener onClickAway={handleClickAway}>
+                        <Autocomplete className={classes.autocomplete}
+                                      multiple={true}
+                                      renderInput={(params) => <StyledTextField autoFocus={true}
+                                                                                className={classes.textfield} {...params}
+                                                                                label={"Previous names"}
+                                                                                onKeyDown={onEnter} fullWidth={true}/>}
+                                      options={[]}
+                                      getOptionLabel={getOptionLabel}
+                                      onChange={handleChange}
+                                      value={value}
+                                      renderTags={(tagValue, getTagProps) =>
+                                          tagValue.map((option, index) => (
+                                              <Chip
+                                                  label={option}
+                                                  {...getTagProps({index})}
+                                                  className={classes.chip}
+                                                  key={option}
+                                              />
+                                          ))
+                                      }
+                        />
+                    </ClickAwayListener>
+                        <Tooltip title={"Cancel"}>
+                            <StyledIconButton onClick={handleCancel} className={classes.addIcon}>
+                                <CloseIcon/>
+                            </StyledIconButton>
+                        </Tooltip>
+                    </div>
+                    : <div className={classes.container}>
+                        <div className={classes.chipContainer}>
+                            {
+                                value.map((pname) => (
+                                    <Chip
+                                        label={pname}
+                                        className={classes.chip}
+                                        onDelete={() => handleDelete(pname)}
+                                        key={pname}
+                                    />
+                                ))
+                            }
+                        </div>
+                        <StyledIconButton onClick={handleEdit} className={classes.addIcon}>
+                            <AddIcon/>
+                        </StyledIconButton>
+                    </div>
             }
         </TableCell>
     );
