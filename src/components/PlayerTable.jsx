@@ -10,9 +10,6 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import useApi from "../hooks/useApi";
 import {PLAYERS_QUERY} from "../assets/queries";
-import parseISO from 'date-fns/parseISO'
-import format from 'date-fns/format'
-import differenceInDays from 'date-fns/differenceInDays'
 import subDays from 'date-fns/subDays'
 import formatISO from 'date-fns/formatISO'
 import {
@@ -25,10 +22,7 @@ import {
 import Skeleton from '@material-ui/lab/Skeleton';
 import SortableTableHead from "./SortableTableHead";
 import TablePaginationOptions from "./TablePaginationOptions";
-import EditableTextfieldCell from "./EditableTextfieldCell";
-import EditableDatePickerCell from "./EditableDatePickerCell";
-import EditableAutcompleteCell from "./EditableAutcompleteCell";
-import EditableMultiSelectCell from "./EditableMultiSelectCell";
+import PlayerTableRow from "./PlayerTableRow";
 
 const useStyles = makeStyles(theme => ({
     table: {
@@ -84,14 +78,6 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.secondary.light
     },
 }));
-
-function formatDateTimeFromString(datetime) {
-    return format(parseISO(datetime), "dd/MM/yyyy hh:mm:ss")
-}
-
-function computeDays(datetime) {
-    return differenceInDays(Date.now(), parseISO(datetime)).toString() + " days"
-}
 
 const rowsPerPageOptions = [25, 50, 75, 100];
 function PlayerTable(props) {
@@ -184,28 +170,7 @@ function PlayerTable(props) {
                             })
                             : players.map((player, index) => {
                                 return (
-                                    <TableRow key={player.id}>
-                                        <EditableTextfieldCell defaultValue={player.username} id={player.id}
-                                                               name={'username'} width={'10%'}/>
-                                        <EditableDatePickerCell width={'10%'} defaultValue={player.joinDate}
-                                                                id={player.id} name={'join_date'}/>
-                                        <EditableAutcompleteCell width={'10%'} defaultValue={player.rank} id={player.id}
-                                                                 name={"rank"}/>
-                                        <TableCell width={'5%'}>
-                                            {computeDays(player.joinDate)}
-                                        </TableCell>
-                                        <TableCell width={'10%'}>
-                                            {formatDateTimeFromString(player.createdAt)}
-                                        </TableCell>
-                                        <TableCell width={'10%'}>
-                                            {formatDateTimeFromString(player.updatedAt)}
-                                        </TableCell>
-                                        <EditableMultiSelectCell width={'20%'} defaultValue={player.previousNames}
-                                                                 id={player.id} name={"previous_names"}/>
-                                        <EditableTextfieldCell width={'25%'} defaultValue={player.comment}
-                                                               id={player.id} name={"comment"} multiline={true}
-                                                               maxLength={200}/>
-                                    </TableRow>
+                                    <PlayerTableRow defaultPlayer={player} key={index}/>
                                 )
                             })
                     }

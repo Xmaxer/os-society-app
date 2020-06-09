@@ -53,6 +53,8 @@ export const PLAYER_MUTATION = {
       rank
       comment
       previousNames
+      createdAt
+      updatedAt
     }
   }
 }`

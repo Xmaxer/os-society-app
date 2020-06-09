@@ -3,6 +3,7 @@ import {Button, Slider, TextField} from '@material-ui/core'
 import {makeStyles, withStyles} from '@material-ui/core/styles';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import IconButton from '@material-ui/core/IconButton';
 
 export const StyledButton = withStyles(theme => ({
     text: {
@@ -72,6 +73,16 @@ export const StyledCheckBox = withStyles(theme => ({
         }
     }
 }))(Checkbox);
+
+export const StyledIconButton = withStyles(theme => ({
+    root: {
+        color: theme.palette.secondary.light,
+        '&:hover': {
+            color: theme.palette.tertiary.main,
+            backgroundColor: 'transparent'
+        }
+    }
+}))(IconButton);
 
 const useFormControlLabelStyles = makeStyles(theme => ({
     root: {

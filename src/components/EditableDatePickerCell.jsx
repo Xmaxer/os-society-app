@@ -58,7 +58,7 @@ function formatDate(datetime) {
 }
 
 
-function EditableDatePickerCell({defaultValue, name, id, ...rest}) {
+function EditableDatePickerCell({defaultValue, name, id, onChange, ...rest}) {
 
     const classes = useStyles();
 
@@ -74,7 +74,11 @@ function EditableDatePickerCell({defaultValue, name, id, ...rest}) {
         const newValue = date;
         setEdit(false);
         setValue(newValue);
-        handleCall({variables: {id: id, [name]: newValue}})
+        if (onChange !== undefined) {
+            onChange(name, newValue)
+        } else {
+            handleCall({variables: {id: id, [name]: newValue}})
+        }
     };
 
     const handleClickAway = () => {
