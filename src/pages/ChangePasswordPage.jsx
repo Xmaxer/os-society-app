@@ -1,15 +1,15 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom'
 import {makeStyles} from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import {Formik} from 'formik';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import {useHistory, useLocation} from "react-router-dom";
 import useApi from "../hooks/useApi";
-import {LOGIN_MUTATION} from "../assets/queries";
-import {CHANGE_PASSWORD_ROUTE, HOME_ROUTE} from "../assets/routes";
+import {SET_PASSWORD_MUTATION} from "../assets/queries";
+import {HOME_ROUTE} from "../assets/routes";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+import Divider from "@material-ui/core/Divider";
+import {Formik} from "formik";
 import {StyledButton, StyledTextField} from "../assets/styledComponents";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles(theme => ({
     background: {
@@ -81,27 +81,25 @@ const useStyles = makeStyles(theme => ({
     },
     circularProgress: {
         color: theme.palette.tertiary.main
+    },
+    subText: {
+        color: theme.palette.secondary.light
     }
 }));
 
-function LoginPage() {
+function ChangePasswordPage() {
+
     const classes = useStyles();
     const history = useHistory();
-
-    const {handleCall} = useApi({query: LOGIN_MUTATION});
+    const location = useLocation();
+    let user = location.state.user
+    const {handleCall} = useApi({query: SET_PASSWORD_MUTATION});
 
     const handleSuccess = (data) => {
-        if (data && data.login && data.login.token && data.login.user) {
-
-            localStorage.setItem('access_token', data.login.token);
-
-            if (data.login.user.resetPassword) {
-                history.push({pathname: CHANGE_PASSWORD_ROUTE, state: {user: data.login.user}})
-            } else {
-                history.push({
-                    pathname: HOME_ROUTE
-                })
-            }
+        if (data && data.user && data.user.user) {
+            history.push({
+                pathname: HOME_ROUTE
+            })
         }
     };
 
@@ -111,25 +109,28 @@ function LoginPage() {
             <Box className={classes.loginBox}>
                 <Box className={classes.titleBox}>
                     <Typography variant={'h5'} className={classes.title}>
-                        Login
+                        {"Update Password"}
                     </Typography>
                     <Divider className={classes.divider}/>
                 </Box>
-                <Formik initialValues={{username: '', password: ''}} onSubmit={(values, {setSubmitting}) => {
+                <Typography variant={'subtitle1'} className={classes.subText}>
+                    {"Hey " + user.username + ", set your new password"}
+                </Typography>
+                <Formik initialValues={{password: ''}} onSubmit={(values, {setSubmitting}) => {
                     setSubmitting(true);
-                    handleCall({variables: {...values}, handleComplete: () => {
+                    handleCall({
+                        variables: {...values, id: user.id}, handleComplete: () => {
                             setSubmitting(false)
-                        }, handleSuccess: handleSuccess});
+                        }, handleSuccess: handleSuccess
+                    });
                 }}>
                     {({values, handleChange, handleSubmit, isSubmitting}) => (
                         <form onSubmit={handleSubmit} className={classes.form}>
-                            <StyledTextField label={"Username"} value={values.username} onChange={handleChange} required
-                                       name={"username"} spellCheck={false}/>
                             <StyledTextField label={"password"} type={'password'} value={values.password}
-                                       onChange={handleChange} required name={"password"}/>
+                                             onChange={handleChange} required name={"password"}/>
                             <StyledButton variant={'contained'} className={classes.loginButton} type={'submit'}
-                                    disabled={isSubmitting}>{isSubmitting ? <CircularProgress size={"1.2rem"}
-                                                                                              className={classes.circularProgress}/> : "Login"}</StyledButton>
+                                          disabled={isSubmitting}>{isSubmitting ? <CircularProgress size={"1.2rem"}
+                                                                                                    className={classes.circularProgress}/> : "Set Password"}</StyledButton>
                         </form>
                     )}
                 </Formik>
@@ -138,4 +139,4 @@ function LoginPage() {
     );
 }
 
-export default LoginPage;
+export default ChangePasswordPage;

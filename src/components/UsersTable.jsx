@@ -26,9 +26,6 @@ function UsersTable() {
     const [search, setSearch] = useState(null);
 
     const handleApplyFilters = (days, ranks, search) => {
-        console.log(days);
-        console.log(ranks);
-        console.log(search);
         setDays(days);
         setRanks(ranks);
         setSearch(search);

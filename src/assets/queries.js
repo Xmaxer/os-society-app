@@ -5,6 +5,11 @@ export const LOGIN_MUTATION = {
     query: `mutation Login($username: String!, $password: String!) {
     login(input: {authDetails: {username: $username, password: $password}}) {
         token
+            user {
+      username
+      id
+      resetPassword
+    }
      }
    }
 `};
@@ -20,7 +25,13 @@ export const LOGOUT_MUTATION = {
 
 export const IS_AUTHENTICATED_QUERY = {
     type: QUERY_OPERATION,
-    query: `query {isAuthenticated}`
+    query: `query {
+  isAuthenticated {
+    username
+    id
+    resetPassword
+  }
+}`
 };
 
 export const PLAYERS_QUERY = {
@@ -73,6 +84,19 @@ export const DELETE_PLAYER_MUTATION = {
       joinDate
       createdAt
       updatedAt
+    }
+  }
+}`
+};
+
+export const SET_PASSWORD_MUTATION = {
+    type: MUTATION_OPERATION,
+    query: `mutation User($id: ID!, $password: String!){
+  user(input: {userDetails: {id: $id, password: $password}}) {
+    user {
+      id
+      username
+      resetPassword
     }
   }
 }`

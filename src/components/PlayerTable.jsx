@@ -94,9 +94,9 @@ function PlayerTable(props) {
     const {handleCall, loading} = useApi({query: PLAYERS_QUERY});
 
     const handleGetPlayersSuccess = (data) => {
-        console.log(data);
         setPlayers(data.players);
         setTotalPlayers(data.totalPlayers)
+        setPage(0)
     };
 
     const handleSort = (id) => {

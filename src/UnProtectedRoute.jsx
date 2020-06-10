@@ -15,7 +15,7 @@ function UnProtectedRoute({component: Component, ...rest}) {
         handleCall()
     }, []);
 
-    if (data === null || data.isAuthenticated === null) {
+    if (data === null || data.isAuthenticated === undefined) {
         return (<div style={{width: '100%'}}><LinearProgress color={"secondary"}/></div>)
     }
 
