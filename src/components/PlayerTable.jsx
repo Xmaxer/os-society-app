@@ -96,13 +96,17 @@ function PlayerTable(props) {
     const handleGetPlayersSuccess = (data) => {
         setPlayers(data.players);
         setTotalPlayers(data.totalPlayers)
-        setPage(0)
     };
 
     const handleSort = (id) => {
         setOrder(orderBy === id && order === ORDER_ASC ? ORDER_DESC : ORDER_ASC);
+        setPage(0)
         setOrderBy(id)
     };
+
+    useEffect(() => {
+        setPage(0)
+    }, [days, ranks, search])
 
     useEffect(() => {
         getPlayers();
