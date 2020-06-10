@@ -204,6 +204,7 @@ function SortableTableHead(props) {
 
     const handleSuccess = (data) => {
         handleAddNewPlayer(data)
+        setEdit(false)
     }
 
     const onEnter = (event, setFieldValue, currentValues) => {
@@ -251,10 +252,11 @@ function SortableTableHead(props) {
                         rank: 0,
                         previous_names: [],
                         comment: ''
-                    }} onSubmit={(values, {setSubmitting}) => {
+                    }} onSubmit={(values, {setSubmitting, resetForm}) => {
                         setSubmitting(true);
                         handleCall({
                             variables: {...values}, handleComplete: () => {
+                                resetForm()
                                 setSubmitting(false)
                             }, handleSuccess: handleSuccess
                         });
