@@ -4,7 +4,6 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
-import TableFooter from '@material-ui/core/TableFooter';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
@@ -20,9 +19,10 @@ import {
     ORDER_DESC
 } from "../assets/filters";
 import Skeleton from '@material-ui/lab/Skeleton';
-import SortableTableHead, {headerDistribution, headers} from "./SortableTableHead";
+import SortableTableHead, {headers} from "./SortableTableHead";
 import TablePaginationOptions from "./TablePaginationOptions";
 import PlayerTableRow from "./PlayerTableRow";
+import NewPlayerBar from "./NewPlayerBar";
 
 const useStyles = makeStyles(theme => ({
     table: {
@@ -46,13 +46,10 @@ const useStyles = makeStyles(theme => ({
             backgroundColor: theme.palette.primary.main
         }
     },
-    tableFooter: {
-        '& td': {
-            position: 'sticky',
-            bottom: 0,
-            backgroundColor: theme.palette.primary.main,
-            borderBottom: 'none'
-        }
+    tablePagination: {
+        backgroundColor: theme.palette.primary.dark,
+        overflow: 'inherit',
+        borderTop: '1px solid ' + theme.palette.tertiary.main
     },
     paginationSelectRoot: {
         '& *': {
@@ -75,9 +72,23 @@ const useStyles = makeStyles(theme => ({
     paginationCaption: {
         color: theme.palette.secondary.light
     },
+    paginationSpacer: {
+        flex: 'inherit'
+    },
+    pagnationToolbar: {
+        display: 'flex',
+        justifyContent: 'center'
+    },
     skeleton: {
         backgroundColor: theme.palette.secondary.light
     },
+    fabContainer: {
+        position: 'fixed',
+        right: 0,
+        bottom: 0,
+        marginRight: 20,
+        marginBottom: 60
+    }
 }));
 
 const rowsPerPageOptions = [25, 50, 75, 100];
@@ -169,62 +180,69 @@ function PlayerTable(props) {
         }
     }
     return (
-        <TableContainer component={Paper} className={classes.tableContainer}>
-            <Table size={"small"} className={classes.table}>
-                <colgroup>
-                    {
-                        headerDistribution.map((percent, index) => {
-                            return <col width={percent}/>
-                        })
-                    }
-                </colgroup>
-                <SortableTableHead orderBy={orderBy} order={order} handleSort={handleSort}
-                                   handleAddNewPlayer={handleAddNewPlayer}/>
-                <TableBody className={classes.tableBody}>
-                    {
-                        loading ?
-                            [...Array(rowsPerPage)].map((e, i) => {
-                                return (
-                                    <TableRow key={i}>
-                                        <TableCell width={'100%'} colSpan={headers.length}>
-                                            <Skeleton className={classes.skeleton}/>
-                                        </TableCell>
-                                    </TableRow>
-                                )
-                            })
-                            : players.map((player, index) => {
-                                return (
-                                    <PlayerTableRow defaultPlayer={player} key={index} onDelete={handleDeletePlayer}/>
-                                )
-                            })
-                    }
-                    {
-                        !loading && players && players.length < rowsPerPage &&
-                        <TableRow>
-                            <TableCell colspan={headers.length}>
-                                <div style={{height: (rowsPerPage - players.length) * 40 + 'px'}}/>
-                            </TableCell>
-                        </TableRow>
+        <>
+            <TableContainer component={Paper} className={classes.tableContainer}>
+                <Table size={"small"} className={classes.table}>
+                    <SortableTableHead orderBy={orderBy} order={order} handleSort={handleSort}/>
+                    <TableBody className={classes.tableBody}>
+                        {
+                            loading ?
+                                [...Array(rowsPerPage)].map((e, i) => {
+                                    return (
+                                        <TableRow key={i}>
+                                            <TableCell width={'100%'} colSpan={headers.length}>
+                                                <Skeleton className={classes.skeleton}/>
+                                            </TableCell>
+                                        </TableRow>
+                                    )
+                                })
+                                : players.map((player, index) => {
+                                    return (
+                                        <PlayerTableRow defaultPlayer={player} key={index} onDelete={handleDeletePlayer}/>
+                                    )
+                                })
+                        }
+                        {
+                            !loading && players && players.length < rowsPerPage &&
+                            <TableRow>
+                                <TableCell colSpan={headers.length}>
+                                    <div style={{height: (rowsPerPage - players.length) * 40 + 'px'}}/>
+                                </TableCell>
+                            </TableRow>
 
-                    }
-                </TableBody>
-                <TableFooter className={classes.tableFooter}>
-                    <TableRow key={'pagination'}>
-                        <TablePagination
-                            rowsPerPage={rowsPerPage}
-                            rowsPerPageOptions={rowsPerPageOptions}
-                            count={totalPlayers}
-                            page={page}
-                            onChangePage={handlePageChange}
-                            onChangeRowsPerPage={handleRowsPerPageChange}
-                            ActionsComponent={TablePaginationOptions}
-                            colSpan={headers.length}
-                            classes={{selectRoot: classes.paginationSelectRoot, caption: classes.paginationCaption}}
-                        />
-                    </TableRow>
-                </TableFooter>
-            </Table>
-        </TableContainer>
+                        }
+                    </TableBody>
+                </Table>
+            </TableContainer>
+            <NewPlayerBar handleAddNewPlayer={handleAddNewPlayer}/>
+            <TablePagination
+                rowsPerPage={rowsPerPage}
+                rowsPerPageOptions={rowsPerPageOptions}
+                count={totalPlayers}
+                page={page}
+                onChangePage={handlePageChange}
+                onChangeRowsPerPage={handleRowsPerPageChange}
+                ActionsComponent={TablePaginationOptions}
+                colSpan={headers.length}
+                className={classes.tablePagination}
+                classes={{
+                    selectRoot: classes.paginationSelectRoot,
+                    caption: classes.paginationCaption,
+                    spacer: classes.paginationSpacer,
+                    toolbar: classes.pagnationToolbar
+                }}
+                component={'div'}
+            />
+
+            {/*<div className={classes.fabContainer}>*/}
+            {/*    <Tooltip title={'Add new player'}>*/}
+            {/*        <Fab variant={'round'}>*/}
+            {/*            <AddIcon/>*/}
+            {/*        </Fab>*/}
+            {/*    </Tooltip>*/}
+            {/*</div>*/}
+
+        </>
     );
 }
 

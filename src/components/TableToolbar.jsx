@@ -11,6 +11,11 @@ import Paper from '@material-ui/core/Paper';
 import clsx from 'clsx';
 import RankFilter from "./RankFilter";
 import SearchField from "./SearchField";
+import Slide from "@material-ui/core/Slide";
+import useWindowSize from "../hooks/useWindowSize";
+import Dialog from "@material-ui/core/Dialog";
+import Typography from "@material-ui/core/Typography";
+import Divider from "@material-ui/core/Divider";
 
 const useStyles = makeStyles(theme => ({
     toolbar: {
@@ -46,35 +51,78 @@ const useStyles = makeStyles(theme => ({
     closeButton: {
         color: theme.palette.tertiary.main
     },
-    paperFilter: {
-        backgroundColor: theme.palette.primary.dark,
-        width: '100%',
-        minHeight: 100,
-        display: 'flex',
-        justifyContent: 'flex-start',
-        '& > *': {
-            marginLeft: 40,
-            marginTop: 15
-        },
-        border: '2px solid ' + theme.palette.tertiary.main,
-    },
+    paperFilter: props => (
+        props.width > 1400 ?
+            {
+                backgroundColor: theme.palette.primary.dark,
+                width: '100%',
+                minHeight: 100,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'flex-start',
+                '& > *': {
+                    marginTop: 0
+                },
+                border: '2px solid ' + theme.palette.tertiary.main,
+            } : {
+                backgroundColor: theme.palette.primary.dark,
+                width: '100%',
+                minHeight: 100,
+                display: 'flex',
+                justifyContent: 'center',
+                flexDirection: 'column',
+                '& > *': {
+                    marginTop: 30
+                },
+                border: '2px solid ' + theme.palette.tertiary.main,
+            }),
     collapseContainer: {
         flexShrink: 0
     },
-    apply: {
-        marginLeft: 'auto',
-        marginRight: 20,
-        alignSelf: 'flex-end',
-        marginBottom: 20,
+    actionsContainer: props => (
+        props.width > 1400 ?
+            {
+                marginLeft: 'auto',
+                marginRight: 20,
+                alignSelf: 'flex-end',
+                marginBottom: 20,
+            } : {
+                alignSelf: 'center',
+                marginBottom: 20,
+                '& > button': {
+                    marginLeft: 20
+                }
+            }
+    ),
+    dialogContainer: {
+        '& .MuiDialog-paper': {
+            overflowX: 'hidden',
+            backgroundColor: theme.palette.primary.main,
+            textAlign: 'center',
+            '&:first-child': {
+                color: theme.palette.secondary.light
+            }
+        }
+    },
+    rankFilter: {
+        marginLeft: 40
+    },
+    daysFilter: {
+        marginLeft: 40
     }
 }));
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props}/>;
+});
 
 let days = null;
 let ranks = null;
 let search = null;
 
 function TableToolbar(props) {
-    const classes = useStyles();
+    const [width, height] = useWindowSize()
+    const classes = useStyles({width});
     const [openFilter, setOpenFilter] = useState(false);
 
 
@@ -85,6 +133,9 @@ function TableToolbar(props) {
     };
 
     const handleApply = () => {
+        if (width <= 1400) {
+            setOpenFilter(false)
+        }
         handleApplyFilters(days, ranks, search);
     };
 
@@ -104,19 +155,43 @@ function TableToolbar(props) {
                     }
                 </IconButton>
             </Toolbar>
-            <Collapse in={Boolean(openFilter)} addEndListener={() => {
-            }} className={classes.collapseContainer}>
-                <Paper className={classes.paperFilter} square>
-                    <DaysFilter handler={(newDays) => {
-                        days = newDays
-                    }}/>
-                    <RankFilter handler={(newRanks) => {
-                        ranks = newRanks
-                    }}/>
-                    <StyledButton variant={'contained'} className={classes.apply}
-                                  onClick={handleApply}>Apply</StyledButton>
-                </Paper>
-            </Collapse>
+            {
+                width > 1400 ? <Collapse in={Boolean(openFilter)} addEndListener={() => {
+                    }} className={classes.collapseContainer}>
+                        <Paper className={classes.paperFilter} square>
+                            <DaysFilter handler={(newDays) => {
+                                days = newDays
+                            }} className={classes.daysFilter}/>
+                            <RankFilter handler={(newRanks) => {
+                                ranks = newRanks
+                            }} className={classes.daysFilter}/>
+                            <StyledButton variant={'contained'} className={classes.actionsContainer}
+                                          onClick={handleApply}>Apply</StyledButton>
+                        </Paper>
+                    </Collapse>
+                    :
+                    <Dialog fullScreen={true} open={width <= 1400 && Boolean(openFilter)}
+                            TransitionComponent={Transition} className={classes.dialogContainer}>
+                        <Typography variant={'h5'}>Filters</Typography>
+                        <Paper className={classes.paperFilter} square>
+                            <DaysFilter handler={(newDays) => {
+                                days = newDays
+                            }}/>
+                            <Divider/>
+                            <RankFilter handler={(newRanks) => {
+                                ranks = newRanks
+                            }}/>
+                            <Divider/>
+                            <div className={classes.actionsContainer}>
+                                <StyledButton variant={'contained'}
+                                              onClick={handleApply}>Apply</StyledButton>
+                                <StyledButton variant={'contained'}
+                                              onClick={handleOpenFilter}>Close</StyledButton>
+                            </div>
+                        </Paper>
+                    </Dialog>
+            }
+
         </>
     )
 }

@@ -2,30 +2,40 @@ import React, {useEffect, useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import StyledCheckBoxWithLabel from "../assets/styledComponents";
 import Typography from '@material-ui/core/Typography';
+import useWindowSize from "../hooks/useWindowSize";
 
 const useStyles = makeStyles(theme => ({
-    container: {
-        display: 'flex',
-        justifyContent: 'flex-start',
-        flexDirection: 'column'
-    },
+    container: props => (
+        props.width > 1400 ?
+            {
+                display: 'flex',
+                justifyContent: 'flex-start',
+                flexDirection: 'column'
+            } : {
+                display: 'flex',
+                justifyContent: 'flex-start',
+                flexDirection: 'column',
+                alignItems: 'center'
+            }),
     label: {
         color: theme.palette.secondary.light
     },
     checkboxContainer: {
         display: 'flex',
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         alignItems: 'center',
         marginTop: 5,
         '& > *': {
             marginRight: 10
-        }
+        },
+        flexWrap: 'wrap'
     }
 }));
 
 function RankFilter(props) {
-    const classes = useStyles();
-    const {handler} = props;
+    const [width, height] = useWindowSize();
+    const classes = useStyles({width});
+    const {handler, ...rest} = props;
 
     const [checked, setChecked] = useState({
         unranked: true,
@@ -48,7 +58,7 @@ function RankFilter(props) {
     }, [checked]);
 
     return (
-        <div className={classes.container}>
+        <div className={classes.container} {...rest}>
             <Typography className={classes.label}>Rank Filter</Typography>
             <div className={classes.checkboxContainer}>
                 <StyledCheckBoxWithLabel name={'unranked'} checkedHandler={handleChange} checked={checked.unranked}
