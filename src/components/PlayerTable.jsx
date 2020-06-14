@@ -20,7 +20,7 @@ import {
     ORDER_DESC
 } from "../assets/filters";
 import Skeleton from '@material-ui/lab/Skeleton';
-import SortableTableHead, {headers} from "./SortableTableHead";
+import SortableTableHead, {headerDistribution, headers} from "./SortableTableHead";
 import TablePaginationOptions from "./TablePaginationOptions";
 import PlayerTableRow from "./PlayerTableRow";
 
@@ -171,6 +171,13 @@ function PlayerTable(props) {
     return (
         <TableContainer component={Paper} className={classes.tableContainer}>
             <Table size={"small"} className={classes.table}>
+                <colgroup>
+                    {
+                        headerDistribution.map((percent, index) => {
+                            return <col width={percent}/>
+                        })
+                    }
+                </colgroup>
                 <SortableTableHead orderBy={orderBy} order={order} handleSort={handleSort}
                                    handleAddNewPlayer={handleAddNewPlayer}/>
                 <TableBody className={classes.tableBody}>
@@ -190,6 +197,15 @@ function PlayerTable(props) {
                                     <PlayerTableRow defaultPlayer={player} key={index} onDelete={handleDeletePlayer}/>
                                 )
                             })
+                    }
+                    {
+                        !loading && players && players.length < rowsPerPage &&
+                        <TableRow>
+                            <TableCell colspan={headers.length}>
+                                <div style={{height: (rowsPerPage - players.length) * 40 + 'px'}}/>
+                            </TableCell>
+                        </TableRow>
+
                     }
                 </TableBody>
                 <TableFooter className={classes.tableFooter}>

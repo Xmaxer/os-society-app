@@ -123,7 +123,7 @@ export const headers = [
     {id: 'comment', label: 'Comment', sortable: false, align: 'left'},
     {id: 'actions', label: 'Actions', sortable: false, align: 'center'},
 ];
-const headerDistribution = [
+export const headerDistribution = [
     "10%",
     "10%",
     "10%",
