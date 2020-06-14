@@ -41,7 +41,7 @@ function EditableTextfieldCell({defaultValue, name, id, multiline = false, maxLe
     return (
         <TableCell {...rest} onClick={handleEdit}>
             {
-                edit ? <ClickAwayListener onClickAway={handleClickAway}>
+                edit ? <ClickAwayListener onClickAway={handleClickAway} mouseEvent={'onMouseDown'}>
                     <div><StyledTextField onKeyDown={handleSubmit} name={name}
                                           multiline={multiline} autoFocus={true} inputProps={{maxLength: maxLength}}
                                           onChange={handleChange} value={value} fullWidth={true}/></div>
