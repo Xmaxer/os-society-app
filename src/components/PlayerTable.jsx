@@ -23,6 +23,7 @@ import SortableTableHead, {headers} from "./SortableTableHead";
 import TablePaginationOptions from "./TablePaginationOptions";
 import PlayerTableRow from "./PlayerTableRow";
 import NewPlayerBar from "./NewPlayerBar";
+import useWindowSize from "../hooks/useWindowSize";
 
 const useStyles = makeStyles(theme => ({
     table: {
@@ -93,7 +94,7 @@ const useStyles = makeStyles(theme => ({
 
 const rowsPerPageOptions = [25, 50, 75, 100];
 function PlayerTable(props) {
-
+    const [width, height] = useWindowSize();
     const classes = useStyles();
     const {days, ranks, search} = props;
     const [order, setOrder] = useState(ORDER_DESC);
@@ -222,8 +223,8 @@ function PlayerTable(props) {
                 page={page}
                 onChangePage={handlePageChange}
                 onChangeRowsPerPage={handleRowsPerPageChange}
+                labelRowsPerPage={width > 600 ? "Rows per page:" : ""}
                 ActionsComponent={TablePaginationOptions}
-                colSpan={headers.length}
                 className={classes.tablePagination}
                 classes={{
                     selectRoot: classes.paginationSelectRoot,
@@ -233,15 +234,6 @@ function PlayerTable(props) {
                 }}
                 component={'div'}
             />
-
-            {/*<div className={classes.fabContainer}>*/}
-            {/*    <Tooltip title={'Add new player'}>*/}
-            {/*        <Fab variant={'round'}>*/}
-            {/*            <AddIcon/>*/}
-            {/*        </Fab>*/}
-            {/*    </Tooltip>*/}
-            {/*</div>*/}
-
         </>
     );
 }
