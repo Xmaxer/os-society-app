@@ -9,9 +9,6 @@ const generatedPalette = createMuiTheme({
         secondary: {
             main: palette.secondary
         },
-        tertiary: {
-            main: palette.tertiary
-        },
         error: {
             main: palette.error
         },
@@ -36,12 +33,12 @@ const theme = createMuiTheme({
     overrides: {
         MuiDivider: {
             root: {
-                backgroundColor: generatedPalette.palette.tertiary.main
+                backgroundColor: generatedPalette.palette.secondary.main
             }
         },
         MuiPickersDate: {
             root: {
-                color: generatedPalette.palette.tertiary.main
+                color: generatedPalette.palette.secondary.main
             }
         }
     },

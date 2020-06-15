@@ -10,12 +10,12 @@ export const StyledButton = withStyles(theme => ({
         color: theme.palette.secondary.light,
         '&:hover': {
             color: theme.palette.primary.main,
-            backgroundColor: theme.palette.tertiary.main
+            backgroundColor: theme.palette.secondary.main
         }
     },
     contained: {
         '&:hover': {
-            backgroundColor: theme.palette.tertiary.main
+            backgroundColor: theme.palette.secondary.main
         }
     }
 }))(Button);
@@ -23,7 +23,7 @@ export const StyledButton = withStyles(theme => ({
 export const StyledTextField = withStyles(theme => ({
     root: {
         '& .MuiInput-underline:after': {
-            borderBottomColor: theme.palette.tertiary.main
+            borderBottomColor: theme.palette.secondary.main
         },
         '& .MuiInput-underline:before': {
             borderBottomColor: theme.palette.secondary.light
@@ -32,10 +32,10 @@ export const StyledTextField = withStyles(theme => ({
             borderBottomColor: theme.palette.secondary.dark
         },
         '& .MuiInput-root': {
-            color: theme.palette.tertiary.main
+            color: theme.palette.secondary.main
         },
         '& label.Mui-focused': {
-            color: theme.palette.tertiary.main
+            color: theme.palette.secondary.main
         },
         '& label': {
             color: theme.palette.secondary.light
@@ -55,21 +55,21 @@ export const StyledSlider = withStyles(theme => ({
         color: theme.palette.secondary.light
     },
     active: {
-        color: theme.palette.tertiary.main,
+        color: theme.palette.secondary.main,
         '& span': {
-            color: theme.palette.tertiary.main,
+            color: theme.palette.secondary.main,
         }
     }
 }))(Slider);
 
 export const StyledCheckBox = withStyles(theme => ({
     checked: {
-        color: theme.palette.tertiary.main
+        color: theme.palette.secondary.main
     },
     colorPrimary: {
         color: theme.palette.secondary.main,
         "&.Mui-checked": {
-            color: theme.palette.tertiary.main
+            color: theme.palette.secondary.main
         }
     }
 }))(Checkbox);
@@ -78,7 +78,7 @@ export const StyledIconButton = withStyles(theme => ({
     root: {
         color: theme.palette.secondary.light,
         '&:hover': {
-            color: theme.palette.tertiary.main,
+            color: theme.palette.secondary.main,
             backgroundColor: 'transparent'
         }
     }

@@ -33,29 +33,29 @@ const useStyles = makeStyles(theme => ({
         '&:hover': {
             color: theme.palette.secondary.light,
             backgroundColor: theme.palette.primary.dark,
-            border: '2px solid ' + theme.palette.tertiary.main
+            border: '2px solid ' + theme.palette.secondary.main
         }
     },
     filterButtonActive: {
         color: theme.palette.secondary.light,
         backgroundColor: theme.palette.primary.dark,
-        border: '2px solid ' + theme.palette.tertiary.main,
+        border: '2px solid ' + theme.palette.secondary.main,
         borderBottom: 'none',
         '&:hover': {
             color: theme.palette.secondary.light,
             backgroundColor: theme.palette.primary.dark,
-            border: '2px solid ' + theme.palette.tertiary.main,
+            border: '2px solid ' + theme.palette.secondary.main,
             borderBottom: 'none'
         }
     },
     closeButton: {
-        color: theme.palette.tertiary.main
+        color: theme.palette.secondary.main
     },
     paperFilter: props => (
         props.width > 1400 ?
             {
                 backgroundColor: theme.palette.primary.dark,
-                width: '100%',
+                width: 'calc(100% - 4px)',
                 minHeight: 100,
                 display: 'flex',
                 alignItems: 'center',
@@ -63,10 +63,10 @@ const useStyles = makeStyles(theme => ({
                 '& > *': {
                     marginTop: 0
                 },
-                border: '2px solid ' + theme.palette.tertiary.main,
+                border: '2px solid ' + theme.palette.secondary.main,
             } : {
                 backgroundColor: theme.palette.primary.dark,
-                width: '100%',
+                width: 'calc(100% - 4px)',
                 minHeight: 100,
                 display: 'flex',
                 justifyContent: 'center',
@@ -74,7 +74,7 @@ const useStyles = makeStyles(theme => ({
                 '& > *': {
                     marginTop: 30
                 },
-                border: '2px solid ' + theme.palette.tertiary.main,
+                border: '2px solid ' + theme.palette.secondary.main,
             }),
     collapseContainer: {
         flexShrink: 0

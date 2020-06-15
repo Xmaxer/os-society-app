@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
     tableBody: {
         '& td': {
             color: theme.palette.secondary.light,
-            borderColor: theme.palette.tertiary.main
+            borderColor: theme.palette.secondary.main
         },
 
         '& > :nth-of-type(odd)': {
@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
     tablePagination: {
         backgroundColor: theme.palette.primary.dark,
         overflow: 'inherit',
-        borderTop: '1px solid ' + theme.palette.tertiary.main
+        borderTop: '1px solid ' + theme.palette.secondary.main
     },
     paginationSelectRoot: {
         '& *': {
@@ -58,15 +58,15 @@ const useStyles = makeStyles(theme => ({
         },
         color: theme.palette.secondary.light,
         '&:hover': {
-            color: theme.palette.tertiary.main,
+            color: theme.palette.secondary.main,
             '& *': {
-                color: theme.palette.tertiary.main,
+                color: theme.palette.secondary.main,
             },
         },
         '&:focus': {
-            color: theme.palette.tertiary.main,
+            color: theme.palette.secondary.main,
             '& *': {
-                color: theme.palette.tertiary.main,
+                color: theme.palette.secondary.main,
             },
         }
     },

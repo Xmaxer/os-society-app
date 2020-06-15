@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     },
     chip: {
         '&:hover': {
-            backgroundColor: theme.palette.tertiary.main
+            backgroundColor: theme.palette.secondary.main
         },
         marginLeft: 5,
         marginBottom: 5

@@ -13,10 +13,10 @@ const useStyles = makeStyles(theme => ({
         '& button': {
             color: theme.palette.secondary.light,
             '&:hover': {
-                color: theme.palette.tertiary.main,
+                color: theme.palette.secondary.main,
             },
             '&:focus': {
-                color: theme.palette.tertiary.main,
+                color: theme.palette.secondary.main,
             }
         }
     }

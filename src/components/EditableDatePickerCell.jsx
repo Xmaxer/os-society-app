@@ -17,7 +17,7 @@ import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 const useStyles = makeStyles(theme => ({
     root: {
         '&:after': {
-            borderBottomColor: theme.palette.tertiary.main
+            borderBottomColor: theme.palette.secondary.main
         },
         '&:before': {
             borderBottomColor: theme.palette.secondary.light
@@ -25,9 +25,9 @@ const useStyles = makeStyles(theme => ({
         '&:hover:not($disabled):before': {
             borderBottomColor: theme.palette.primary.light + " !important",
         },
-        color: theme.palette.tertiary.main,
+        color: theme.palette.secondary.main,
         '& label.Mui-focused': {
-            color: theme.palette.tertiary.main
+            color: theme.palette.secondary.main
         },
         '& label': {
             color: theme.palette.secondary.light
@@ -47,7 +47,7 @@ export const datePickerTheme = createMuiTheme({
         },
 
         tertiary: {
-            main: palette.tertiary
+            main: palette.secondary
         },
     },
     disabled: {}

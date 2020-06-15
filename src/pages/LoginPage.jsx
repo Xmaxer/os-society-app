@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
         position: 'relative'
     },
     title: {
-        color: theme.palette.tertiary.main
+        color: theme.palette.secondary.main
     },
     divider: {
         width: '100%',
@@ -80,7 +80,7 @@ const useStyles = makeStyles(theme => ({
         },
     },
     circularProgress: {
-        color: theme.palette.tertiary.main
+        color: theme.palette.secondary.main
     }
 }));
 

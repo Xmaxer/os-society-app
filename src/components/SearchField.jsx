@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 const useStyles = makeStyles(theme => ({
     closeButton: {
-        color: theme.palette.tertiary.main
+        color: theme.palette.secondary.main
     },
 }));
 

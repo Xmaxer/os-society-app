@@ -30,9 +30,9 @@ const useStyles = makeStyles(theme => ({
             backgroundColor: theme.palette.primary.main,
             color: theme.palette.secondary.light,
             '& .MuiTableSortLabel-active': {
-                color: theme.palette.tertiary.main
+                color: theme.palette.secondary.main
             },
-            borderColor: theme.palette.tertiary.main
+            borderColor: theme.palette.secondary.main
         }
     },
     actionContainer: props => (
@@ -53,21 +53,22 @@ const useStyles = makeStyles(theme => ({
             }),
     sortLabel: {
         '&:hover': {
-            color: theme.palette.tertiary.main
+            color: theme.palette.secondary.main
         },
         '&:focus': {
-            color: theme.palette.tertiary.main
+            color: theme.palette.secondary.main
         }
     },
     sortLabelActive: {
-        color: theme.palette.tertiary.main + ' !important'
+        color: theme.palette.secondary.main + ' !important'
     },
     addNewHeader: {
         textAlign: 'center',
         backgroundColor: theme.palette.primary.main,
         display: 'flex',
         justifyContent: 'center',
-        padding: 10
+        padding: 10,
+        borderTop: '2px solid ' + theme.palette.secondary.main
     },
     option: {
         display: 'flex',
@@ -83,7 +84,7 @@ const useStyles = makeStyles(theme => ({
     datePickerRoot: {
         width: 200,
         '&:after': {
-            borderBottomColor: theme.palette.tertiary.main
+            borderBottomColor: theme.palette.secondary.main
         },
         '&:before': {
             borderBottomColor: theme.palette.secondary.light
@@ -91,9 +92,9 @@ const useStyles = makeStyles(theme => ({
         '&:hover:not($disabled):before': {
             borderBottomColor: theme.palette.primary.light + " !important",
         },
-        color: theme.palette.tertiary.main,
+        color: theme.palette.secondary.main,
         '& label.Mui-focused': {
-            color: theme.palette.tertiary.main
+            color: theme.palette.secondary.main
         },
         '& label': {
             color: theme.palette.secondary.light
@@ -104,7 +105,7 @@ const useStyles = makeStyles(theme => ({
     },
     chip: {
         '&:hover': {
-            backgroundColor: theme.palette.tertiary.main
+            backgroundColor: theme.palette.secondary.main
         },
         marginLeft: 5,
         marginBottom: 5
@@ -119,7 +120,8 @@ const useStyles = makeStyles(theme => ({
             minWidth: '1400px',
             '& > *': {
                 marginTop: 0
-            }
+            },
+            borderTop: '2px solid ' + theme.palette.secondary.main
         } : {
             display: 'flex',
             backgroundColor: theme.palette.primary.main,
@@ -201,7 +203,7 @@ export const datePickerTheme = createMuiTheme({
         },
 
         tertiary: {
-            main: palette.tertiary
+            main: palette.secondary
         },
     },
     disabled: {}

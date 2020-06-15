@@ -23,9 +23,9 @@ const useStyles = makeStyles(theme => ({
             backgroundColor: theme.palette.primary.main,
             color: theme.palette.secondary.light,
             '& .MuiTableSortLabel-active': {
-                color: theme.palette.tertiary.main
+                color: theme.palette.secondary.main
             },
-            borderColor: theme.palette.tertiary.main,
+            borderColor: theme.palette.secondary.main,
             fontWeight: 'bold'
         }
     },
@@ -36,14 +36,14 @@ const useStyles = makeStyles(theme => ({
     },
     sortLabel: {
         '&:hover': {
-            color: theme.palette.tertiary.main
+            color: theme.palette.secondary.main
         },
         '&:focus': {
-            color: theme.palette.tertiary.main
+            color: theme.palette.secondary.main
         }
     },
     sortLabelActive: {
-        color: theme.palette.tertiary.main + ' !important'
+        color: theme.palette.secondary.main + ' !important'
     },
     addNewHeader: {
         textAlign: 'center'
@@ -66,7 +66,7 @@ const useStyles = makeStyles(theme => ({
     },
     datePickerRoot: {
         '&:after': {
-            borderBottomColor: theme.palette.tertiary.main
+            borderBottomColor: theme.palette.secondary.main
         },
         '&:before': {
             borderBottomColor: theme.palette.secondary.light
@@ -74,9 +74,9 @@ const useStyles = makeStyles(theme => ({
         '&:hover:not($disabled):before': {
             borderBottomColor: theme.palette.primary.light + " !important",
         },
-        color: theme.palette.tertiary.main,
+        color: theme.palette.secondary.main,
         '& label.Mui-focused': {
-            color: theme.palette.tertiary.main
+            color: theme.palette.secondary.main
         },
         '& label': {
             color: theme.palette.secondary.light
@@ -87,7 +87,7 @@ const useStyles = makeStyles(theme => ({
     },
     chip: {
         '&:hover': {
-            backgroundColor: theme.palette.tertiary.main
+            backgroundColor: theme.palette.secondary.main
         },
         marginLeft: 5,
         marginBottom: 5
