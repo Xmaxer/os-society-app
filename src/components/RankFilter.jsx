@@ -2,25 +2,21 @@ import React, {useEffect, useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import StyledCheckBoxWithLabel from "../assets/styledComponents";
 import Typography from '@material-ui/core/Typography';
-import useWindowSize from "../hooks/useWindowSize";
 
 const useStyles = makeStyles(theme => ({
-    container: props => (
-        props.width > 1400 ?
-            {
-                display: 'flex',
-                justifyContent: 'flex-start',
-                flexDirection: 'column'
-            } : {
-                display: 'flex',
-                justifyContent: 'flex-start',
-                flexDirection: 'column',
-                alignItems: 'center'
-            }),
+    container: {
+        display: 'flex',
+        justifyContent: 'flex-start',
+        flexDirection: 'column',
+        [theme.breakpoints.down('md')]: {
+            alignItems: 'center'
+        }
+    },
     label: {
-        color: theme.palette.secondary.light
+        color: theme.palette.secondary.main
     },
     checkboxContainer: {
+        color: theme.palette.secondary.dark,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -33,8 +29,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function RankFilter(props) {
-    const [width, height] = useWindowSize();
-    const classes = useStyles({width});
+    const classes = useStyles();
     const {handler, ...rest} = props;
 
     const [checked, setChecked] = useState({

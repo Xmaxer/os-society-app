@@ -48,11 +48,11 @@ export const StyledSlider = withStyles(theme => ({
         top: 22,
         '& *': {
             background: 'transparent',
-            color: theme.palette.secondary.light,
+            color: theme.palette.secondary.dark
         },
     },
     colorPrimary: {
-        color: theme.palette.secondary.light
+        color: theme.palette.secondary.dark
     },
     active: {
         color: theme.palette.secondary.main,
@@ -67,7 +67,7 @@ export const StyledCheckBox = withStyles(theme => ({
         color: theme.palette.secondary.main
     },
     colorPrimary: {
-        color: theme.palette.secondary.main,
+        color: theme.palette.secondary.dark,
         "&.Mui-checked": {
             color: theme.palette.secondary.main
         }
@@ -86,7 +86,7 @@ export const StyledIconButton = withStyles(theme => ({
 
 const useFormControlLabelStyles = makeStyles(theme => ({
     root: {
-        color: theme.palette.secondary.light
+        color: theme.palette.secondary.dark
     }
 }));
 

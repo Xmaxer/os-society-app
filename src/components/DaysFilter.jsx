@@ -9,18 +9,15 @@ const useStyles = makeStyles(theme => ({
         width: 200,
         marginTop: 5
     },
-    container: props => (
-        props.width > 1400 ?
-            {
-                display: 'flex',
-                flexDirection: 'column',
-            } : {
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center'
-            }),
+    container: {
+        display: 'flex',
+        flexDirection: 'column',
+        [theme.breakpoints.down('md')]: {
+            alignItems: 'center'
+        }
+    },
     label: {
-        color: theme.palette.secondary.light,
+        color: theme.palette.secondary.main,
         marginLeft: -5
     }
 }));

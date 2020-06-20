@@ -39,16 +39,8 @@ const useStyles = makeStyles(theme => ({
 }));
 export const datePickerTheme = createMuiTheme({
     palette: {
-        primary: {
-            main: palette.secondary
-        },
-        secondary: {
-            main: palette.primary
-        },
-
-        tertiary: {
-            main: palette.secondary
-        },
+        primary: palette.secondary,
+        secondary: palette.primary
     },
     disabled: {}
 });

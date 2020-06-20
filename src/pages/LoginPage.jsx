@@ -13,7 +13,7 @@ import {StyledButton, StyledTextField} from "../assets/styledComponents";
 
 const useStyles = makeStyles(theme => ({
     background: {
-        backgroundColor: theme.palette.secondary.main,
+        backgroundColor: theme.palette.primary.light,
         width: '100%',
         height: '100%',
         margin: '0',

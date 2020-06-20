@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.secondary.main,
         marginLeft: 40,
         borderRadius: 0,
-        minHeight: 64,
+        minHeight: 56,
         width: 80,
         '&:hover': {
             color: theme.palette.secondary.light,
@@ -42,58 +42,48 @@ const useStyles = makeStyles(theme => ({
         border: '2px solid ' + theme.palette.secondary.main,
         borderBottom: 'none',
         '&:hover': {
-            color: theme.palette.secondary.light,
-            backgroundColor: theme.palette.primary.dark,
-            border: '2px solid ' + theme.palette.secondary.main,
             borderBottom: 'none'
         }
     },
     closeButton: {
         color: theme.palette.secondary.main
     },
-    paperFilter: props => (
-        props.width > 1400 ?
-            {
-                backgroundColor: theme.palette.primary.dark,
-                width: 'calc(100% - 4px)',
-                minHeight: 100,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'flex-start',
-                '& > *': {
-                    marginTop: 0
-                },
-                border: '2px solid ' + theme.palette.secondary.main,
-            } : {
-                backgroundColor: theme.palette.primary.dark,
-                width: 'calc(100% - 4px)',
-                minHeight: 100,
-                display: 'flex',
-                justifyContent: 'center',
-                flexDirection: 'column',
-                '& > *': {
-                    marginTop: 30
-                },
-                border: '2px solid ' + theme.palette.secondary.main,
-            }),
+    paperFilter: {
+        backgroundColor: theme.palette.primary.dark,
+        width: 'calc(100% - 4px)',
+        minHeight: 100,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        '& > *': {
+            marginTop: 0
+        },
+        border: '2px solid ' + theme.palette.secondary.main,
+        [theme.breakpoints.down('md')]: {
+            justifyContent: 'center',
+            flexDirection: 'column',
+            '& > *': {
+                marginTop: 30
+            },
+        }
+    },
     collapseContainer: {
         flexShrink: 0
     },
-    actionsContainer: props => (
-        props.width > 1400 ?
-            {
-                marginLeft: 'auto',
-                marginRight: 20,
-                alignSelf: 'flex-end',
-                marginBottom: 20,
-            } : {
-                alignSelf: 'center',
-                marginBottom: 20,
-                '& > button': {
-                    marginLeft: 20
-                }
-            }
-    ),
+    actionsContainer: {
+        marginLeft: 'auto',
+        marginRight: 20,
+        alignSelf: 'flex-end',
+        marginBottom: 20,
+        [theme.breakpoints.down('md')]: {
+            alignSelf: 'center',
+            '& > button': {
+                marginLeft: 20
+            },
+            marginLeft: 0,
+            marginRight: 0,
+        }
+    },
     dialogContainer: {
         '& .MuiDialog-paper': {
             overflowX: 'hidden',
@@ -122,7 +112,7 @@ let search = null;
 
 function TableToolbar(props) {
     const [width, height] = useWindowSize()
-    const classes = useStyles({width});
+    const classes = useStyles();
     const [openFilter, setOpenFilter] = useState(false);
 
 
@@ -164,7 +154,7 @@ function TableToolbar(props) {
                             }} className={classes.daysFilter}/>
                             <RankFilter handler={(newRanks) => {
                                 ranks = newRanks
-                            }} className={classes.daysFilter}/>
+                            }} className={classes.rankFilter}/>
                             <StyledButton variant={'contained'} className={classes.actionsContainer}
                                           onClick={handleApply}>Apply</StyledButton>
                         </Paper>

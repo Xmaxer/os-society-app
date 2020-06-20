@@ -35,22 +35,20 @@ const useStyles = makeStyles(theme => ({
             borderColor: theme.palette.secondary.main
         }
     },
-    actionContainer: props => (
-        props.width > 1400 ?
-            {
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                marginLeft: 'auto',
-                marginRight: 20
-            } : {
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                '& > button': {
-                    marginLeft: 20
-                }
-            }),
+    actionContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: 'auto',
+        marginRight: 20,
+        [theme.breakpoints.down('md')]: {
+            '& > button': {
+                marginLeft: 20
+            },
+            marginRight: 0,
+            marginLeft: 0,
+        }
+    },
     sortLabel: {
         '&:hover': {
             color: theme.palette.secondary.main
@@ -110,45 +108,40 @@ const useStyles = makeStyles(theme => ({
         marginLeft: 5,
         marginBottom: 5
     },
-    formContainer: props => (
-
-        props.width > 1400 ? {
-            display: 'flex',
-            backgroundColor: theme.palette.primary.main,
-            padding: 10,
-            width: '100%',
-            minWidth: '1400px',
-            '& > *': {
-                marginTop: 0
-            },
-            borderTop: '2px solid ' + theme.palette.secondary.main
-        } : {
-            display: 'flex',
-            backgroundColor: theme.palette.primary.main,
-            padding: 10,
-            width: '100%',
+    formContainer: {
+        display: 'flex',
+        backgroundColor: theme.palette.primary.main,
+        padding: 10,
+        width: '100%',
+        minWidth: '1400px',
+        '& > *': {
+            marginTop: 0
+        },
+        borderTop: '2px solid ' + theme.palette.secondary.main,
+        [theme.breakpoints.down('md')]: {
             height: '100%',
             flexDirection: 'column',
+            minWidth: 'inherit',
             '& > *': {
                 marginTop: 20
             }
-        }),
-    fieldContainer: props => (
-        props.width > 1400 ?
-            {
-                display: 'flex',
-                width: '100%',
-                justifyContent: 'space-around',
-                alignItems: 'flex-end',
-            } : {
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                flexDirection: 'column',
-                '& > *': {
-                    marginTop: 20
-                }
-            }),
+        }
+    },
+    fieldContainer: {
+        display: 'flex',
+        width: '100%',
+        justifyContent: 'space-around',
+        alignItems: 'flex-end',
+        [theme.breakpoints.down('md')]: {
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column',
+            '& > *': {
+                marginTop: 20
+            },
+            width: 'inherit',
+        }
+    },
     formUsernameField: {
         width: 200
     },
@@ -195,16 +188,8 @@ const options = [
 
 export const datePickerTheme = createMuiTheme({
     palette: {
-        primary: {
-            main: palette.secondary
-        },
-        secondary: {
-            main: palette.primary
-        },
-
-        tertiary: {
-            main: palette.secondary
-        },
+        primary: palette.secondary,
+        secondary: palette.primary
     },
     disabled: {}
 });
@@ -219,7 +204,7 @@ function NewPlayerBar({handleAddNewPlayer}) {
     const {handleCall} = useApi({query: PLAYER_MUTATION});
     const [width, height] = useWindowSize()
 
-    const classes = useStyles({width});
+    const classes = useStyles();
 
     const handleNewPlayerClick = (event) => {
         setEdit(true)

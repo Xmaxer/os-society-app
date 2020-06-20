@@ -3,20 +3,24 @@ import palette from './colours';
 
 const generatedPalette = createMuiTheme({
     palette: {
-        primary: {
-            main: palette.primary
-        },
-        secondary: {
-            main: palette.secondary
-        },
+        primary: palette.primary,
+        secondary: palette.secondary,
         error: {
             main: palette.error
         },
         success: {
             main: palette.success
         },
+        info: {
+            main: palette.info
+        },
         contrastThreshold: 3,
         tonalOffset: 0.2
+    },
+    breakpoints: {
+        values: {
+            lg: 1400
+        }
     }
 });
 
