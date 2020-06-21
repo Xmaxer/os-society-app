@@ -3,8 +3,6 @@ import {makeStyles} from '@material-ui/core/styles';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import TableCell from '@material-ui/core/TableCell';
-import useApi from "../hooks/useApi";
-import {PLAYER_MUTATION} from "../assets/queries";
 import Typography from '@material-ui/core/Typography';
 import {StyledTextField} from "../assets/styledComponents";
 
@@ -40,12 +38,11 @@ const options = [
 ];
 
 
-function EditableAutcompleteCell({defaultValue, name, id, ...rest}) {
+function EditableAutocompleteCell({defaultValue, name, id, onChange, ...rest}) {
     const classes = useStyles();
 
-    const [value, setValue] = useState(parseInt(defaultValue));
+    const [value, setValue] = useState(options.find(e => e.id === parseInt(defaultValue)));
     const [edit, setEdit] = useState(false);
-    const {handleCall} = useApi({query: PLAYER_MUTATION});
 
     const handleEdit = (event) => {
         setEdit(true);
@@ -55,8 +52,8 @@ function EditableAutcompleteCell({defaultValue, name, id, ...rest}) {
         if (option !== null) {
             const newValue = option.id;
             setEdit(false);
-            setValue(newValue);
-            handleCall({variables: {id: id, [name]: newValue}})
+            setValue(option)
+            onChange(name, newValue)
         }
     };
 
@@ -94,12 +91,13 @@ function EditableAutcompleteCell({defaultValue, name, id, ...rest}) {
                                   getOptionLabel={getOptionLabel}
                                   onChange={handleChange}
                                   renderOption={renderOption}
+                                  value={value}
                                   defaultValue={options.find((e) => e.id === parseInt(defaultValue))}
                     />
                 </div>
-            </ClickAwayListener> : idToLabel(value)}
+            </ClickAwayListener> : idToLabel(value.id)}
         </TableCell>
     );
 }
 
-export default EditableAutcompleteCell;
+export default EditableAutocompleteCell;

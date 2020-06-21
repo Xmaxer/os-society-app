@@ -13,7 +13,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import SaveIcon from "@material-ui/icons/Save";
 import CloseIcon from "@material-ui/icons/Close";
 import useApi from "../hooks/useApi";
-import {PLAYER_MUTATION} from "../assets/queries";
+import {CREATE_PLAYER_MUTATION} from "../assets/queries";
 import Typography from "@material-ui/core/Typography";
 import {createMuiTheme} from "@material-ui/core";
 import palette from "../assets/colours";
@@ -201,7 +201,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 function NewPlayerBar({handleAddNewPlayer}) {
 
     const [edit, setEdit] = useState(false);
-    const {handleCall} = useApi({query: PLAYER_MUTATION});
+    const {handleCall} = useApi({query: CREATE_PLAYER_MUTATION});
     const [width, height] = useWindowSize()
 
     const classes = useStyles();

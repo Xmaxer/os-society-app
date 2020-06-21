@@ -96,7 +96,7 @@ function ChangePasswordPage() {
     const {handleCall} = useApi({query: SET_PASSWORD_MUTATION});
 
     const handleSuccess = (data) => {
-        if (data && data.user && data.user.user) {
+        if (data && data.updateUser && data.updateUser.user) {
             history.push({
                 pathname: HOME_ROUTE
             })

@@ -3,7 +3,7 @@ import {MUTATION_OPERATION, QUERY_OPERATION} from "./operations";
 export const LOGIN_MUTATION = {
     type: MUTATION_OPERATION,
     query: `mutation Login($username: String!, $password: String!) {
-    login(input: {authDetails: {username: $username, password: $password}}) {
+    login(input: {attributes: {username: $username, password: $password}}) {
         token
             user {
       username
@@ -53,10 +53,10 @@ export const PLAYERS_QUERY = {
 }`
 };
 
-export const PLAYER_MUTATION = {
+export const CREATE_PLAYER_MUTATION = {
     type: MUTATION_OPERATION,
-    query: `mutation Player($username: String, $join_date: ISO8601DateTime, $rank: Int, $comment: String, $previous_names: [String!], $id: ID){
-  player(input: {playerDetails: {username: $username, rank: $rank, joinDate: $join_date, previousNames: $previous_names, comment: $comment, id: $id}}) {
+    query: `mutation Player($username: String!, $join_date: ISO8601DateTime!, $rank: Int!, $comment: String, $previous_names: [String!]){
+  createPlayer(input: {attributes: {username: $username, rank: $rank, joinDate: $join_date, previousNames: $previous_names, comment: $comment}}) {
     player {
       username
       id
@@ -89,10 +89,28 @@ export const DELETE_PLAYER_MUTATION = {
 }`
 };
 
+export const UPDATE_PLAYER_MUTATION = {
+    type: MUTATION_OPERATION,
+    query: `mutation Player($username: String!, $join_date: ISO8601DateTime!, $rank: Int!, $comment: String, $previous_names: [String!], $id: ID!){
+  updatePlayer(input: {attributes: {username: $username, rank: $rank, joinDate: $join_date, previousNames: $previous_names, comment: $comment}, id: $id}) {
+    player {
+      username
+      id
+      joinDate
+      rank
+      comment
+      previousNames
+      createdAt
+      updatedAt
+    }
+  }
+}`
+};
+
 export const SET_PASSWORD_MUTATION = {
     type: MUTATION_OPERATION,
     query: `mutation User($id: ID!, $password: String!){
-  user(input: {userDetails: {id: $id, password: $password}}) {
+  updateUser(input: {attributes: {password: $password}, id: $id}) {
     user {
       id
       username

@@ -2,8 +2,6 @@ import React, {useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import {KeyboardDatePicker, MuiPickersUtilsProvider} from '@material-ui/pickers';
 import TableCell from '@material-ui/core/TableCell';
-import useApi from "../hooks/useApi";
-import {PLAYER_MUTATION} from "../assets/queries";
 import parseISO from 'date-fns/parseISO'
 import format from 'date-fns/format'
 import DateFnsUtils from '@date-io/date-fns';
@@ -46,7 +44,7 @@ export const datePickerTheme = createMuiTheme({
 });
 
 function formatDate(datetime) {
-    return format(datetime, "dd/MM/yyyy")
+    return format(parseISO(datetime), "dd/MM/yyyy")
 }
 
 
@@ -56,7 +54,6 @@ function EditableDatePickerCell({defaultValue, name, id, onChange, ...rest}) {
 
     const [value, setValue] = useState(parseISO(defaultValue));
     const [edit, setEdit] = useState(false);
-    const {handleCall} = useApi({query: PLAYER_MUTATION});
 
     const handleEdit = (event) => {
         setEdit(true);
@@ -66,11 +63,7 @@ function EditableDatePickerCell({defaultValue, name, id, onChange, ...rest}) {
         const newValue = date;
         setEdit(false);
         setValue(newValue);
-        if (onChange !== undefined) {
-            onChange(name, newValue)
-        } else {
-            handleCall({variables: {id: id, [name]: newValue}})
-        }
+        onChange(name, newValue)
     };
 
     const handleClickAway = () => {
@@ -87,11 +80,11 @@ function EditableDatePickerCell({defaultValue, name, id, onChange, ...rest}) {
                                 <KeyboardDatePicker InputProps={{classes: {root: classes.root}}}
                                                     TextFieldComponent={StyledTextField} variant={'inline'}
                                                     format={"dd/MM/yyyy"} name={name} label={"Player's Join Date"}
-                                                    value={value} onChange={handleChange}
+                                                    value={defaultValue} onChange={handleChange}
                                                     maxDate={Date.now()}/>
                             </div>
                         </ClickAwayListener>
-                    </ThemeProvider> : formatDate(value)
+                    </ThemeProvider> : formatDate(defaultValue)
                 }
             </TableCell>
         </MuiPickersUtilsProvider>

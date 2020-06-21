@@ -170,7 +170,7 @@ function PlayerTable(props) {
     };
 
     const handleAddNewPlayer = (data) => {
-        if (data && data.player && data.player.player) {
+        if (data && data.createPlayer && data.createPlayer.player) {
             getPlayers()
         }
     }

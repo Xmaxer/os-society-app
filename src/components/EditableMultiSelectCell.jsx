@@ -2,14 +2,13 @@ import React, {useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TableCell from '@material-ui/core/TableCell';
-import useApi from "../hooks/useApi";
-import {PLAYER_MUTATION} from "../assets/queries";
 import {StyledIconButton, StyledTextField} from "../assets/styledComponents";
 import Chip from '@material-ui/core/Chip';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close';
 import Tooltip from '@material-ui/core/Tooltip';
+import {MAX_USERNAME_LENGTH} from "../assets/constants";
 
 const useStyles = makeStyles(theme => ({
     textfield: {
@@ -40,11 +39,10 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function EditableMultiSelectCell({defaultValue, name, id, ...rest}) {
+function EditableMultiSelectCell({defaultValue, name, id, onChange, ...rest}) {
     const classes = useStyles();
 
     const [value, setValue] = useState(defaultValue);
-    const {handleCall} = useApi({query: PLAYER_MUTATION});
     const [edit, setEdit] = useState(false);
 
     const handleEdit = (event) => {
@@ -55,7 +53,7 @@ function EditableMultiSelectCell({defaultValue, name, id, ...rest}) {
         if (option !== null) {
             const newValue = [...option];
             setValue(newValue);
-            handleCall({variables: {id: id, [name]: newValue}})
+            onChange(name, newValue)
         }
     };
 
@@ -66,7 +64,7 @@ function EditableMultiSelectCell({defaultValue, name, id, ...rest}) {
     const handleClickAway = () => {
         setEdit(false);
         if (defaultValue !== value) {
-            handleCall({variables: {id: id, [name]: value}})
+            onChange(name, value)
         }
     };
 
@@ -74,7 +72,7 @@ function EditableMultiSelectCell({defaultValue, name, id, ...rest}) {
         if (option !== null) {
             const newValue = [...value].filter((e) => e !== option);
             setValue(newValue);
-            handleCall({variables: {id: id, [name]: newValue}})
+            onChange(name, newValue)
         }
     }
 
@@ -84,10 +82,10 @@ function EditableMultiSelectCell({defaultValue, name, id, ...rest}) {
     const onEnter = (event) => {
         if (event.key === 'Enter') {
             const val = event.target.value;
-            if (val.length > 0 && val.length <= 20 && value.find(e => e.toLowerCase() === val.toLowerCase()) === undefined) {
+            if (val.length > 0 && val.length <= MAX_USERNAME_LENGTH && value.find(e => e.toLowerCase() === val.toLowerCase()) === undefined) {
                 const newValue = [...value, event.target.value];
                 setValue(newValue);
-                handleCall({variables: {id: id, [name]: newValue}})
+                onChange(name, newValue)
             }
         }
     };

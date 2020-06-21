@@ -17,6 +17,9 @@ const useStyles = makeStyles(theme => ({
             },
             '&:focus': {
                 color: theme.palette.secondary.main,
+            },
+            '&.Mui-disabled': {
+                color: theme.palette.primary.light
             }
         }
     }
