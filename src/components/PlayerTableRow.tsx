@@ -22,7 +22,14 @@ import {
     UpdatePlayerVariables
 } from "../assets/api/apiInterfaces";
 
-const useStyles = makeStyles(theme => ({}));
+const useStyles = makeStyles(theme => ({
+    cellWrapper: {
+        height: 70,
+        overflow: 'hidden',
+        display: 'flex',
+        alignItems: 'center'
+    }
+}));
 
 function formatDateTimeFromString(datetime: string) {
     return format(parseISO(datetime), "dd/MM/yyyy hh:mm:ss")
@@ -38,7 +45,7 @@ export interface PlayerTableRowProps {
 }
 
 function PlayerTableRow({defaultPlayer, onDelete}: PlayerTableRowProps) {
-
+    const classes = useStyles();
     const [player, setPlayer] = useState(defaultPlayer);
     const {request: handlePlayerCall} = useApi<UpdatePlayer, UpdatePlayerVariables>({query: UPDATE_PLAYER_MUTATION});
     const {request: handleDeletePlayerCall} = useApi<DeletePlayer, DeletePlayerVariables>({query: DELETE_PLAYER_MUTATION});
@@ -68,13 +75,19 @@ function PlayerTableRow({defaultPlayer, onDelete}: PlayerTableRowProps) {
             <EditableAutocompleteCell width={'10%'} defaultValue={player.rank} id={player.id}
                                       name={"rank"} align={'left'} onChange={handleChange}/>
             <TableCell width={'5%'} align={'left'}>
-                {computeDays(player.joinDate)}
+                <div className={classes.cellWrapper}>
+                    {computeDays(player.joinDate)}
+                </div>
             </TableCell>
             <TableCell width={'10%'} align={'center'}>
-                {formatDateTimeFromString(player.createdAt)}
+                <div className={classes.cellWrapper}>
+                    {formatDateTimeFromString(player.createdAt)}
+                </div>
             </TableCell>
             <TableCell width={'10%'} align={'center'}>
-                {formatDateTimeFromString(player.updatedAt)}
+                <div className={classes.cellWrapper}>
+                    {formatDateTimeFromString(player.updatedAt)}
+                </div>
             </TableCell>
             <EditableMultiSelectCell width={'20%'} defaultValue={player.previousNames}
                                      id={player.id} name={"previousNames"} align={'center'} onChange={handleChange}/>
@@ -82,11 +95,13 @@ function PlayerTableRow({defaultPlayer, onDelete}: PlayerTableRowProps) {
                                    id={player.id} name={"comment"} multiline={true}
                                    maxLength={200} align={'left'} onChange={handleChange}/>
             <TableCell width={'7%'} align={'center'}>
-                <Tooltip title={"Delete"}>
-                    <StyledIconButton onClick={handleDelete}>
-                        <Delete/>
-                    </StyledIconButton>
-                </Tooltip>
+                <div className={classes.cellWrapper}>
+                    <Tooltip title={"Delete"}>
+                        <StyledIconButton onClick={handleDelete}>
+                            <Delete/>
+                        </StyledIconButton>
+                    </Tooltip>
+                </div>
             </TableCell>
         </TableRow>
     );

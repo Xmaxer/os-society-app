@@ -27,13 +27,17 @@ function valueLabelFormat(value: number) {
 
 export interface IDaysFilterProps {
     handler: (days: Array<number>) => void
+    reset?: boolean
 
     [key: string]: any
 }
 
-function DaysFilter({handler, ...rest}: IDaysFilterProps) {
+export const MAX_DAYS = 2000
+export const MIN_DAYS = 0
+
+function DaysFilter({handler, reset, ...rest}: IDaysFilterProps) {
     const classes = useStyles();
-    const [daysValues, setDaysValues] = useState<Array<number>>([0, 2000]);
+    const [daysValues, setDaysValues] = useState<Array<number>>([MIN_DAYS, MAX_DAYS]);
 
     const handleDaysFilterChange = (event: React.ChangeEvent<{}>, value: Array<number> | number) => {
         if (Array.isArray(value)) {
@@ -43,14 +47,16 @@ function DaysFilter({handler, ...rest}: IDaysFilterProps) {
     };
 
     useEffect(() => {
-        handler(daysValues);
-    }, [daysValues]);
+        if (reset) {
+            setDaysValues([MIN_DAYS, MAX_DAYS])
+        }
+    }, [reset])
 
     return (
         <div className={classes.container} {...rest}>
             <Typography className={classes.label}>Number of Days in CC</Typography>
-            <StyledSlider min={0}
-                          max={2000}
+            <StyledSlider min={MIN_DAYS}
+                          max={MAX_DAYS}
                           value={daysValues}
                           onChange={handleDaysFilterChange}
                           className={classes.slider}

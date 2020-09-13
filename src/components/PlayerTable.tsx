@@ -28,7 +28,14 @@ const useStyles = makeStyles(theme => ({
     },
     tableContainer: {
         overflowY: 'auto',
-        borderRadius: 0
+        borderRadius: 0,
+        "&::-webkit-scrollbar": {
+            backgroundColor: theme.palette.secondary.main,
+        },
+        "&::-webkit-scrollbar-thumb": {
+            borderRadius: 5,
+            backgroundColor: theme.palette.tertiary.main,
+        }
     },
     tableBody: {
         '& td': {

@@ -12,7 +12,7 @@ import {StyledButton, StyledTextField} from "../assets/theme/styledComponents";
 
 const useStyles = makeStyles(theme => ({
     background: {
-        backgroundColor: theme.palette.primary.light,
+        backgroundColor: theme.palette.primary.dark,
         width: '100%',
         height: '100%',
         margin: '0',
@@ -22,8 +22,11 @@ const useStyles = makeStyles(theme => ({
     },
     loginBox: {
         borderRadius: 10,
-        minWidth: 200,
-        minHeight: 300,
+        borderColor: theme.palette.secondary.light,
+        borderWidth: 1,
+        borderStyle: 'solid',
+        minWidth: 300,
+        minHeight: 400,
         backgroundColor: theme.palette.primary.main,
         display: 'flex',
         flexDirection: 'column',
@@ -32,7 +35,6 @@ const useStyles = makeStyles(theme => ({
         alignSelf: 'center',
         marginLeft: 'auto',
         marginRight: 'auto',
-        padding: 30,
         position: 'relative'
     },
     title: {
@@ -44,12 +46,9 @@ const useStyles = makeStyles(theme => ({
     titleBox: {
         width: '100%',
         height: '70px',
-        position: 'absolute',
         display: 'flex',
         justifyContent: 'space-around',
         alignItems: 'center',
-        top: 0,
-        bottom: 0,
         flexDirection: 'column',
         marginTop: 20
     },
@@ -61,10 +60,11 @@ const useStyles = makeStyles(theme => ({
         marginTop: 20
     },
     loginButton: {
-        position: 'absolute',
-        bottom: 0,
-        marginBottom: 20,
-        width: 'calc(100% - 60px)'
+        width: '100%',
+        height: 50,
+        borderStyle: "solid none solid none",
+        marginTop: 'auto !important',
+        borderRadius: "0px 0px 10px 10px"
     },
     form: {
         display: 'flex',
@@ -77,6 +77,8 @@ const useStyles = makeStyles(theme => ({
         '& > *': {
             marginTop: 20
         },
+        height: '100%',
+        width: '100%'
     },
     circularProgress: {
         color: theme.palette.secondary.main
@@ -128,7 +130,7 @@ function LoginPage() {
                                              name={"username"} spellCheck={false}/>
                             <StyledTextField label={"password"} type={'password'} value={values.password}
                                              onChange={handleChange} required name={"password"}/>
-                            <StyledButton variant={'contained'} className={classes.loginButton} type={'submit'}
+                            <StyledButton variant={'outlined'} className={classes.loginButton} type={'submit'}
                                           disabled={isSubmitting}>{isSubmitting ? <CircularProgress size={"1.2rem"}
                                                                                                     className={classes.circularProgress}/> : "Login"}</StyledButton>
                         </form>

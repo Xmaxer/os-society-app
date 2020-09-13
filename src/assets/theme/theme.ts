@@ -1,9 +1,21 @@
 import {createMuiTheme} from '@material-ui/core/styles';
 import palette from './colours';
 import {MuiPickersComponentsToClassName} from '@material-ui/pickers/typings/overrides';
+import {PaletteColorOptions} from "@material-ui/core";
+import {PaletteColor} from "@material-ui/core/styles/createPalette";
 
 declare module '@material-ui/core/styles/overrides' {
     export interface ComponentNameToClassKey extends MuiPickersComponentsToClassName {
+    }
+}
+
+declare module '@material-ui/core/styles/createPalette' {
+    export interface Palette {
+        tertiary: PaletteColor
+    }
+
+    export interface PaletteOptions {
+        tertiary?: PaletteColorOptions
     }
 }
 
@@ -11,6 +23,7 @@ const generatedPalette = createMuiTheme({
     palette: {
         primary: palette.primary,
         secondary: palette.secondary,
+        tertiary: palette.tertiary,
         error: {
             main: palette.error
         },
@@ -47,6 +60,11 @@ const theme = createMuiTheme({
             md: 960,
             lg: 1400,
             xl: 1920
+        }
+    },
+    props: {
+        MuiButtonBase: {
+            disableRipple: true
         }
     }
 });

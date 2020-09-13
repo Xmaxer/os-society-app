@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import Autocomplete from '@material-ui/lab/Autocomplete';
 import TableCell from '@material-ui/core/TableCell';
-import {StyledIconButton, StyledTextField} from "../assets/theme/styledComponents";
+import {StyledIconButton} from "../assets/theme/styledComponents";
 import Chip from '@material-ui/core/Chip';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close';
 import Tooltip from '@material-ui/core/Tooltip';
-import {MAX_USERNAME_LENGTH} from "../assets/constants/constants";
+import NewPlayerPreviousNameField from "./NewPlayerPreviousNameField";
+import {Typography} from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
     textfield: {
@@ -36,6 +36,15 @@ const useStyles = makeStyles(theme => ({
     },
     autocomplete: {
         flexGrow: 1
+    },
+    cellWrapper: {
+        height: 70,
+        overflow: 'hidden',
+        display: 'flex',
+        alignItems: 'center'
+    },
+    additionalTags: {
+        marginLeft: 10
     }
 }));
 
@@ -58,16 +67,12 @@ function EditableMultiSelectCell({defaultValue, name, id, onChange, ...rest}: Ed
         setEdit(true);
     };
 
-    const handleChange = (event: React.ChangeEvent<{}>, option: Array<string>) => {
+    const handleChange = (event: React.ChangeEvent<{}>, option: Array<string> | null) => {
         if (option !== null) {
             const newValue = [...option];
             setValue(newValue);
             onChange(name, newValue)
         }
-    };
-
-    const getOptionLabel = (option: string) => {
-        return option
     };
 
     const handleClickAway = () => {
@@ -88,67 +93,47 @@ function EditableMultiSelectCell({defaultValue, name, id, onChange, ...rest}: Ed
     const handleCancel = () => {
         setEdit(false)
     }
-    const onEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (event.key === 'Enter') {
-            const val = (event.target as HTMLInputElement).value;
-            if (val.length > 0 && val.length <= MAX_USERNAME_LENGTH && value.find(e => e.toLowerCase() === val.toLowerCase()) === undefined) {
-                const newValue = [...value, val];
-                setValue(newValue);
-                onChange(name, newValue)
-            }
-        }
-    };
 
     return (
         <TableCell {...rest}>
-            {
-                edit ? <div className={classes.container}><ClickAwayListener onClickAway={handleClickAway}>
-                        <Autocomplete className={classes.autocomplete}
-                                      multiple={true}
-                                      renderInput={(params) => <StyledTextField autoFocus={true}
-                                                                                className={classes.textfield} {...params}
-                                                                                label={"Previous names"}
-                                                                                onKeyDown={onEnter} fullWidth={true}/>}
-                                      options={[]}
-                                      getOptionLabel={getOptionLabel}
-                                      onChange={handleChange}
-                                      value={value}
-                                      renderTags={(tagValue, getTagProps) =>
-                                          tagValue.map((option, index) => (
-                                              <Chip
-                                                  label={option}
-                                                  {...getTagProps({index})}
-                                                  className={classes.chip}
-                                                  key={option}
-                                              />
-                                          ))
-                                      }
-                        />
-                    </ClickAwayListener>
-                        <Tooltip title={"Cancel"}>
-                            <StyledIconButton onClick={handleCancel} className={classes.addIcon}>
-                                <CloseIcon/>
-                            </StyledIconButton>
-                        </Tooltip>
-                    </div>
-                    : <div className={classes.container}>
-                        <div className={classes.chipContainer}>
-                            {
-                                value.map((pname) => (
-                                    <Chip
-                                        label={pname}
-                                        className={classes.chip}
-                                        onDelete={() => handleDelete(pname)}
-                                        key={pname}
-                                    />
-                                ))
-                            }
+            <div className={classes.cellWrapper}>
+                {
+                    edit ? <div className={classes.container}><ClickAwayListener onClickAway={handleClickAway}>
+                            <div>
+                                <NewPlayerPreviousNameField changeHandler={handleChange} value={value}/>
+                            </div>
+                        </ClickAwayListener>
+                            <Tooltip title={"Cancel"}>
+                                <StyledIconButton onClick={handleCancel} className={classes.addIcon}>
+                                    <CloseIcon/>
+                                </StyledIconButton>
+                            </Tooltip>
                         </div>
-                        <StyledIconButton onClick={handleEdit} className={classes.addIcon}>
-                            <AddIcon/>
-                        </StyledIconButton>
-                    </div>
-            }
+                        : <div className={classes.container}>
+                            <div className={classes.chipContainer}>
+                                {
+                                    value.map((pname, index) => {
+                                        if (index < 2) {
+                                            return <Chip
+                                                label={pname}
+                                                className={classes.chip}
+                                                onDelete={() => handleDelete(pname)}
+                                                key={pname}
+                                            />
+                                        }
+                                    })
+                                }
+                                {
+                                    value.length > 2 && <Tooltip title={`${value.slice(2).join(", ")}`}><Typography
+                                        className={classes.additionalTags}>{`+${value.length - 2}`}</Typography></Tooltip>
+                                }
+                            </div>
+                            <StyledIconButton onClick={handleEdit} className={classes.addIcon}>
+                                <AddIcon/>
+                            </StyledIconButton>
+                        </div>
+                }
+            </div>
         </TableCell>
     );
 }

@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {makeStyles, useTheme} from '@material-ui/core/styles';
 import {StyledButton} from "../assets/theme/styledComponents";
-import DaysFilter from "./DaysFilter";
+import DaysFilter, {MAX_DAYS, MIN_DAYS} from "./DaysFilter";
 import FilterListIcon from '@material-ui/icons/FilterList';
 import CloseIcon from '@material-ui/icons/Close';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -30,6 +30,7 @@ const useStyles = makeStyles(theme => ({
         borderRadius: 0,
         minHeight: 56,
         width: 80,
+        height: '100%',
         '&:hover': {
             color: theme.palette.secondary.light,
             backgroundColor: theme.palette.primary.dark,
@@ -75,11 +76,11 @@ const useStyles = makeStyles(theme => ({
         marginRight: 20,
         alignSelf: 'flex-end',
         marginBottom: 20,
+        '& > button': {
+            marginLeft: 20
+        },
         [theme.breakpoints.down('md')]: {
             alignSelf: 'center',
-            '& > button': {
-                marginLeft: 20
-            },
             marginLeft: 0,
             marginRight: 0,
         }
@@ -119,6 +120,8 @@ function TableToolbar({handleApplyFilters}: ITableToolbarProps) {
     const matches = useMediaQuery(theme.breakpoints.down('md'));
     const classes = useStyles();
     const [openFilter, setOpenFilter] = useState(false);
+    const [resetFilter, setResetFilter] = useState(false);
+    const [disableActions, setDisableActions] = useState(true);
 
     const handleOpenFilter = () => {
         setOpenFilter(!openFilter)
@@ -136,6 +139,27 @@ function TableToolbar({handleApplyFilters}: ITableToolbarProps) {
         handleApply();
     };
 
+    const handleResetFilter = () => {
+        setResetFilter(true)
+    }
+
+    useEffect(() => {
+        if (resetFilter) {
+            handleApplyFilters(undefined, undefined, undefined);
+            setResetFilter(false)
+        }
+    }, [resetFilter])
+
+    const rankHandler = (newRanks: IRankFilter) => {
+        ranks = newRanks
+        setDisableActions((ranks === undefined || Object.values(ranks).find(v => !v) === undefined) && (days === undefined || (days[0] === MIN_DAYS && days[1] === MAX_DAYS)))
+    }
+
+    const daysHandler = (newDays: Array<number>) => {
+        days = newDays
+        setDisableActions((ranks === undefined || Object.values(ranks).find(v => !v) === undefined) && (days === undefined || (days[0] === MIN_DAYS && days[1] === MAX_DAYS)))
+    }
+
     return (<>
             <Toolbar className={classes.toolbar}>
                 <SearchField handler={handleSearch}/>
@@ -151,14 +175,16 @@ function TableToolbar({handleApplyFilters}: ITableToolbarProps) {
                 !matches ? <Collapse in={Boolean(openFilter)} addEndListener={() => {
                     }} className={classes.collapseContainer}>
                         <Paper className={classes.paperFilter} square>
-                            <DaysFilter handler={(newDays) => {
-                                days = newDays
-                            }} className={classes.daysFilter}/>
-                            <RankFilter handler={(newRanks) => {
-                                ranks = newRanks
-                            }} className={classes.rankFilter}/>
-                            <StyledButton variant={'contained'} className={classes.actionsContainer}
-                                          onClick={handleApply}>Apply</StyledButton>
+                            <DaysFilter handler={daysHandler} className={classes.daysFilter}
+                                        reset={resetFilter}/>
+                            <RankFilter handler={rankHandler} className={classes.rankFilter} reset={resetFilter}/>
+                            <div className={classes.actionsContainer}>
+                                <StyledButton variant={'contained'}
+                                              onClick={handleApply} disabled={disableActions}>Apply</StyledButton>
+                                <StyledButton variant={'contained'}
+                                              onClick={handleResetFilter} disabled={disableActions}>Reset
+                                    filter</StyledButton>
+                            </div>
                         </Paper>
                     </Collapse>
                     :
@@ -166,17 +192,16 @@ function TableToolbar({handleApplyFilters}: ITableToolbarProps) {
                             TransitionComponent={Transition} className={classes.dialogContainer}>
                         <Typography variant={'h5'}>Filters</Typography>
                         <Paper className={classes.paperFilter} square>
-                            <DaysFilter handler={(newDays) => {
-                                days = newDays
-                            }}/>
+                            <DaysFilter handler={daysHandler}/>
                             <Divider/>
-                            <RankFilter handler={(newRanks) => {
-                                ranks = newRanks
-                            }}/>
+                            <RankFilter handler={rankHandler}/>
                             <Divider/>
                             <div className={classes.actionsContainer}>
                                 <StyledButton variant={'contained'}
-                                              onClick={handleApply}>Apply</StyledButton>
+                                              onClick={handleApply} disabled={disableActions}>Apply</StyledButton>
+                                <StyledButton variant={'contained'}
+                                              onClick={handleResetFilter} disabled={disableActions}>Reset
+                                    filter</StyledButton>
                                 <StyledButton variant={'contained'}
                                               onClick={handleOpenFilter}>Close</StyledButton>
                             </div>

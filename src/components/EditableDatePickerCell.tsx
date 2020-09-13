@@ -1,48 +1,19 @@
 import React, {useState} from 'react';
-import {makeStyles, ThemeProvider} from '@material-ui/core/styles';
-import {DesktopDatePicker, LocalizationProvider} from '@material-ui/pickers';
+import {makeStyles} from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
 import parseISO from 'date-fns/parseISO'
 import format from 'date-fns/format'
-import enGB from "date-fns/locale/en-GB"
-import {createMuiTheme} from '@material-ui/core'
-import palette from "../assets/theme/colours";
-import {StyledTextField} from "../assets/theme/styledComponents";
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import DateFnsAdapter from "@material-ui/pickers/adapter/date-fns";
+import NewPlayerJoinDateField from "./NewPlayerJoinDateField";
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        '&:after': {
-            borderBottomColor: theme.palette.secondary.main
-        },
-        '&:before': {
-            borderBottomColor: theme.palette.secondary.light
-        },
-        '&:hover:not($disabled):before': {
-            borderBottomColor: theme.palette.primary.light + " !important",
-        },
-        color: theme.palette.secondary.main,
-        '& svg': {
-            color: theme.palette.secondary.light
-        }
-    },
-    datePickerTextField: {
-        '& label.Mui-focused': {
-            color: theme.palette.secondary.main
-        },
-        '& label': {
-            color: theme.palette.secondary.light
-        },
+    cellWrapper: {
+        height: 70,
+        overflow: 'hidden',
+        display: 'flex',
+        alignItems: 'center'
     }
 }));
-export const datePickerTheme = createMuiTheme({
-    palette: {
-        primary: palette.secondary,
-        secondary: palette.primary
-    },
-    // disabled: {}
-});
 
 function formatDate(datetime: string) {
     return format(parseISO(datetime), "dd/MM/yyyy")
@@ -81,25 +52,19 @@ function EditableDatePickerCell({defaultValue, name, id, onChange, ...rest}: Edi
     };
 
     return (
-        <LocalizationProvider locale={enGB} dateAdapter={DateFnsAdapter as any}>
-            <TableCell {...rest} onClick={handleEdit}>
+        <TableCell {...rest} onClick={handleEdit}>
+            <div className={classes.cellWrapper}>
                 {
-                    edit ? <ThemeProvider theme={datePickerTheme}>
+                    edit ?
                         <ClickAwayListener onClickAway={handleClickAway}>
                             <div>
-                                <DesktopDatePicker InputProps={{classes: {root: classes.root}}}
-                                                   renderInput={(props) => <StyledTextField {...props}
-                                                                                            className={classes.datePickerTextField}
-                                                                                            helperText={null}/>}
-                                                   label={"Player's Join Date"}
-                                                   value={value} onChange={handleChange}
-                                                   maxDate={Date.now()}/>
+                                <NewPlayerJoinDateField changeHandler={handleChange} value={value}/>
                             </div>
                         </ClickAwayListener>
-                    </ThemeProvider> : formatDate(defaultValue)
+                        : formatDate(defaultValue)
                 }
-            </TableCell>
-        </LocalizationProvider>
+            </div>
+        </TableCell>
     );
 }
 

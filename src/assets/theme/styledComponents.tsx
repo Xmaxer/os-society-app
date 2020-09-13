@@ -13,9 +13,35 @@ export const StyledButton = withStyles(theme => ({
             backgroundColor: theme.palette.secondary.main
         }
     },
+    outlined: {
+        borderWidth: 1,
+        borderColor: theme.palette.secondary.light,
+        borderStyle: "none solid none solid",
+        borderRadius: 0,
+        height: '100%',
+        color: theme.palette.secondary.light,
+        backgroundColor: 'transparent',
+        transition: 'background-color,border-color,color 300ms',
+        "&:hover": {
+            backgroundColor: theme.palette.secondary.light,
+            color: theme.palette.primary.dark,
+            borderColor: theme.palette.primary.dark,
+            transition: 'background-color,border-color,color 300ms'
+        },
+        "&:active": {
+            backgroundColor: theme.palette.secondary.dark,
+            color: theme.palette.primary.dark,
+            borderColor: theme.palette.primary.dark,
+            transition: 'background-color,border-color,color 300ms'
+        }
+    },
     contained: {
         '&:hover': {
             backgroundColor: theme.palette.secondary.main
+        },
+        "&.Mui-disabled": {
+            backgroundColor: theme.palette.secondary.dark,
+            color: theme.palette.primary.light
         }
     }
 }))(Button);

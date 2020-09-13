@@ -1,11 +1,26 @@
 import React, {useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
-import {StyledTextField} from "../assets/theme/styledComponents";
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import {MAX_USERNAME_LENGTH} from "../assets/constants/constants";
+import NewPlayerUsernameTextField from "./NewPlayerUsernameTextField";
+import NewPlayerCommentField from "./NewPlayerCommentField";
+import {Tooltip} from "@material-ui/core";
 
-const useStyles = makeStyles(theme => ({}));
+const useStyles = makeStyles(theme => ({
+    cellWrapper: {
+        height: 70,
+        overflow: 'hidden',
+        display: 'flex',
+        alignItems: 'center'
+    },
+    text: {
+        "-webkit-line-clamp": 3,
+        "-webkit-box-orient": "vertical",
+        display: "-webkit-box",
+        overflow: "hidden"
+    }
+}));
 
 export interface EditableTextfieldCellProps {
     defaultValue?: string | null
@@ -50,13 +65,20 @@ function EditableTextfieldCell({defaultValue, name, id, multiline = false, maxLe
 
     return (
         <TableCell {...rest} onClick={handleEdit}>
-            {
-                edit ? <ClickAwayListener onClickAway={handleClickAway} mouseEvent={'onMouseDown'}>
-                    <div><StyledTextField onKeyDown={handleSubmit} name={name}
-                                          multiline={multiline} autoFocus={true} inputProps={{maxLength: maxLength}}
-                                          onChange={handleChange} defaultValue={defaultValue} fullWidth={true}/></div>
-                </ClickAwayListener> : defaultValue
-            }
+            <div className={classes.cellWrapper}>
+                {
+                    edit ? <ClickAwayListener onClickAway={handleClickAway} mouseEvent={'onMouseDown'}>
+                        <div>
+                            {multiline ?
+                                <NewPlayerCommentField changeHandler={handleChange} value={value}/> :
+                                <NewPlayerUsernameTextField changeHandler={handleChange} value={value}
+                                                            onKeyDown={handleSubmit}/>}
+                        </div>
+                    </ClickAwayListener> : <Tooltip title={defaultValue || ''}>
+                        <div className={classes.text}>{defaultValue}</div>
+                    </Tooltip>
+                }
+            </div>
         </TableCell>
     );
 }

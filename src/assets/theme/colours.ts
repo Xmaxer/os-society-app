@@ -6,6 +6,9 @@ const palette = {
     secondary: {
         main: '#b0bac2'
     },
+    tertiary: {
+        main: '#fff100'
+    },
     error: '#b20300',
     success: '#00b206',
     info: '#00b8ff'

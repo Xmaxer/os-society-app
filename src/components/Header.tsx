@@ -27,7 +27,8 @@ const useStyles = makeStyles(theme => ({
     toolbar: {
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        padding: 0
     }
 }));
 
@@ -49,7 +50,8 @@ function Header() {
         <AppBar position={'static'} className={classes.appbar}>
             <Toolbar className={classes.toolbar}>
                 <img src={"/images/oss-logo-large.png"} alt={"OSS Logo"} className={classes.logo}/>
-                <StyledButton className={classes.logoutButton} onClick={handleLogout}>Logout</StyledButton>
+                <StyledButton className={classes.logoutButton} onClick={handleLogout}
+                              variant={'text'}>Logout</StyledButton>
             </Toolbar>
         </AppBar>
     );

@@ -30,6 +30,7 @@ const useStyles = makeStyles(theme => ({
 
 export interface IRankFilterProps {
     handler: (ranks: IRankFilter) => void
+    reset?: boolean
 
     [key: string]: any
 }
@@ -46,7 +47,7 @@ export interface IRankFilter {
     owner: boolean
 }
 
-function RankFilter({handler, ...rest}: IRankFilterProps) {
+function RankFilter({handler, reset, ...rest}: IRankFilterProps) {
     const classes = useStyles();
 
     const [checked, setChecked] = useState<IRankFilter>({
@@ -62,12 +63,26 @@ function RankFilter({handler, ...rest}: IRankFilterProps) {
     });
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setChecked({...checked, [event.target.name]: event.target.checked});
+        const newValue = {...checked, [event.target.name]: event.target.checked}
+        setChecked(newValue);
+        handler(newValue);
     };
 
     useEffect(() => {
-        handler(checked);
-    }, [checked]);
+        if (reset) {
+            setChecked({
+                unranked: true,
+                friend: true,
+                recruit: true,
+                corporal: true,
+                sergeant: true,
+                lieutenant: true,
+                captain: true,
+                general: true,
+                owner: true
+            })
+        }
+    }, [reset])
 
     return (
         <div className={classes.container} {...rest}>
