@@ -1,9 +1,0 @@
-export const ORDER_ASC = "ASC";
-export const ORDER_DESC = "DESC";
-export const ORDER_BY_USERNAME = "USERNAME";
-export const ORDER_BY_ID = "ID";
-export const ORDER_BY_JOIN_DATE = "JOIN_DATE";
-export const ORDER_BY_CREATED_AT = "CREATED_AT";
-export const ORDER_BY_UPDATED_AT = "UPDATED_AT";
-export const ORDER_BY_RANK = "RANK";
-export const ORDER_BY_NUMBER_OF_DAYS = "NUMBER_OF_DAYS";
