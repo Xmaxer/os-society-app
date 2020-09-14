@@ -4,7 +4,6 @@ import {StyledTextField} from "../assets/theme/styledComponents";
 
 const useStyles = makeStyles(theme => ({
     formUsernameField: {
-        width: 200
     }
 }));
 

@@ -28,14 +28,7 @@ const useStyles = makeStyles(theme => ({
     root: {
         maxHeight: 50,
         overflowY: 'auto',
-        overflowX: 'hidden',
-        "&::-webkit-scrollbar": {
-            backgroundColor: theme.palette.secondary.main,
-        },
-        "&::-webkit-scrollbar-thumb": {
-            borderRadius: 5,
-            backgroundColor: theme.palette.tertiary.main,
-        }
+        overflowX: 'hidden'
     }
 }));
 

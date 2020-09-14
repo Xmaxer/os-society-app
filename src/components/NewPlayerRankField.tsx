@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles(theme => ({
     formRankField: {
-        width: 200,
+        width: 150,
         "& svg": {
             color: theme.palette.secondary.light
         }
