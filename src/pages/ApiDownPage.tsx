@@ -12,7 +12,10 @@ const useStyles = makeStyles(theme => ({
         marginLeft: 'auto',
         marginRight: 'auto',
         flexDirection: 'column',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        width: '100%',
+        height: '100%',
+        backgroundColor: theme.palette.primary.main
     },
     background: {
         backgroundColor: theme.palette.primary.main,

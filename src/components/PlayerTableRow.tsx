@@ -28,6 +28,11 @@ const useStyles = makeStyles(theme => ({
         overflow: 'hidden',
         display: 'flex',
         alignItems: 'center'
+    },
+    deleteButton: {
+        "&:hover": {
+            color: theme.palette.error.light
+        }
     }
 }));
 
@@ -97,7 +102,7 @@ function PlayerTableRow({defaultPlayer, onDelete}: PlayerTableRowProps) {
             <TableCell width={'7%'} align={'center'}>
                 <div className={classes.cellWrapper}>
                     <Tooltip title={"Delete"}>
-                        <StyledIconButton onClick={handleDelete}>
+                        <StyledIconButton onClick={handleDelete} className={classes.deleteButton}>
                             <Delete/>
                         </StyledIconButton>
                     </Tooltip>

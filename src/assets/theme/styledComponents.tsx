@@ -104,7 +104,7 @@ export const StyledIconButton = withStyles(theme => ({
     root: {
         color: theme.palette.secondary.light,
         '&:hover': {
-            color: theme.palette.secondary.main,
+            color: theme.palette.tertiary.main,
             backgroundColor: 'transparent'
         }
     }

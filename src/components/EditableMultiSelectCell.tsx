@@ -25,6 +25,9 @@ const useStyles = makeStyles(theme => ({
     },
     addIcon: {
         marginLeft: 'auto',
+        "&:hover": {
+            color: theme.palette.success.main
+        }
     },
     container: {
         display: 'flex',

@@ -39,6 +39,16 @@ const useStyles = makeStyles(theme => ({
         alignItems: 'center',
         marginLeft: 'auto',
         marginRight: 20
+    },
+    closeIcon: {
+        "&:hover": {
+            color: theme.palette.error.main
+        }
+    },
+    saveIcon: {
+        "&:hover": {
+            color: theme.palette.info.main
+        }
     }
 }));
 
@@ -105,12 +115,12 @@ function NewPlayerForm({successHandler, cancelHandler}: INewPlayerFormProps) {
                         <Tooltip title={"Save"}>
                             <StyledIconButton
                                 onClick={(event) => handleSubmit(event as unknown as React.FormEvent<HTMLFormElement>)}
-                                disabled={!isValid}>
+                                disabled={!isValid} className={classes.saveIcon}>
                                 <SaveIcon/>
                             </StyledIconButton>
                         </Tooltip>
                         <Tooltip title={"Cancel"}>
-                            <StyledIconButton onClick={handleCancel}>
+                            <StyledIconButton onClick={handleCancel} className={classes.closeIcon}>
                                 <CloseIcon/>
                             </StyledIconButton>
                         </Tooltip>
