@@ -1,10 +1,10 @@
-import React, { useState } from "react"
-import { makeStyles } from "@material-ui/core/styles"
+import React, {useState} from "react"
+import {makeStyles} from "@material-ui/core/styles"
 import TableCell from "@material-ui/core/TableCell"
 import ClickAwayListener from "@material-ui/core/ClickAwayListener"
 import NewPlayerUsernameTextField from "./NewPlayerUsernameTextField"
 import NewPlayerCommentField from "./NewPlayerCommentField"
-import { Tooltip } from "@material-ui/core"
+import {Tooltip} from "@material-ui/core"
 
 const useStyles = makeStyles(() => ({
 	cellWrapper: {

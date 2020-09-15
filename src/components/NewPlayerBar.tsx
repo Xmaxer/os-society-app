@@ -1,7 +1,7 @@
-import React, { useState } from "react"
-import { makeStyles, useTheme } from "@material-ui/core/styles"
-import { StyledButton } from "../assets/theme/styledComponents"
-import { useMediaQuery } from "@material-ui/core"
+import React, {useState} from "react"
+import {makeStyles, useTheme} from "@material-ui/core/styles"
+import {StyledButton} from "../assets/theme/styledComponents"
+import {useMediaQuery} from "@material-ui/core"
 import NewPlayerForm from "./NewPlayerForm"
 import NewPlayerFormDialog from "./NewPlayerFormDialog"
 
@@ -44,7 +44,7 @@ export interface INewPlayerBarProps {
 	handleAddNewPlayer: () => void
 }
 
-function NewPlayerBar({ handleAddNewPlayer }: INewPlayerBarProps) {
+function NewPlayerBar({handleAddNewPlayer}: INewPlayerBarProps) {
 	const [edit, setEdit] = useState(false)
 	const theme = useTheme()
 	const matches = useMediaQuery(theme.breakpoints.down("md"))

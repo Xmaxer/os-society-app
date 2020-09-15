@@ -1,7 +1,7 @@
 import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
-import { StyledTextField } from "../assets/theme/styledComponents"
-import { RANK_OPTIONS } from "../assets/constants/constants"
+import {makeStyles} from "@material-ui/core/styles"
+import {StyledTextField} from "../assets/theme/styledComponents"
+import {RANK_OPTIONS} from "../assets/constants/constants"
 import Autocomplete from "@material-ui/lab/Autocomplete"
 import Typography from "@material-ui/core/Typography"
 
@@ -42,7 +42,7 @@ export interface INewPlayerRankFieldProps {
 	) => void
 }
 
-function NewPlayerRankField({ changeHandler }: INewPlayerRankFieldProps) {
+function NewPlayerRankField({changeHandler}: INewPlayerRankFieldProps) {
 	const classes = useStyles()
 
 	const getOptionLabel = (option: typeof RANK_OPTIONS[0]) => {

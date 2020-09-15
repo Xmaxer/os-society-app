@@ -1,6 +1,6 @@
 import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
-import { StyledTextField } from "../assets/theme/styledComponents"
+import {makeStyles} from "@material-ui/core/styles"
+import {StyledTextField} from "../assets/theme/styledComponents"
 
 const useStyles = makeStyles(() => ({
 	formCommentField: {
@@ -28,7 +28,7 @@ function NewPlayerCommentField({
 		<StyledTextField
 			name={"comment"}
 			multiline={true}
-			inputProps={{ maxLength: 200 }}
+			inputProps={{maxLength: 200}}
 			onChange={changeHandler}
 			value={value}
 			label={"comment"}

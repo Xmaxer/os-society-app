@@ -1,6 +1,6 @@
 import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
-import { BrowserRouter, Route, Switch } from "react-router-dom"
+import {makeStyles} from "@material-ui/core/styles"
+import {BrowserRouter, Route, Switch} from "react-router-dom"
 import {
 	API_OFFLINE_ERROR,
 	CHANGE_PASSWORD_ROUTE,
@@ -13,7 +13,7 @@ import LoginPage from "./pages/LoginPage"
 import ApiDownPage from "./pages/ApiDownPage"
 import ErrorSnackbar from "./components/ErrorSnackbar"
 import InformationSnackbar from "./components/InformationSnackbar"
-import { IUser } from "./App"
+import {IUser} from "./App"
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -34,7 +34,7 @@ export interface IAppRouterProps {
 	}
 }
 
-function AppRouter({ state }: IAppRouterProps) {
+function AppRouter({state}: IAppRouterProps) {
 	const classes = useStyles()
 	return (
 		<div className={classes.root}>

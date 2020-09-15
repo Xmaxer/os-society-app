@@ -1,8 +1,8 @@
-import { createMuiTheme } from "@material-ui/core/styles"
+import {createMuiTheme} from "@material-ui/core/styles"
 import palette from "./colours"
-import { MuiPickersComponentsToClassName } from "@material-ui/pickers/typings/overrides"
-import { PaletteColorOptions } from "@material-ui/core"
-import { PaletteColor } from "@material-ui/core/styles/createPalette"
+import {MuiPickersComponentsToClassName} from "@material-ui/pickers/typings/overrides"
+import {PaletteColorOptions} from "@material-ui/core"
+import {PaletteColor} from "@material-ui/core/styles/createPalette"
 
 declare module "@material-ui/core/styles/overrides" {
 	export interface ComponentNameToClassKey

@@ -1,6 +1,6 @@
 import React from "react"
-import { Button, Slider, TextField } from "@material-ui/core"
-import { makeStyles, withStyles } from "@material-ui/core/styles"
+import {Button, Slider, TextField} from "@material-ui/core"
+import {makeStyles, withStyles} from "@material-ui/core/styles"
 import FormControlLabel from "@material-ui/core/FormControlLabel"
 import Checkbox from "@material-ui/core/Checkbox"
 import IconButton from "@material-ui/core/IconButton"
@@ -145,7 +145,7 @@ export default function StyledCheckBoxWithLabel({
 				/>
 			}
 			label={label}
-			classes={{ root: classes.root }}
+			classes={{root: classes.root}}
 		/>
 	)
 }

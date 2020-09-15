@@ -1,7 +1,7 @@
-import React, { forwardRef, useEffect, useState } from "react"
-import { makeStyles, useTheme } from "@material-ui/core/styles"
-import { StyledButton } from "../assets/theme/styledComponents"
-import DaysFilter, { MAX_DAYS, MIN_DAYS } from "./DaysFilter"
+import React, {forwardRef, useEffect, useState} from "react"
+import {makeStyles, useTheme} from "@material-ui/core/styles"
+import {StyledButton} from "../assets/theme/styledComponents"
+import DaysFilter, {MAX_DAYS, MIN_DAYS} from "./DaysFilter"
 import FilterListIcon from "@material-ui/icons/FilterList"
 import CloseIcon from "@material-ui/icons/Close"
 import Toolbar from "@material-ui/core/Toolbar"
@@ -9,13 +9,13 @@ import IconButton from "@material-ui/core/IconButton"
 import Collapse from "@material-ui/core/Collapse"
 import Paper from "@material-ui/core/Paper"
 import clsx from "clsx"
-import RankFilter, { IRankFilter } from "./RankFilter"
+import RankFilter, {IRankFilter} from "./RankFilter"
 import SearchField from "./SearchField"
 import Slide from "@material-ui/core/Slide"
 import Dialog from "@material-ui/core/Dialog"
 import Typography from "@material-ui/core/Typography"
 import Divider from "@material-ui/core/Divider"
-import { SlideProps, useMediaQuery } from "@material-ui/core"
+import {SlideProps, useMediaQuery} from "@material-ui/core"
 
 const useStyles = makeStyles((theme) => ({
 	toolbar: {
@@ -121,7 +121,7 @@ export interface ITableToolbarProps {
 	) => void
 }
 
-function TableToolbar({ handleApplyFilters }: ITableToolbarProps) {
+function TableToolbar({handleApplyFilters}: ITableToolbarProps) {
 	const theme = useTheme()
 	const matches = useMediaQuery(theme.breakpoints.down("md"))
 	const classes = useStyles()

@@ -1,9 +1,9 @@
-import React, { useState } from "react"
-import { makeStyles } from "@material-ui/core/styles"
+import React, {useState} from "react"
+import {makeStyles} from "@material-ui/core/styles"
 import Paper from "@material-ui/core/Paper"
 import TableToolbar from "./TableToolbar"
 import PlayerTable from "./PlayerTable"
-import { IRankFilter } from "./RankFilter"
+import {IRankFilter} from "./RankFilter"
 
 const useStyles = makeStyles((theme) => ({
 	root: {

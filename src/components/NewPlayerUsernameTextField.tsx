@@ -1,6 +1,6 @@
 import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
-import { StyledTextField } from "../assets/theme/styledComponents"
+import {makeStyles} from "@material-ui/core/styles"
+import {StyledTextField} from "../assets/theme/styledComponents"
 
 const useStyles = makeStyles(() => ({
 	formUsernameField: {},
@@ -23,7 +23,7 @@ function NewPlayerUsernameTextField({
 		<StyledTextField
 			name={"username"}
 			autoFocus={true}
-			inputProps={{ maxLength: 12 }}
+			inputProps={{maxLength: 12}}
 			onChange={changeHandler}
 			value={value}
 			label={"username"}

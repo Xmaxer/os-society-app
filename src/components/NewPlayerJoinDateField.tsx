@@ -1,10 +1,10 @@
 import React from "react"
-import { makeStyles, ThemeProvider, useTheme } from "@material-ui/core/styles"
+import {makeStyles, ThemeProvider, useTheme} from "@material-ui/core/styles"
 import enGB from "date-fns/locale/en-GB"
 import DateFnsAdapter from "@material-ui/pickers/adapter/date-fns"
-import { DesktopDatePicker, LocalizationProvider } from "@material-ui/pickers"
-import { StyledTextField } from "../assets/theme/styledComponents"
-import { createMuiTheme } from "@material-ui/core"
+import {DesktopDatePicker, LocalizationProvider} from "@material-ui/pickers"
+import {StyledTextField} from "../assets/theme/styledComponents"
+import {createMuiTheme} from "@material-ui/core"
 
 const useStyles = makeStyles((theme) => ({
 	datePickerTextField: {

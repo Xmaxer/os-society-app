@@ -1,17 +1,14 @@
-import React, { forwardRef } from "react"
-import { makeStyles } from "@material-ui/core/styles"
+import React, {forwardRef} from "react"
+import {makeStyles} from "@material-ui/core/styles"
 import Typography from "@material-ui/core/Typography"
-import { StyledButton } from "../assets/theme/styledComponents"
+import {StyledButton} from "../assets/theme/styledComponents"
 import toDate from "date-fns/toDate"
 import Dialog from "@material-ui/core/Dialog"
-import { Formik } from "formik"
+import {Formik} from "formik"
 import useApi from "../hooks/useApi"
-import {
-	CreatePlayer,
-	CreatePlayerVariables,
-} from "../assets/api/apiInterfaces"
-import { CREATE_PLAYER_MUTATION } from "../assets/api/queries"
-import { SlideProps } from "@material-ui/core"
+import {CreatePlayer, CreatePlayerVariables} from "../assets/api/apiInterfaces"
+import {CREATE_PLAYER_MUTATION} from "../assets/api/queries"
+import {SlideProps} from "@material-ui/core"
 import Slide from "@material-ui/core/Slide"
 import NewPlayerUsernameTextField from "./NewPlayerUsernameTextField"
 import NewPlayerJoinDateField from "./NewPlayerJoinDateField"
@@ -83,7 +80,7 @@ function NewPlayerFormDialog({
 	cancelHandler,
 }: INewPlayerFormDialogProps) {
 	const classes = useStyles()
-	const { request } = useApi<CreatePlayer, CreatePlayerVariables>({
+	const {request} = useApi<CreatePlayer, CreatePlayerVariables>({
 		query: CREATE_PLAYER_MUTATION,
 	})
 
@@ -106,7 +103,7 @@ function NewPlayerFormDialog({
 					previousNames: [] as Array<string>,
 					comment: "",
 				}}
-				onSubmit={(values, { setSubmitting, resetForm }) => {
+				onSubmit={(values, {setSubmitting, resetForm}) => {
 					setSubmitting(true)
 					request({
 						variables: {

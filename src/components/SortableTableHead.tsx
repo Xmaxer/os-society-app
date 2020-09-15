@@ -1,13 +1,13 @@
 import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
-import TableCell, { TableCellProps } from "@material-ui/core/TableCell"
+import {makeStyles} from "@material-ui/core/styles"
+import TableCell, {TableCellProps} from "@material-ui/core/TableCell"
 import TableRow from "@material-ui/core/TableRow"
 import TableHead from "@material-ui/core/TableHead"
 import TableSortLabel, {
 	TableSortLabelTypeMap,
 } from "@material-ui/core/TableSortLabel"
-import { OrderEnum, PlayerOrderEnum } from "../assets/api/apiInterfaces"
-import { PLAYER_ORDER_ENUM } from "../assets/constants/constants"
+import {OrderEnum, PlayerOrderEnum} from "../assets/api/apiInterfaces"
+import {PLAYER_ORDER_ENUM} from "../assets/constants/constants"
 
 const useStyles = makeStyles((theme) => ({
 	thead: {
@@ -146,15 +146,15 @@ export const headers = [
 	},
 ]
 export const headerDistribution = [
-	{ percentage: "10%", min: "120px" },
-	{ percentage: "10%", min: "150px" },
-	{ percentage: "10%", min: "150px" },
-	{ percentage: "5%", min: "100px" },
-	{ percentage: "10%", min: "100px" },
-	{ percentage: "10%", min: "100px" },
-	{ percentage: "20%", min: "150px" },
-	{ percentage: "15%", min: "200px" },
-	{ percentage: "10%", min: "100px" },
+	{percentage: "10%", min: "120px"},
+	{percentage: "10%", min: "150px"},
+	{percentage: "10%", min: "150px"},
+	{percentage: "5%", min: "100px"},
+	{percentage: "10%", min: "100px"},
+	{percentage: "10%", min: "100px"},
+	{percentage: "20%", min: "150px"},
+	{percentage: "15%", min: "200px"},
+	{percentage: "10%", min: "100px"},
 ]
 
 export interface ISortableTableHead {
@@ -163,7 +163,7 @@ export interface ISortableTableHead {
 	handleSort: (id: PlayerOrderEnum | PLAYER_ORDER_ENUM) => void
 }
 
-function SortableTableHead({ orderBy, order, handleSort }: ISortableTableHead) {
+function SortableTableHead({orderBy, order, handleSort}: ISortableTableHead) {
 	const classes = useStyles()
 
 	return (

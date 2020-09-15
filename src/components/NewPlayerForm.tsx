@@ -1,17 +1,14 @@
 import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
-import { StyledIconButton } from "../assets/theme/styledComponents"
+import {makeStyles} from "@material-ui/core/styles"
+import {StyledIconButton} from "../assets/theme/styledComponents"
 import toDate from "date-fns/toDate"
 import Tooltip from "@material-ui/core/Tooltip"
 import SaveIcon from "@material-ui/icons/Save"
 import CloseIcon from "@material-ui/icons/Close"
-import { Formik } from "formik"
+import {Formik} from "formik"
 import useApi from "../hooks/useApi"
-import {
-	CreatePlayer,
-	CreatePlayerVariables,
-} from "../assets/api/apiInterfaces"
-import { CREATE_PLAYER_MUTATION } from "../assets/api/queries"
+import {CreatePlayer, CreatePlayerVariables} from "../assets/api/apiInterfaces"
+import {CREATE_PLAYER_MUTATION} from "../assets/api/queries"
 import NewPlayerUsernameTextField from "./NewPlayerUsernameTextField"
 import NewPlayerJoinDateField from "./NewPlayerJoinDateField"
 import NewPlayerRankField from "./NewPlayerRankField"
@@ -60,9 +57,9 @@ export interface INewPlayerFormProps {
 	cancelHandler: () => void
 }
 
-function NewPlayerForm({ successHandler, cancelHandler }: INewPlayerFormProps) {
+function NewPlayerForm({successHandler, cancelHandler}: INewPlayerFormProps) {
 	const classes = useStyles()
-	const { request } = useApi<CreatePlayer, CreatePlayerVariables>({
+	const {request} = useApi<CreatePlayer, CreatePlayerVariables>({
 		query: CREATE_PLAYER_MUTATION,
 	})
 
@@ -79,10 +76,10 @@ function NewPlayerForm({ successHandler, cancelHandler }: INewPlayerFormProps) {
 				previousNames: [] as Array<string>,
 				comment: "",
 			}}
-			onSubmit={(values, { setSubmitting, resetForm }) => {
+			onSubmit={(values, {setSubmitting, resetForm}) => {
 				setSubmitting(true)
 				request({
-					variables: { ...values },
+					variables: {...values},
 					handleComplete: () => {
 						resetForm()
 						setSubmitting(false)
@@ -106,13 +103,7 @@ function NewPlayerForm({ successHandler, cancelHandler }: INewPlayerFormProps) {
 				return errors
 			}}
 			validateOnMount={true}>
-			{({
-				values,
-				handleChange,
-				handleSubmit,
-				setFieldValue,
-				isValid,
-			}) => (
+			{({values, handleChange, handleSubmit, setFieldValue, isValid}) => (
 				<form
 					className={classes.formContainer}
 					onSubmit={(event) => {

@@ -1,13 +1,13 @@
 import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
+import {makeStyles} from "@material-ui/core/styles"
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
-import { StyledButton } from "../assets/theme/styledComponents"
+import {StyledButton} from "../assets/theme/styledComponents"
 import useApi from "../hooks/useApi"
-import { LOGOUT_MUTATION } from "../assets/api/queries"
-import { useHistory } from "react-router-dom"
-import { LOGIN_ROUTE } from "../assets/constants/routes"
-import { Logout } from "../assets/api/apiInterfaces"
+import {LOGOUT_MUTATION} from "../assets/api/queries"
+import {useHistory} from "react-router-dom"
+import {LOGIN_ROUTE} from "../assets/constants/routes"
+import {Logout} from "../assets/api/apiInterfaces"
 
 const useStyles = makeStyles(() => ({
 	root: {
@@ -35,10 +35,10 @@ const useStyles = makeStyles(() => ({
 function Header() {
 	const classes = useStyles()
 	const history = useHistory()
-	const { request } = useApi<Logout>({ query: LOGOUT_MUTATION })
+	const {request} = useApi<Logout>({query: LOGOUT_MUTATION})
 
 	const handleLogout = () => {
-		request({ handleSuccess: handleSuccess })
+		request({handleSuccess: handleSuccess})
 	}
 
 	const handleSuccess = (data: Logout) => {

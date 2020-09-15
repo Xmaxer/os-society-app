@@ -1,17 +1,17 @@
-import { useCallback, useContext, useState } from "react"
-import { useHistory } from "react-router-dom"
+import {useCallback, useContext, useState} from "react"
+import {useHistory} from "react-router-dom"
 import {
 	APIError,
 	ClientContext,
 	useManualQuery,
 	useMutation,
 } from "graphql-hooks"
-import { useGlobalState } from "../state/state"
-import { ADD_ERRORS } from "../state/actions"
-import { API_OFFLINE_ERROR, LOGIN_ROUTE } from "../assets/constants/routes"
-import { MUTATION_OPERATION } from "../assets/constants/operations"
-import { IRequest } from "../assets/api/queries"
-import { print } from "graphql"
+import {useGlobalState} from "../state/state"
+import {ADD_ERRORS} from "../state/actions"
+import {API_OFFLINE_ERROR, LOGIN_ROUTE} from "../assets/constants/routes"
+import {MUTATION_OPERATION} from "../assets/constants/operations"
+import {IRequest} from "../assets/api/queries"
+import {print} from "graphql"
 
 export interface IGraphQLError {
 	message: string
@@ -34,7 +34,7 @@ export interface IRequestHandler<DataType, VariablesType> {
 function useApi<DataType, VariablesType = Record<string, unknown>>({
 	query,
 }: IUseApiProps) {
-	const { dispatch } = useGlobalState()
+	const [, dispatch] = useGlobalState()
 	const history = useHistory()
 
 	// Include the access token if one exists
@@ -68,7 +68,7 @@ function useApi<DataType, VariablesType = Record<string, unknown>>({
 			handleError,
 		}: IRequestHandler<DataType, VariablesType>) => {
 			setLoading(true)
-			call(variables ? { variables: { ...variables } } : {}).then(
+			call(variables ? {variables: {...variables}} : {}).then(
 				(response) => {
 					if (!response.error) {
 						setData(response.data)
@@ -108,7 +108,7 @@ function useApi<DataType, VariablesType = Record<string, unknown>>({
 		[call, dispatch, history]
 	)
 
-	return { request, loading, error, data }
+	return {request, loading, error, data}
 }
 
 export default useApi

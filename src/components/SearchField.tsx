@@ -1,6 +1,6 @@
-import React, { useState } from "react"
-import { makeStyles } from "@material-ui/core/styles"
-import { StyledTextField } from "../assets/theme/styledComponents"
+import React, {useState} from "react"
+import {makeStyles} from "@material-ui/core/styles"
+import {StyledTextField} from "../assets/theme/styledComponents"
 import InputAdornment from "@material-ui/core/InputAdornment"
 import SearchIcon from "@material-ui/icons/Search"
 import CloseIcon from "@material-ui/icons/Close"
@@ -16,7 +16,7 @@ export interface SearchFieldProps {
 	handler: (value: string) => void
 }
 
-function SearchField({ handler }: SearchFieldProps) {
+function SearchField({handler}: SearchFieldProps) {
 	const [value, setValue] = useState("")
 	const classes = useStyles()
 

@@ -1,22 +1,19 @@
 import React from "react"
-import { useGlobalState } from "../state/state"
-import { REMOVE_INFO } from "../state/actions"
+import {useGlobalState} from "../state/state"
+import {REMOVE_INFO} from "../state/actions"
 import Snackbar from "@material-ui/core/Snackbar"
 import MuiAlert from "@material-ui/lab/Alert"
-import { SUCCESS } from "../assets/constants/severities"
+import {SUCCESS} from "../assets/constants/severities"
 
-function Alert(props: { [key: string]: any }) {
+function Alert(props: {[key: string]: any}) {
 	return <MuiAlert elevation={6} variant="filled" {...props} />
 }
 
 function InformationSnackbar() {
-	const {
-		state: { info },
-		dispatch,
-	} = useGlobalState()
+	const [{info}, dispatch] = useGlobalState()
 
 	const onClose = () => {
-		dispatch({ type: REMOVE_INFO })
+		dispatch({type: REMOVE_INFO})
 	}
 
 	return (

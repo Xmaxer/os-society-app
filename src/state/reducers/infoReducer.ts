@@ -1,6 +1,6 @@
-import { REMOVE_INFO, SET_INFO } from "../actions"
-import initialState, { IInfo } from "../initialState"
-import { IAction } from "../state"
+import {REMOVE_INFO, SET_INFO} from "../actions"
+import initialState, {IInfo} from "../initialState"
+import {IAction} from "../state"
 
 export const infoReducer = (state: IInfo | undefined, action: IAction) => {
 	switch (action.type) {

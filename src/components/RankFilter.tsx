@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react"
-import { makeStyles } from "@material-ui/core/styles"
+import React, {useEffect, useState} from "react"
+import {makeStyles} from "@material-ui/core/styles"
 import StyledCheckBoxWithLabel from "../assets/theme/styledComponents"
 import Typography from "@material-ui/core/Typography"
 
@@ -47,7 +47,7 @@ export interface IRankFilter {
 	owner: boolean
 }
 
-function RankFilter({ handler, reset, ...rest }: IRankFilterProps) {
+function RankFilter({handler, reset, ...rest}: IRankFilterProps) {
 	const classes = useStyles()
 
 	const [checked, setChecked] = useState<IRankFilter>({

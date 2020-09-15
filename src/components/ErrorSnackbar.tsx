@@ -1,22 +1,19 @@
 import React from "react"
-import { useGlobalState } from "../state/state"
+import {useGlobalState} from "../state/state"
 import Snackbar from "@material-ui/core/Snackbar"
-import { REMOVE_ERRORS } from "../state/actions"
+import {REMOVE_ERRORS} from "../state/actions"
 import MuiAlert from "@material-ui/lab/Alert"
-import { ERROR } from "../assets/constants/severities"
+import {ERROR} from "../assets/constants/severities"
 
-function Alert(props: { [key: string]: any }) {
+function Alert(props: {[key: string]: any}) {
 	return <MuiAlert elevation={6} variant="filled" {...props} />
 }
 
 function ErrorSnackbar() {
-	const {
-		state: { errors },
-		dispatch,
-	} = useGlobalState()
+	const [{errors}, dispatch] = useGlobalState()
 
 	const onClose = () => {
-		dispatch({ type: REMOVE_ERRORS })
+		dispatch({type: REMOVE_ERRORS})
 	}
 	return (
 		<>

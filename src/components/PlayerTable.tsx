@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useState } from "react"
-import { makeStyles, useTheme } from "@material-ui/core/styles"
+import React, {useCallback, useEffect, useState} from "react"
+import {makeStyles, useTheme} from "@material-ui/core/styles"
 import Table from "@material-ui/core/Table"
 import TableBody from "@material-ui/core/TableBody"
 import TableCell from "@material-ui/core/TableCell"
@@ -8,15 +8,15 @@ import TablePagination from "@material-ui/core/TablePagination"
 import TableRow from "@material-ui/core/TableRow"
 import Paper from "@material-ui/core/Paper"
 import useApi from "../hooks/useApi"
-import { PLAYERS_QUERY } from "../assets/api/queries"
+import {PLAYERS_QUERY} from "../assets/api/queries"
 import subDays from "date-fns/subDays"
 import formatISO from "date-fns/formatISO"
 import Skeleton from "@material-ui/lab/Skeleton"
-import SortableTableHead, { headers } from "./SortableTableHead"
+import SortableTableHead, {headers} from "./SortableTableHead"
 import TablePaginationOptions from "./TablePaginationOptions"
 import PlayerTableRow from "./PlayerTableRow"
 import NewPlayerBar from "./NewPlayerBar"
-import { IRankFilter } from "./RankFilter"
+import {IRankFilter} from "./RankFilter"
 import {
 	OrderEnum,
 	PlayerOrderEnum,
@@ -24,8 +24,8 @@ import {
 	Players_players,
 	PlayersVariables,
 } from "../assets/api/apiInterfaces"
-import { useMediaQuery } from "@material-ui/core"
-import { PLAYER_ORDER_ENUM } from "../assets/constants/constants"
+import {useMediaQuery} from "@material-ui/core"
+import {PLAYER_ORDER_ENUM} from "../assets/constants/constants"
 
 const useStyles = makeStyles((theme) => ({
 	table: {
@@ -102,7 +102,7 @@ export interface IPlayerTableProps {
 	search?: string
 }
 
-function PlayerTable({ days, ranks, search }: IPlayerTableProps) {
+function PlayerTable({days, ranks, search}: IPlayerTableProps) {
 	const theme = useTheme()
 	const matches = useMediaQuery(theme.breakpoints.down("xs"))
 	const classes = useStyles()
@@ -114,7 +114,7 @@ function PlayerTable({ days, ranks, search }: IPlayerTableProps) {
 	const [rowsPerPage, setRowsPerPage] = React.useState(rowsPerPageOptions[0])
 	const [players, setPlayers] = useState<Array<Players_players>>([])
 	const [totalPlayers, setTotalPlayers] = useState(0)
-	const { request, loading } = useApi<Players, PlayersVariables>({
+	const {request, loading} = useApi<Players, PlayersVariables>({
 		query: PLAYERS_QUERY,
 	})
 

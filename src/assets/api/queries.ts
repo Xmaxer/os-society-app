@@ -1,6 +1,6 @@
-import { MUTATION_OPERATION, QUERY_OPERATION } from "../constants/operations"
+import {MUTATION_OPERATION, QUERY_OPERATION} from "../constants/operations"
 import gql from "graphql-tag"
-import { DocumentNode } from "graphql"
+import {DocumentNode} from "graphql"
 
 export interface IRequest {
 	type: typeof MUTATION_OPERATION | typeof QUERY_OPERATION
@@ -21,9 +21,7 @@ export const LOGIN_MUTATION: IRequest = {
 	query: gql`
 		mutation Login($username: String!, $password: String!) {
 			login(
-				input: {
-					attributes: { username: $username, password: $password }
-				}
+				input: {attributes: {username: $username, password: $password}}
 			) {
 				token
 				user {
@@ -76,7 +74,7 @@ export const PLAYERS_QUERY: IRequest = {
 			$endJoinDate: ISO8601DateTime
 		) {
 			players(
-				order: { order: $order, orderBy: $orderBy }
+				order: {order: $order, orderBy: $orderBy}
 				filter: {
 					usernameContains: $usernameContains
 					previousNameContains: $previousNameContains
@@ -142,7 +140,7 @@ export const DELETE_PLAYER_MUTATION: IRequest = {
 	type: MUTATION_OPERATION,
 	query: gql`
 		mutation DeletePlayer($id: ID!) {
-			deletePlayer(input: { id: $id }) {
+			deletePlayer(input: {id: $id}) {
 				player {
 					username
 					id
@@ -215,9 +213,7 @@ export const SET_PASSWORD_MUTATION: IRequest = {
 	type: MUTATION_OPERATION,
 	query: gql`
 		mutation SetPassword($id: ID!, $password: String!) {
-			updateUser(
-				input: { attributes: { password: $password }, id: $id }
-			) {
+			updateUser(input: {attributes: {password: $password}, id: $id}) {
 				user {
 					id
 					username
@@ -233,7 +229,7 @@ export const CREATE_COMPETITION_MUTATION: IRequest = {
 	query: gql`
 		mutation CreateCompetition($externalUrl: String) {
 			createCompetition(
-				input: { attributes: { externalUrl: $externalUrl } }
+				input: {attributes: {externalUrl: $externalUrl}}
 			) {
 				competition {
 					competitionRecords {
@@ -266,7 +262,7 @@ export const UPDATE_COMPETITION_MUTATION: IRequest = {
 	query: gql`
 		mutation UpdateCompetition($externalUrl: String, $id: ID!) {
 			updateCompetition(
-				input: { attributes: { externalUrl: $externalUrl }, id: $id }
+				input: {attributes: {externalUrl: $externalUrl}, id: $id}
 			) {
 				competition {
 					competitionRecords {
@@ -298,7 +294,7 @@ export const DELETE_COMPETITION_MUTATION: IRequest = {
 	type: MUTATION_OPERATION,
 	query: gql`
 		mutation DeleteCompetition($id: ID!) {
-			deleteCompetition(input: { id: $id }) {
+			deleteCompetition(input: {id: $id}) {
 				clientMutationId
 				competition {
 					competitionRecords {
@@ -414,7 +410,7 @@ export const DELETE_COMPETITION_RECORD_MUTATION: IRequest = {
 	type: MUTATION_OPERATION,
 	query: gql`
 		mutation DeleteCompetitionRecord($id: ID!) {
-			deleteCompetitionRecord(input: { id: $id }) {
+			deleteCompetitionRecord(input: {id: $id}) {
 				competitionRecord {
 					id
 					position
@@ -503,7 +499,7 @@ export const DELETE_PAYOUT_MUTATION: IRequest = {
 	type: MUTATION_OPERATION,
 	query: gql`
 		mutation DeletePayout($id: ID!) {
-			deletePayout(input: { id: $id }) {
+			deletePayout(input: {id: $id}) {
 				payout {
 					id
 					amount
@@ -528,8 +524,8 @@ export const COMPETITIONS_QUERY: IRequest = {
 			$skip: Int
 		) {
 			competitions(
-				filter: { externalUrlContains: $externalUrlContains }
-				order: { order: $order, orderBy: $orderBy }
+				filter: {externalUrlContains: $externalUrlContains}
+				order: {order: $order, orderBy: $orderBy}
 				first: $first
 				skip: $skip
 			) {
@@ -579,7 +575,7 @@ export const COMPETITION_RECORDS_QUERY: IRequest = {
 					startXp: $startXp
 					endXp: $endXp
 				}
-				order: { order: $order, orderBy: $orderBy }
+				order: {order: $order, orderBy: $orderBy}
 				first: $first
 				skip: $skip
 				competitionId: $competitionId

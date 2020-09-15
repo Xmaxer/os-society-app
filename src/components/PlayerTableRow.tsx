@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { makeStyles } from "@material-ui/core/styles"
+import React, {useState} from "react"
+import {makeStyles} from "@material-ui/core/styles"
 import TableRow from "@material-ui/core/TableRow"
 import EditableTextfieldCell from "./EditableTextfieldCell"
 import EditableDatePickerCell from "./EditableDatePickerCell"
@@ -14,7 +14,7 @@ import {
 	DELETE_PLAYER_MUTATION,
 	UPDATE_PLAYER_MUTATION,
 } from "../assets/api/queries"
-import { StyledIconButton } from "../assets/theme/styledComponents"
+import {StyledIconButton} from "../assets/theme/styledComponents"
 import Delete from "@material-ui/icons/Delete"
 import Tooltip from "@material-ui/core/Tooltip"
 import {
@@ -52,24 +52,24 @@ export interface PlayerTableRowProps {
 	onDelete: () => void
 }
 
-function PlayerTableRow({ defaultPlayer, onDelete }: PlayerTableRowProps) {
+function PlayerTableRow({defaultPlayer, onDelete}: PlayerTableRowProps) {
 	const classes = useStyles()
 	const [player, setPlayer] = useState(defaultPlayer)
-	const { request: handlePlayerCall } = useApi<
+	const {request: handlePlayerCall} = useApi<
 		UpdatePlayer,
 		UpdatePlayerVariables
-	>({ query: UPDATE_PLAYER_MUTATION })
-	const { request: handleDeletePlayerCall } = useApi<
+	>({query: UPDATE_PLAYER_MUTATION})
+	const {request: handleDeletePlayerCall} = useApi<
 		DeletePlayer,
 		DeletePlayerVariables
-	>({ query: DELETE_PLAYER_MUTATION })
+	>({query: DELETE_PLAYER_MUTATION})
 
 	const handleChange = (
 		name: string,
 		value?: string | null | Array<string> | Date | number
 	) => {
 		handlePlayerCall({
-			variables: { ...player, [name]: value },
+			variables: {...player, [name]: value},
 			handleSuccess: onEditSuccess,
 		})
 	}
@@ -82,7 +82,7 @@ function PlayerTableRow({ defaultPlayer, onDelete }: PlayerTableRowProps) {
 
 	const handleDelete = () => {
 		handleDeletePlayerCall({
-			variables: { id: player.id },
+			variables: {id: player.id},
 			handleSuccess: onDeleteSuccess,
 		})
 	}

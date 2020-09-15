@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react"
-import { makeStyles } from "@material-ui/core/styles"
-import { StyledSlider } from "../assets/theme/styledComponents"
+import React, {useEffect, useState} from "react"
+import {makeStyles} from "@material-ui/core/styles"
+import {StyledSlider} from "../assets/theme/styledComponents"
 import Typography from "@material-ui/core/Typography"
 
 const useStyles = makeStyles((theme) => ({
@@ -35,7 +35,7 @@ export interface IDaysFilterProps {
 export const MAX_DAYS = 2000
 export const MIN_DAYS = 0
 
-function DaysFilter({ handler, reset, ...rest }: IDaysFilterProps) {
+function DaysFilter({handler, reset, ...rest}: IDaysFilterProps) {
 	const classes = useStyles()
 	const [daysValues, setDaysValues] = useState<Array<number>>([
 		MIN_DAYS,
