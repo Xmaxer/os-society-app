@@ -57,8 +57,9 @@ function NewPlayerPreviousNameField({
 			if (
 				val.length > 0 &&
 				val.length <= 20 &&
-				currentValues.find((e) => e.toLowerCase() === val.toLowerCase()) ===
-					undefined
+				currentValues.find(
+					(e) => e.toLowerCase() === val.toLowerCase()
+				) === undefined
 			) {
 				const newValue = [...currentValues, val]
 				fieldHandler
@@ -97,7 +98,9 @@ function NewPlayerPreviousNameField({
 				tagValue.map((option, index) => (
 					<Chip
 						label={option}
-						{...getTagProps({ index })}
+						{...getTagProps({
+							index,
+						})}
 						className={classes.chip}
 						key={option}
 					/>

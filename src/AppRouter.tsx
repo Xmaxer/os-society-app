@@ -49,7 +49,11 @@ function AppRouter({ state }: IAppRouterProps) {
 							{...state}
 						/>
 						<Route path={LOGIN_ROUTE} component={LoginPage} exact />
-						<Route path={API_OFFLINE_ERROR} component={ApiDownPage} exact />
+						<Route
+							path={API_OFFLINE_ERROR}
+							component={ApiDownPage}
+							exact
+						/>
 					</Switch>
 					<ErrorSnackbar />
 					<InformationSnackbar />

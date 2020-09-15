@@ -159,7 +159,8 @@ function TableToolbar({ handleApplyFilters }: ITableToolbarProps) {
 		setDisableActions(
 			(ranks === undefined ||
 				Object.values(ranks).find((v) => !v) === undefined) &&
-				(days === undefined || (days[0] === MIN_DAYS && days[1] === MAX_DAYS))
+				(days === undefined ||
+					(days[0] === MIN_DAYS && days[1] === MAX_DAYS))
 		)
 	}
 
@@ -168,7 +169,8 @@ function TableToolbar({ handleApplyFilters }: ITableToolbarProps) {
 		setDisableActions(
 			(ranks === undefined ||
 				Object.values(ranks).find((v) => !v) === undefined) &&
-				(days === undefined || (days[0] === MIN_DAYS && days[1] === MAX_DAYS))
+				(days === undefined ||
+					(days[0] === MIN_DAYS && days[1] === MAX_DAYS))
 		)
 	}
 
@@ -179,7 +181,10 @@ function TableToolbar({ handleApplyFilters }: ITableToolbarProps) {
 				<IconButton
 					className={
 						openFilter
-							? clsx(classes.filterButton, classes.filterButtonActive)
+							? clsx(
+									classes.filterButton,
+									classes.filterButtonActive
+							  )
 							: classes.filterButton
 					}
 					onClick={handleOpenFilter}>
@@ -243,7 +248,9 @@ function TableToolbar({ handleApplyFilters }: ITableToolbarProps) {
 								disabled={disableActions}>
 								Reset filter
 							</StyledButton>
-							<StyledButton variant={"contained"} onClick={handleOpenFilter}>
+							<StyledButton
+								variant={"contained"}
+								onClick={handleOpenFilter}>
 								Close
 							</StyledButton>
 						</div>

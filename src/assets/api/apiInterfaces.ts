@@ -1,4 +1,6 @@
 /* tslint:disable */
+/* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -6,18 +8,38 @@
 // ====================================================
 
 export interface Login_login_user {
-	username: string // A valid username
-	id: string // The unique ID of the user
-	resetPassword: boolean // Whether the user needs a password reset or not
+	__typename: "User"
+	/**
+	 * A valid username
+	 */
+	username: string
+	/**
+	 * The unique ID of the user
+	 */
+	id: string
+	/**
+	 * Whether the user needs a password reset or not
+	 */
+	resetPassword: boolean
 }
 
 export interface Login_login {
-	token: string // A valid token
-	user: Login_login_user // A valid user
+	__typename: "LoginMutationPayload"
+	/**
+	 * A valid token
+	 */
+	token: string
+	/**
+	 * A valid user
+	 */
+	user: Login_login_user
 }
 
 export interface Login {
-	login: Login_login | null // Login with valid credentials, returns a valid token if successful.
+	/**
+	 * Login with valid credentials, returns a valid token if successful.
+	 */
+	login: Login_login | null
 }
 
 export interface LoginVariables {
@@ -26,6 +48,8 @@ export interface LoginVariables {
 }
 
 /* tslint:disable */
+/* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -33,14 +57,23 @@ export interface LoginVariables {
 // ====================================================
 
 export interface Logout_logout {
-	success: boolean // True if logged out of current session
+	__typename: "LogoutMutationPayload"
+	/**
+	 * True if logged out of current session
+	 */
+	success: boolean
 }
 
 export interface Logout {
-	logout: Logout_logout | null // Logout of the current session (Invalidates token)
+	/**
+	 * Logout of the current session (Invalidates token)
+	 */
+	logout: Logout_logout | null
 }
 
 /* tslint:disable */
+/* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -48,16 +81,31 @@ export interface Logout {
 // ====================================================
 
 export interface Authenticated_isAuthenticated {
-	username: string // A valid username
-	id: string // The unique ID of the user
-	resetPassword: boolean // Whether the user needs a password reset or not
+	__typename: "User"
+	/**
+	 * A valid username
+	 */
+	username: string
+	/**
+	 * The unique ID of the user
+	 */
+	id: string
+	/**
+	 * Whether the user needs a password reset or not
+	 */
+	resetPassword: boolean
 }
 
 export interface Authenticated {
-	isAuthenticated: Authenticated_isAuthenticated | null // Checks whether the login you're authenticated or not
+	/**
+	 * Checks whether the login you're authenticated or not
+	 */
+	isAuthenticated: Authenticated_isAuthenticated | null
 }
 
 /* tslint:disable */
+/* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -65,19 +113,50 @@ export interface Authenticated {
 // ====================================================
 
 export interface Players_players {
-	id: string // The unique ID of the player
-	username: string // A valid username
-	previousNames: string[] // Any previous names this player had
-	rank: number // A valid rank number
-	createdAt: any // The date this player record was created
-	updatedAt: any // The date this player record was updated
-	comment: string | null // Optional extra comments
-	joinDate: any // A valid non-future join date
+	__typename: "Player"
+	/**
+	 * The unique ID of the player
+	 */
+	id: string
+	/**
+	 * A valid username
+	 */
+	username: string
+	/**
+	 * Any previous names this player had
+	 */
+	previousNames: string[]
+	/**
+	 * A valid rank number
+	 */
+	rank: number
+	/**
+	 * The date this player record was created
+	 */
+	createdAt: any
+	/**
+	 * The date this player record was updated
+	 */
+	updatedAt: any
+	/**
+	 * Optional extra comments
+	 */
+	comment: string | null
+	/**
+	 * A valid non-future join date
+	 */
+	joinDate: any
 }
 
 export interface Players {
-	players: Players_players[] // Returns a list of players
-	totalPlayers: number // Counts the total number of players
+	/**
+	 * Returns a list of players
+	 */
+	players: Players_players[]
+	/**
+	 * Counts the total number of players
+	 */
+	totalPlayers: number
 }
 
 export interface PlayersVariables {
@@ -94,6 +173,8 @@ export interface PlayersVariables {
 }
 
 /* tslint:disable */
+/* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -101,17 +182,43 @@ export interface PlayersVariables {
 // ====================================================
 
 export interface CreatePlayer_createPlayer_player {
-	username: string // A valid username
-	id: string // The unique ID of the player
-	joinDate: any // A valid non-future join date
-	rank: number // A valid rank number
-	comment: string | null // Optional extra comments
-	previousNames: string[] // Any previous names this player had
-	createdAt: any // The date this player record was created
-	updatedAt: any // The date this player record was updated
+	__typename: "Player"
+	/**
+	 * A valid username
+	 */
+	username: string
+	/**
+	 * The unique ID of the player
+	 */
+	id: string
+	/**
+	 * A valid non-future join date
+	 */
+	joinDate: any
+	/**
+	 * A valid rank number
+	 */
+	rank: number
+	/**
+	 * Optional extra comments
+	 */
+	comment: string | null
+	/**
+	 * Any previous names this player had
+	 */
+	previousNames: string[]
+	/**
+	 * The date this player record was created
+	 */
+	createdAt: any
+	/**
+	 * The date this player record was updated
+	 */
+	updatedAt: any
 }
 
 export interface CreatePlayer_createPlayer {
+	__typename: "CreatePlayerMutationPayload"
 	player: CreatePlayer_createPlayer_player
 }
 
@@ -128,6 +235,8 @@ export interface CreatePlayerVariables {
 }
 
 /* tslint:disable */
+/* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -135,17 +244,43 @@ export interface CreatePlayerVariables {
 // ====================================================
 
 export interface DeletePlayer_deletePlayer_player {
-	username: string // A valid username
-	id: string // The unique ID of the player
-	comment: string | null // Optional extra comments
-	rank: number // A valid rank number
-	previousNames: string[] // Any previous names this player had
-	joinDate: any // A valid non-future join date
-	createdAt: any // The date this player record was created
-	updatedAt: any // The date this player record was updated
+	__typename: "Player"
+	/**
+	 * A valid username
+	 */
+	username: string
+	/**
+	 * The unique ID of the player
+	 */
+	id: string
+	/**
+	 * Optional extra comments
+	 */
+	comment: string | null
+	/**
+	 * A valid rank number
+	 */
+	rank: number
+	/**
+	 * Any previous names this player had
+	 */
+	previousNames: string[]
+	/**
+	 * A valid non-future join date
+	 */
+	joinDate: any
+	/**
+	 * The date this player record was created
+	 */
+	createdAt: any
+	/**
+	 * The date this player record was updated
+	 */
+	updatedAt: any
 }
 
 export interface DeletePlayer_deletePlayer {
+	__typename: "DeletePlayerMutationPayload"
 	player: DeletePlayer_deletePlayer_player
 }
 
@@ -158,6 +293,8 @@ export interface DeletePlayerVariables {
 }
 
 /* tslint:disable */
+/* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -165,17 +302,43 @@ export interface DeletePlayerVariables {
 // ====================================================
 
 export interface UpdatePlayer_updatePlayer_player {
-	username: string // A valid username
-	id: string // The unique ID of the player
-	joinDate: any // A valid non-future join date
-	rank: number // A valid rank number
-	comment: string | null // Optional extra comments
-	previousNames: string[] // Any previous names this player had
-	createdAt: any // The date this player record was created
-	updatedAt: any // The date this player record was updated
+	__typename: "Player"
+	/**
+	 * A valid username
+	 */
+	username: string
+	/**
+	 * The unique ID of the player
+	 */
+	id: string
+	/**
+	 * A valid non-future join date
+	 */
+	joinDate: any
+	/**
+	 * A valid rank number
+	 */
+	rank: number
+	/**
+	 * Optional extra comments
+	 */
+	comment: string | null
+	/**
+	 * Any previous names this player had
+	 */
+	previousNames: string[]
+	/**
+	 * The date this player record was created
+	 */
+	createdAt: any
+	/**
+	 * The date this player record was updated
+	 */
+	updatedAt: any
 }
 
 export interface UpdatePlayer_updatePlayer {
+	__typename: "UpdatePlayerMutationPayload"
 	player: UpdatePlayer_updatePlayer_player
 }
 
@@ -193,6 +356,8 @@ export interface UpdatePlayerVariables {
 }
 
 /* tslint:disable */
+/* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -200,12 +365,23 @@ export interface UpdatePlayerVariables {
 // ====================================================
 
 export interface SetPassword_updateUser_user {
-	id: string // The unique ID of the user
-	username: string // A valid username
-	resetPassword: boolean // Whether the user needs a password reset or not
+	__typename: "User"
+	/**
+	 * The unique ID of the user
+	 */
+	id: string
+	/**
+	 * A valid username
+	 */
+	username: string
+	/**
+	 * Whether the user needs a password reset or not
+	 */
+	resetPassword: boolean
 }
 
 export interface SetPassword_updateUser {
+	__typename: "ResetPasswordMutationPayload"
 	user: SetPassword_updateUser_user
 }
 
@@ -219,6 +395,8 @@ export interface SetPasswordVariables {
 }
 
 /* tslint:disable */
+/* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -226,36 +404,87 @@ export interface SetPasswordVariables {
 // ====================================================
 
 export interface CreateCompetition_createCompetition_competition_competitionRecords_payout_user {
-	id: string // The unique ID of the user
-	username: string // A valid username
+	__typename: "User"
+	/**
+	 * The unique ID of the user
+	 */
+	id: string
+	/**
+	 * A valid username
+	 */
+	username: string
 }
 
 export interface CreateCompetition_createCompetition_competition_competitionRecords_payout {
-	id: string // The unique ID of the payout
-	amount: any // The amount paid out
-	user: CreateCompetition_createCompetition_competition_competitionRecords_payout_user // The user that paid it
+	__typename: "Payout"
+	/**
+	 * The unique ID of the payout
+	 */
+	id: string
+	/**
+	 * The amount paid out
+	 */
+	amount: any
+	/**
+	 * The user that paid it
+	 */
+	user: CreateCompetition_createCompetition_competition_competitionRecords_payout_user
 }
 
 export interface CreateCompetition_createCompetition_competition_competitionRecords_player {
-	id: string // The unique ID of the player
-	username: string // A valid username
+	__typename: "Player"
+	/**
+	 * The unique ID of the player
+	 */
+	id: string
+	/**
+	 * A valid username
+	 */
+	username: string
 }
 
 export interface CreateCompetition_createCompetition_competition_competitionRecords {
-	id: string // The unique ID of the competition
-	xp: any // The XP gained
-	position: number // The ranking within the competition
-	payout: CreateCompetition_createCompetition_competition_competitionRecords_payout | null // Gets a specific payout for the competition record
-	player: CreateCompetition_createCompetition_competition_competitionRecords_player // The associated player
+	__typename: "CompetitionRecord"
+	/**
+	 * The unique ID of the competition
+	 */
+	id: string
+	/**
+	 * The XP gained
+	 */
+	xp: any
+	/**
+	 * The ranking within the competition
+	 */
+	position: number
+	/**
+	 * Gets a specific payout for the competition record
+	 */
+	payout: CreateCompetition_createCompetition_competition_competitionRecords_payout | null
+	/**
+	 * The associated player
+	 */
+	player: CreateCompetition_createCompetition_competition_competitionRecords_player
 }
 
 export interface CreateCompetition_createCompetition_competition {
-	competitionRecords: CreateCompetition_createCompetition_competition_competitionRecords[] // Returns a list of competition records belonging to the object
-	externalUrl: string | null // The external competition URL
-	id: string // The unique ID of the competition
+	__typename: "Competition"
+	/**
+	 * Returns a list of competition records belonging to the object
+	 */
+	competitionRecords: CreateCompetition_createCompetition_competition_competitionRecords[]
+	/**
+	 * The external competition URL
+	 */
+	externalUrl: string | null
+	/**
+	 * The unique ID of the competition
+	 */
+	id: string
 }
 
 export interface CreateCompetition_createCompetition {
+	__typename: "CreateCompetitionMutationPayload"
 	competition: CreateCompetition_createCompetition_competition
 }
 
@@ -268,6 +497,8 @@ export interface CreateCompetitionVariables {
 }
 
 /* tslint:disable */
+/* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -275,36 +506,87 @@ export interface CreateCompetitionVariables {
 // ====================================================
 
 export interface UpdateCompetition_updateCompetition_competition_competitionRecords_payout_user {
-	id: string // The unique ID of the user
-	username: string // A valid username
+	__typename: "User"
+	/**
+	 * The unique ID of the user
+	 */
+	id: string
+	/**
+	 * A valid username
+	 */
+	username: string
 }
 
 export interface UpdateCompetition_updateCompetition_competition_competitionRecords_payout {
-	id: string // The unique ID of the payout
-	amount: any // The amount paid out
-	user: UpdateCompetition_updateCompetition_competition_competitionRecords_payout_user // The user that paid it
+	__typename: "Payout"
+	/**
+	 * The unique ID of the payout
+	 */
+	id: string
+	/**
+	 * The amount paid out
+	 */
+	amount: any
+	/**
+	 * The user that paid it
+	 */
+	user: UpdateCompetition_updateCompetition_competition_competitionRecords_payout_user
 }
 
 export interface UpdateCompetition_updateCompetition_competition_competitionRecords_player {
-	id: string // The unique ID of the player
-	username: string // A valid username
+	__typename: "Player"
+	/**
+	 * The unique ID of the player
+	 */
+	id: string
+	/**
+	 * A valid username
+	 */
+	username: string
 }
 
 export interface UpdateCompetition_updateCompetition_competition_competitionRecords {
-	id: string // The unique ID of the competition
-	xp: any // The XP gained
-	position: number // The ranking within the competition
-	payout: UpdateCompetition_updateCompetition_competition_competitionRecords_payout | null // Gets a specific payout for the competition record
-	player: UpdateCompetition_updateCompetition_competition_competitionRecords_player // The associated player
+	__typename: "CompetitionRecord"
+	/**
+	 * The unique ID of the competition
+	 */
+	id: string
+	/**
+	 * The XP gained
+	 */
+	xp: any
+	/**
+	 * The ranking within the competition
+	 */
+	position: number
+	/**
+	 * Gets a specific payout for the competition record
+	 */
+	payout: UpdateCompetition_updateCompetition_competition_competitionRecords_payout | null
+	/**
+	 * The associated player
+	 */
+	player: UpdateCompetition_updateCompetition_competition_competitionRecords_player
 }
 
 export interface UpdateCompetition_updateCompetition_competition {
-	competitionRecords: UpdateCompetition_updateCompetition_competition_competitionRecords[] // Returns a list of competition records belonging to the object
-	externalUrl: string | null // The external competition URL
-	id: string // The unique ID of the competition
+	__typename: "Competition"
+	/**
+	 * Returns a list of competition records belonging to the object
+	 */
+	competitionRecords: UpdateCompetition_updateCompetition_competition_competitionRecords[]
+	/**
+	 * The external competition URL
+	 */
+	externalUrl: string | null
+	/**
+	 * The unique ID of the competition
+	 */
+	id: string
 }
 
 export interface UpdateCompetition_updateCompetition {
+	__typename: "UpdateCompetitionMutationPayload"
 	competition: UpdateCompetition_updateCompetition_competition
 }
 
@@ -318,6 +600,8 @@ export interface UpdateCompetitionVariables {
 }
 
 /* tslint:disable */
+/* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -325,37 +609,91 @@ export interface UpdateCompetitionVariables {
 // ====================================================
 
 export interface DeleteCompetition_deleteCompetition_competition_competitionRecords_payout_user {
-	id: string // The unique ID of the user
-	username: string // A valid username
+	__typename: "User"
+	/**
+	 * The unique ID of the user
+	 */
+	id: string
+	/**
+	 * A valid username
+	 */
+	username: string
 }
 
 export interface DeleteCompetition_deleteCompetition_competition_competitionRecords_payout {
-	id: string // The unique ID of the payout
-	amount: any // The amount paid out
-	user: DeleteCompetition_deleteCompetition_competition_competitionRecords_payout_user // The user that paid it
+	__typename: "Payout"
+	/**
+	 * The unique ID of the payout
+	 */
+	id: string
+	/**
+	 * The amount paid out
+	 */
+	amount: any
+	/**
+	 * The user that paid it
+	 */
+	user: DeleteCompetition_deleteCompetition_competition_competitionRecords_payout_user
 }
 
 export interface DeleteCompetition_deleteCompetition_competition_competitionRecords_player {
-	id: string // The unique ID of the player
-	username: string // A valid username
+	__typename: "Player"
+	/**
+	 * The unique ID of the player
+	 */
+	id: string
+	/**
+	 * A valid username
+	 */
+	username: string
 }
 
 export interface DeleteCompetition_deleteCompetition_competition_competitionRecords {
-	id: string // The unique ID of the competition
-	xp: any // The XP gained
-	position: number // The ranking within the competition
-	payout: DeleteCompetition_deleteCompetition_competition_competitionRecords_payout | null // Gets a specific payout for the competition record
-	player: DeleteCompetition_deleteCompetition_competition_competitionRecords_player // The associated player
+	__typename: "CompetitionRecord"
+	/**
+	 * The unique ID of the competition
+	 */
+	id: string
+	/**
+	 * The XP gained
+	 */
+	xp: any
+	/**
+	 * The ranking within the competition
+	 */
+	position: number
+	/**
+	 * Gets a specific payout for the competition record
+	 */
+	payout: DeleteCompetition_deleteCompetition_competition_competitionRecords_payout | null
+	/**
+	 * The associated player
+	 */
+	player: DeleteCompetition_deleteCompetition_competition_competitionRecords_player
 }
 
 export interface DeleteCompetition_deleteCompetition_competition {
-	competitionRecords: DeleteCompetition_deleteCompetition_competition_competitionRecords[] // Returns a list of competition records belonging to the object
-	externalUrl: string | null // The external competition URL
-	id: string // The unique ID of the competition
+	__typename: "Competition"
+	/**
+	 * Returns a list of competition records belonging to the object
+	 */
+	competitionRecords: DeleteCompetition_deleteCompetition_competition_competitionRecords[]
+	/**
+	 * The external competition URL
+	 */
+	externalUrl: string | null
+	/**
+	 * The unique ID of the competition
+	 */
+	id: string
 }
 
 export interface DeleteCompetition_deleteCompetition {
-	clientMutationId: string | null // A unique identifier for the client performing the mutation.
+	__typename: "DeleteCompetitionMutationPayload"
+	/**
+	 * A unique identifier for the client performing the mutation.
+	 */
+	clientMutationId: string | null
 	competition: DeleteCompetition_deleteCompetition_competition
 }
 
@@ -368,6 +706,8 @@ export interface DeleteCompetitionVariables {
 }
 
 /* tslint:disable */
+/* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -375,30 +715,71 @@ export interface DeleteCompetitionVariables {
 // ====================================================
 
 export interface CreateCompetitionRecord_createCompetitionRecord_competitionRecord_player {
-	id: string // The unique ID of the player
-	username: string // A valid username
+	__typename: "Player"
+	/**
+	 * The unique ID of the player
+	 */
+	id: string
+	/**
+	 * A valid username
+	 */
+	username: string
 }
 
 export interface CreateCompetitionRecord_createCompetitionRecord_competitionRecord_payout_user {
-	id: string // The unique ID of the user
-	username: string // A valid username
+	__typename: "User"
+	/**
+	 * The unique ID of the user
+	 */
+	id: string
+	/**
+	 * A valid username
+	 */
+	username: string
 }
 
 export interface CreateCompetitionRecord_createCompetitionRecord_competitionRecord_payout {
-	id: string // The unique ID of the payout
-	amount: any // The amount paid out
-	user: CreateCompetitionRecord_createCompetitionRecord_competitionRecord_payout_user // The user that paid it
+	__typename: "Payout"
+	/**
+	 * The unique ID of the payout
+	 */
+	id: string
+	/**
+	 * The amount paid out
+	 */
+	amount: any
+	/**
+	 * The user that paid it
+	 */
+	user: CreateCompetitionRecord_createCompetitionRecord_competitionRecord_payout_user
 }
 
 export interface CreateCompetitionRecord_createCompetitionRecord_competitionRecord {
-	id: string // The unique ID of the competition
-	position: number // The ranking within the competition
-	xp: any // The XP gained
-	player: CreateCompetitionRecord_createCompetitionRecord_competitionRecord_player // The associated player
-	payout: CreateCompetitionRecord_createCompetitionRecord_competitionRecord_payout | null // Gets a specific payout for the competition record
+	__typename: "CompetitionRecord"
+	/**
+	 * The unique ID of the competition
+	 */
+	id: string
+	/**
+	 * The ranking within the competition
+	 */
+	position: number
+	/**
+	 * The XP gained
+	 */
+	xp: any
+	/**
+	 * The associated player
+	 */
+	player: CreateCompetitionRecord_createCompetitionRecord_competitionRecord_player
+	/**
+	 * Gets a specific payout for the competition record
+	 */
+	payout: CreateCompetitionRecord_createCompetitionRecord_competitionRecord_payout | null
 }
 
 export interface CreateCompetitionRecord_createCompetitionRecord {
+	__typename: "CreateCompetitionRecordMutationPayload"
 	competitionRecord: CreateCompetitionRecord_createCompetitionRecord_competitionRecord
 }
 
@@ -414,6 +795,8 @@ export interface CreateCompetitionRecordVariables {
 }
 
 /* tslint:disable */
+/* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -421,30 +804,71 @@ export interface CreateCompetitionRecordVariables {
 // ====================================================
 
 export interface UpdateCompetitionRecord_updateCompetitionRecord_competitionRecord_player {
-	id: string // The unique ID of the player
-	username: string // A valid username
+	__typename: "Player"
+	/**
+	 * The unique ID of the player
+	 */
+	id: string
+	/**
+	 * A valid username
+	 */
+	username: string
 }
 
 export interface UpdateCompetitionRecord_updateCompetitionRecord_competitionRecord_payout_user {
-	id: string // The unique ID of the user
-	username: string // A valid username
+	__typename: "User"
+	/**
+	 * The unique ID of the user
+	 */
+	id: string
+	/**
+	 * A valid username
+	 */
+	username: string
 }
 
 export interface UpdateCompetitionRecord_updateCompetitionRecord_competitionRecord_payout {
-	id: string // The unique ID of the payout
-	amount: any // The amount paid out
-	user: UpdateCompetitionRecord_updateCompetitionRecord_competitionRecord_payout_user // The user that paid it
+	__typename: "Payout"
+	/**
+	 * The unique ID of the payout
+	 */
+	id: string
+	/**
+	 * The amount paid out
+	 */
+	amount: any
+	/**
+	 * The user that paid it
+	 */
+	user: UpdateCompetitionRecord_updateCompetitionRecord_competitionRecord_payout_user
 }
 
 export interface UpdateCompetitionRecord_updateCompetitionRecord_competitionRecord {
-	id: string // The unique ID of the competition
-	position: number // The ranking within the competition
-	xp: any // The XP gained
-	player: UpdateCompetitionRecord_updateCompetitionRecord_competitionRecord_player // The associated player
-	payout: UpdateCompetitionRecord_updateCompetitionRecord_competitionRecord_payout | null // Gets a specific payout for the competition record
+	__typename: "CompetitionRecord"
+	/**
+	 * The unique ID of the competition
+	 */
+	id: string
+	/**
+	 * The ranking within the competition
+	 */
+	position: number
+	/**
+	 * The XP gained
+	 */
+	xp: any
+	/**
+	 * The associated player
+	 */
+	player: UpdateCompetitionRecord_updateCompetitionRecord_competitionRecord_player
+	/**
+	 * Gets a specific payout for the competition record
+	 */
+	payout: UpdateCompetitionRecord_updateCompetitionRecord_competitionRecord_payout | null
 }
 
 export interface UpdateCompetitionRecord_updateCompetitionRecord {
+	__typename: "UpdateCompetitionRecordMutationPayload"
 	competitionRecord: UpdateCompetitionRecord_updateCompetitionRecord_competitionRecord
 }
 
@@ -461,6 +885,8 @@ export interface UpdateCompetitionRecordVariables {
 }
 
 /* tslint:disable */
+/* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -468,30 +894,71 @@ export interface UpdateCompetitionRecordVariables {
 // ====================================================
 
 export interface DeleteCompetitionRecord_deleteCompetitionRecord_competitionRecord_player {
-	id: string // The unique ID of the player
-	username: string // A valid username
+	__typename: "Player"
+	/**
+	 * The unique ID of the player
+	 */
+	id: string
+	/**
+	 * A valid username
+	 */
+	username: string
 }
 
 export interface DeleteCompetitionRecord_deleteCompetitionRecord_competitionRecord_payout_user {
-	id: string // The unique ID of the user
-	username: string // A valid username
+	__typename: "User"
+	/**
+	 * The unique ID of the user
+	 */
+	id: string
+	/**
+	 * A valid username
+	 */
+	username: string
 }
 
 export interface DeleteCompetitionRecord_deleteCompetitionRecord_competitionRecord_payout {
-	id: string // The unique ID of the payout
-	amount: any // The amount paid out
-	user: DeleteCompetitionRecord_deleteCompetitionRecord_competitionRecord_payout_user // The user that paid it
+	__typename: "Payout"
+	/**
+	 * The unique ID of the payout
+	 */
+	id: string
+	/**
+	 * The amount paid out
+	 */
+	amount: any
+	/**
+	 * The user that paid it
+	 */
+	user: DeleteCompetitionRecord_deleteCompetitionRecord_competitionRecord_payout_user
 }
 
 export interface DeleteCompetitionRecord_deleteCompetitionRecord_competitionRecord {
-	id: string // The unique ID of the competition
-	position: number // The ranking within the competition
-	xp: any // The XP gained
-	player: DeleteCompetitionRecord_deleteCompetitionRecord_competitionRecord_player // The associated player
-	payout: DeleteCompetitionRecord_deleteCompetitionRecord_competitionRecord_payout | null // Gets a specific payout for the competition record
+	__typename: "CompetitionRecord"
+	/**
+	 * The unique ID of the competition
+	 */
+	id: string
+	/**
+	 * The ranking within the competition
+	 */
+	position: number
+	/**
+	 * The XP gained
+	 */
+	xp: any
+	/**
+	 * The associated player
+	 */
+	player: DeleteCompetitionRecord_deleteCompetitionRecord_competitionRecord_player
+	/**
+	 * Gets a specific payout for the competition record
+	 */
+	payout: DeleteCompetitionRecord_deleteCompetitionRecord_competitionRecord_payout | null
 }
 
 export interface DeleteCompetitionRecord_deleteCompetitionRecord {
+	__typename: "DeleteCompetitionRecordMutationPayload"
 	competitionRecord: DeleteCompetitionRecord_deleteCompetitionRecord_competitionRecord
 }
 
@@ -504,6 +971,8 @@ export interface DeleteCompetitionRecordVariables {
 }
 
 /* tslint:disable */
+/* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -511,17 +980,35 @@ export interface DeleteCompetitionRecordVariables {
 // ====================================================
 
 export interface CreatePayout_createPayout_payout_user {
-	id: string // The unique ID of the user
-	username: string // A valid username
+	__typename: "User"
+	/**
+	 * The unique ID of the user
+	 */
+	id: string
+	/**
+	 * A valid username
+	 */
+	username: string
 }
 
 export interface CreatePayout_createPayout_payout {
-	id: string // The unique ID of the payout
-	amount: any // The amount paid out
-	user: CreatePayout_createPayout_payout_user // The user that paid it
+	__typename: "Payout"
+	/**
+	 * The unique ID of the payout
+	 */
+	id: string
+	/**
+	 * The amount paid out
+	 */
+	amount: any
+	/**
+	 * The user that paid it
+	 */
+	user: CreatePayout_createPayout_payout_user
 }
 
 export interface CreatePayout_createPayout {
+	__typename: "CreatePayoutMutationPayload"
 	payout: CreatePayout_createPayout_payout
 }
 
@@ -536,6 +1023,8 @@ export interface CreatePayoutVariables {
 }
 
 /* tslint:disable */
+/* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -543,17 +1032,35 @@ export interface CreatePayoutVariables {
 // ====================================================
 
 export interface UpdatePayout_updatePayout_payout_user {
-	id: string // The unique ID of the user
-	username: string // A valid username
+	__typename: "User"
+	/**
+	 * The unique ID of the user
+	 */
+	id: string
+	/**
+	 * A valid username
+	 */
+	username: string
 }
 
 export interface UpdatePayout_updatePayout_payout {
-	id: string // The unique ID of the payout
-	amount: any // The amount paid out
-	user: UpdatePayout_updatePayout_payout_user // The user that paid it
+	__typename: "Payout"
+	/**
+	 * The unique ID of the payout
+	 */
+	id: string
+	/**
+	 * The amount paid out
+	 */
+	amount: any
+	/**
+	 * The user that paid it
+	 */
+	user: UpdatePayout_updatePayout_payout_user
 }
 
 export interface UpdatePayout_updatePayout {
+	__typename: "UpdatePayoutMutationPayload"
 	payout: UpdatePayout_updatePayout_payout
 }
 
@@ -569,6 +1076,8 @@ export interface UpdatePayoutVariables {
 }
 
 /* tslint:disable */
+/* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -576,17 +1085,35 @@ export interface UpdatePayoutVariables {
 // ====================================================
 
 export interface DeletePayout_deletePayout_payout_user {
-	id: string // The unique ID of the user
-	username: string // A valid username
+	__typename: "User"
+	/**
+	 * The unique ID of the user
+	 */
+	id: string
+	/**
+	 * A valid username
+	 */
+	username: string
 }
 
 export interface DeletePayout_deletePayout_payout {
-	id: string // The unique ID of the payout
-	amount: any // The amount paid out
-	user: DeletePayout_deletePayout_payout_user // The user that paid it
+	__typename: "Payout"
+	/**
+	 * The unique ID of the payout
+	 */
+	id: string
+	/**
+	 * The amount paid out
+	 */
+	amount: any
+	/**
+	 * The user that paid it
+	 */
+	user: DeletePayout_deletePayout_payout_user
 }
 
 export interface DeletePayout_deletePayout {
+	__typename: "DeletePayoutMutationPayload"
 	payout: DeletePayout_deletePayout_payout
 }
 
@@ -599,6 +1126,8 @@ export interface DeletePayoutVariables {
 }
 
 /* tslint:disable */
+/* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -606,38 +1135,94 @@ export interface DeletePayoutVariables {
 // ====================================================
 
 export interface Competitions_competitions_competitionRecords_payout_user {
-	id: string // The unique ID of the user
-	username: string // A valid username
+	__typename: "User"
+	/**
+	 * The unique ID of the user
+	 */
+	id: string
+	/**
+	 * A valid username
+	 */
+	username: string
 }
 
 export interface Competitions_competitions_competitionRecords_payout {
-	id: string // The unique ID of the payout
-	amount: any // The amount paid out
-	user: Competitions_competitions_competitionRecords_payout_user // The user that paid it
+	__typename: "Payout"
+	/**
+	 * The unique ID of the payout
+	 */
+	id: string
+	/**
+	 * The amount paid out
+	 */
+	amount: any
+	/**
+	 * The user that paid it
+	 */
+	user: Competitions_competitions_competitionRecords_payout_user
 }
 
 export interface Competitions_competitions_competitionRecords_player {
-	id: string // The unique ID of the player
-	username: string // A valid username
+	__typename: "Player"
+	/**
+	 * The unique ID of the player
+	 */
+	id: string
+	/**
+	 * A valid username
+	 */
+	username: string
 }
 
 export interface Competitions_competitions_competitionRecords {
-	payout: Competitions_competitions_competitionRecords_payout | null // Gets a specific payout for the competition record
-	player: Competitions_competitions_competitionRecords_player // The associated player
-	position: number // The ranking within the competition
-	xp: any // The XP gained
-	id: string // The unique ID of the competition
+	__typename: "CompetitionRecord"
+	/**
+	 * Gets a specific payout for the competition record
+	 */
+	payout: Competitions_competitions_competitionRecords_payout | null
+	/**
+	 * The associated player
+	 */
+	player: Competitions_competitions_competitionRecords_player
+	/**
+	 * The ranking within the competition
+	 */
+	position: number
+	/**
+	 * The XP gained
+	 */
+	xp: any
+	/**
+	 * The unique ID of the competition
+	 */
+	id: string
 }
 
 export interface Competitions_competitions {
-	competitionRecords: Competitions_competitions_competitionRecords[] // Returns a list of competition records belonging to the object
-	externalUrl: string | null // The external competition URL
-	id: string // The unique ID of the competition
-	createdAt: string | null // The date time the competition was created at
+	__typename: "Competition"
+	/**
+	 * Returns a list of competition records belonging to the object
+	 */
+	competitionRecords: Competitions_competitions_competitionRecords[]
+	/**
+	 * The external competition URL
+	 */
+	externalUrl: string | null
+	/**
+	 * The unique ID of the competition
+	 */
+	id: string
+	/**
+	 * The date time the competition was created at
+	 */
+	createdAt: string | null
 }
 
 export interface Competitions {
-	competitions: Competitions_competitions[] // Returns a list of competitions
+	/**
+	 * Returns a list of competitions
+	 */
+	competitions: Competitions_competitions[]
 }
 
 export interface CompetitionsVariables {
@@ -649,6 +1234,8 @@ export interface CompetitionsVariables {
 }
 
 /* tslint:disable */
+/* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -656,31 +1243,74 @@ export interface CompetitionsVariables {
 // ====================================================
 
 export interface CompetitionRecords_competitionRecords_payout_user {
-	id: string // The unique ID of the user
-	username: string // A valid username
+	__typename: "User"
+	/**
+	 * The unique ID of the user
+	 */
+	id: string
+	/**
+	 * A valid username
+	 */
+	username: string
 }
 
 export interface CompetitionRecords_competitionRecords_payout {
-	id: string // The unique ID of the payout
-	amount: any // The amount paid out
-	user: CompetitionRecords_competitionRecords_payout_user // The user that paid it
+	__typename: "Payout"
+	/**
+	 * The unique ID of the payout
+	 */
+	id: string
+	/**
+	 * The amount paid out
+	 */
+	amount: any
+	/**
+	 * The user that paid it
+	 */
+	user: CompetitionRecords_competitionRecords_payout_user
 }
 
 export interface CompetitionRecords_competitionRecords_player {
-	id: string // The unique ID of the player
-	username: string // A valid username
+	__typename: "Player"
+	/**
+	 * The unique ID of the player
+	 */
+	id: string
+	/**
+	 * A valid username
+	 */
+	username: string
 }
 
 export interface CompetitionRecords_competitionRecords {
-	id: string // The unique ID of the competition
-	payout: CompetitionRecords_competitionRecords_payout | null // Gets a specific payout for the competition record
-	player: CompetitionRecords_competitionRecords_player // The associated player
-	position: number // The ranking within the competition
-	xp: any // The XP gained
+	__typename: "CompetitionRecord"
+	/**
+	 * The unique ID of the competition
+	 */
+	id: string
+	/**
+	 * Gets a specific payout for the competition record
+	 */
+	payout: CompetitionRecords_competitionRecords_payout | null
+	/**
+	 * The associated player
+	 */
+	player: CompetitionRecords_competitionRecords_player
+	/**
+	 * The ranking within the competition
+	 */
+	position: number
+	/**
+	 * The XP gained
+	 */
+	xp: any
 }
 
 export interface CompetitionRecords {
-	competitionRecords: CompetitionRecords_competitionRecords[] // Returns a list of competition records belonging to the object
+	/**
+	 * Returns a list of competition records belonging to the object
+	 */
+	competitionRecords: CompetitionRecords_competitionRecords[]
 }
 
 export interface CompetitionRecordsVariables {
@@ -696,6 +1326,8 @@ export interface CompetitionRecordsVariables {
 }
 
 /* tslint:disable */
+/* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 // ====================================================
@@ -703,37 +1335,90 @@ export interface CompetitionRecordsVariables {
 // ====================================================
 
 export interface Competition_competition_competitionRecords_payout_user {
-	id: string // The unique ID of the user
-	username: string // A valid username
+	__typename: "User"
+	/**
+	 * The unique ID of the user
+	 */
+	id: string
+	/**
+	 * A valid username
+	 */
+	username: string
 }
 
 export interface Competition_competition_competitionRecords_payout {
-	id: string // The unique ID of the payout
-	amount: any // The amount paid out
-	user: Competition_competition_competitionRecords_payout_user // The user that paid it
+	__typename: "Payout"
+	/**
+	 * The unique ID of the payout
+	 */
+	id: string
+	/**
+	 * The amount paid out
+	 */
+	amount: any
+	/**
+	 * The user that paid it
+	 */
+	user: Competition_competition_competitionRecords_payout_user
 }
 
 export interface Competition_competition_competitionRecords_player {
-	id: string // The unique ID of the player
-	username: string // A valid username
+	__typename: "Player"
+	/**
+	 * The unique ID of the player
+	 */
+	id: string
+	/**
+	 * A valid username
+	 */
+	username: string
 }
 
 export interface Competition_competition_competitionRecords {
-	id: string // The unique ID of the competition
-	xp: any // The XP gained
-	position: number // The ranking within the competition
-	payout: Competition_competition_competitionRecords_payout | null // Gets a specific payout for the competition record
-	player: Competition_competition_competitionRecords_player // The associated player
+	__typename: "CompetitionRecord"
+	/**
+	 * The unique ID of the competition
+	 */
+	id: string
+	/**
+	 * The XP gained
+	 */
+	xp: any
+	/**
+	 * The ranking within the competition
+	 */
+	position: number
+	/**
+	 * Gets a specific payout for the competition record
+	 */
+	payout: Competition_competition_competitionRecords_payout | null
+	/**
+	 * The associated player
+	 */
+	player: Competition_competition_competitionRecords_player
 }
 
 export interface Competition_competition {
-	competitionRecords: Competition_competition_competitionRecords[] // Returns a list of competition records belonging to the object
-	externalUrl: string | null // The external competition URL
-	id: string // The unique ID of the competition
+	__typename: "Competition"
+	/**
+	 * Returns a list of competition records belonging to the object
+	 */
+	competitionRecords: Competition_competition_competitionRecords[]
+	/**
+	 * The external competition URL
+	 */
+	externalUrl: string | null
+	/**
+	 * The unique ID of the competition
+	 */
+	id: string
 }
 
 export interface Competition {
-	competition: Competition_competition | null // Gets a specific competition object
+	/**
+	 * Gets a specific competition object
+	 */
+	competition: Competition_competition | null
 }
 
 export interface CompetitionVariables {
@@ -741,11 +1426,22 @@ export interface CompetitionVariables {
 }
 
 /* tslint:disable */
+/* eslint-disable */
+// @generated
 // This file was automatically generated and should not be edited.
 
 //==============================================================
 // START Enums and Input Objects
 //==============================================================
+
+export enum CompetitionOrderEnum {
+	CREATED_AT = "CREATED_AT",
+}
+
+export enum CompetitionRecordOrderEnum {
+	POSITION = "POSITION",
+	XP = "XP",
+}
 
 export enum OrderEnum {
 	ASC = "ASC",
@@ -759,15 +1455,6 @@ export enum PlayerOrderEnum {
 	RANK = "RANK",
 	UPDATED_AT = "UPDATED_AT",
 	USERNAME = "USERNAME",
-}
-
-export enum CompetitionOrderEnum {
-	CREATED_AT = "CREATED_AT",
-}
-
-export enum CompetitionRecordOrderEnum {
-	POSITION = "POSITION",
-	XP = "XP",
 }
 
 //==============================================================

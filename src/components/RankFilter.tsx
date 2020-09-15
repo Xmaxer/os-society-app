@@ -63,7 +63,10 @@ function RankFilter({ handler, reset, ...rest }: IRankFilterProps) {
 	})
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		const newValue = { ...checked, [event.target.name]: event.target.checked }
+		const newValue = {
+			...checked,
+			[event.target.name]: event.target.checked,
+		}
 		setChecked(newValue)
 		handler(newValue)
 	}

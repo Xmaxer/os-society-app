@@ -60,7 +60,9 @@ function DaysFilter({ handler, reset, ...rest }: IDaysFilterProps) {
 
 	return (
 		<div className={classes.container} {...rest}>
-			<Typography className={classes.label}>Number of Days in CC</Typography>
+			<Typography className={classes.label}>
+				Number of Days in CC
+			</Typography>
 			<StyledSlider
 				min={MIN_DAYS}
 				max={MAX_DAYS}

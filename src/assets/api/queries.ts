@@ -16,28 +16,14 @@ export type IPlayerOrderEnum =
 	| "UPDATED_AT"
 export type Maybe<T> = T | null
 
-export interface ILoginMutationData {
-	login: {
-		token: string
-		user: {
-			id: number
-			username: string
-			resetPassword: boolean
-		}
-	}
-}
-
-export interface ILoginMutationVariables {
-	username: string
-	password: string
-}
-
 export const LOGIN_MUTATION: IRequest = {
 	type: MUTATION_OPERATION,
 	query: gql`
 		mutation Login($username: String!, $password: String!) {
 			login(
-				input: { attributes: { username: $username, password: $password } }
+				input: {
+					attributes: { username: $username, password: $password }
+				}
 			) {
 				token
 				user {
@@ -48,12 +34,6 @@ export const LOGIN_MUTATION: IRequest = {
 			}
 		}
 	`,
-}
-
-export interface ILoginMutation {
-	logout: {
-		success: boolean
-	}
 }
 
 export const LOGOUT_MUTATION: IRequest = {
@@ -235,7 +215,9 @@ export const SET_PASSWORD_MUTATION: IRequest = {
 	type: MUTATION_OPERATION,
 	query: gql`
 		mutation SetPassword($id: ID!, $password: String!) {
-			updateUser(input: { attributes: { password: $password }, id: $id }) {
+			updateUser(
+				input: { attributes: { password: $password }, id: $id }
+			) {
 				user {
 					id
 					username
@@ -250,7 +232,9 @@ export const CREATE_COMPETITION_MUTATION: IRequest = {
 	type: MUTATION_OPERATION,
 	query: gql`
 		mutation CreateCompetition($externalUrl: String) {
-			createCompetition(input: { attributes: { externalUrl: $externalUrl } }) {
+			createCompetition(
+				input: { attributes: { externalUrl: $externalUrl } }
+			) {
 				competition {
 					competitionRecords {
 						id

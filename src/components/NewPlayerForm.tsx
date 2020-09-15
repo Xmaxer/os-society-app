@@ -91,7 +91,9 @@ function NewPlayerForm({ successHandler, cancelHandler }: INewPlayerFormProps) {
 				})
 			}}
 			validate={(values) => {
-				const errors: { [key: string]: any } = {}
+				const errors: {
+					[key: string]: any
+				} = {}
 				if (!values.username) {
 					errors.username = "Invalid username"
 				}
@@ -104,7 +106,13 @@ function NewPlayerForm({ successHandler, cancelHandler }: INewPlayerFormProps) {
 				return errors
 			}}
 			validateOnMount={true}>
-			{({ values, handleChange, handleSubmit, setFieldValue, isValid }) => (
+			{({
+				values,
+				handleChange,
+				handleSubmit,
+				setFieldValue,
+				isValid,
+			}) => (
 				<form
 					className={classes.formContainer}
 					onSubmit={(event) => {
@@ -118,7 +126,10 @@ function NewPlayerForm({ successHandler, cancelHandler }: INewPlayerFormProps) {
 						/>
 						<NewPlayerJoinDateField
 							changeHandler={(date) => {
-								setFieldValue("joinDate", date ? toDate(date) : null)
+								setFieldValue(
+									"joinDate",
+									date ? toDate(date) : null
+								)
 							}}
 							value={values.joinDate}
 						/>
@@ -144,7 +155,9 @@ function NewPlayerForm({ successHandler, cancelHandler }: INewPlayerFormProps) {
 							<StyledIconButton
 								onClick={(event) =>
 									handleSubmit(
-										(event as unknown) as React.FormEvent<HTMLFormElement>
+										(event as unknown) as React.FormEvent<
+											HTMLFormElement
+										>
 									)
 								}
 								disabled={!isValid}

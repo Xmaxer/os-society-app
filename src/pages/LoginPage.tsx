@@ -6,13 +6,10 @@ import Divider from "@material-ui/core/Divider"
 import { Formik } from "formik"
 import CircularProgress from "@material-ui/core/CircularProgress"
 import useApi from "../hooks/useApi"
-import {
-	ILoginMutationData,
-	ILoginMutationVariables,
-	LOGIN_MUTATION,
-} from "../assets/api/queries"
+import { LOGIN_MUTATION } from "../assets/api/queries"
 import { CHANGE_PASSWORD_ROUTE, HOME_ROUTE } from "../assets/constants/routes"
 import { StyledButton, StyledTextField } from "../assets/theme/styledComponents"
+import { Login, LoginVariables } from "../assets/api/apiInterfaces"
 
 const useStyles = makeStyles((theme) => ({
 	background: {
@@ -93,18 +90,20 @@ function LoginPage() {
 	const classes = useStyles()
 	const history = useHistory()
 
-	const { request } = useApi<ILoginMutationData, ILoginMutationVariables>({
+	const { request } = useApi<Login, LoginVariables>({
 		query: LOGIN_MUTATION,
 	})
 
-	const handleSuccess = (data: ILoginMutationData) => {
+	const handleSuccess = (data: Login) => {
 		if (data && data.login && data.login.token && data.login.user) {
 			localStorage.setItem("access_token", data.login.token)
 
 			if (data.login.user.resetPassword) {
 				history.push({
 					pathname: CHANGE_PASSWORD_ROUTE,
-					state: { user: data.login.user },
+					state: {
+						user: data.login.user,
+					},
 				})
 			} else {
 				history.push({
@@ -129,11 +128,16 @@ function LoginPage() {
 					<Divider className={classes.divider} />
 				</div>
 				<Formik
-					initialValues={{ username: "", password: "" }}
+					initialValues={{
+						username: "",
+						password: "",
+					}}
 					onSubmit={(values, { setSubmitting }) => {
 						setSubmitting(true)
 						request({
-							variables: { ...values },
+							variables: {
+								...values,
+							},
 							handleComplete: () => {
 								setSubmitting(false)
 							},

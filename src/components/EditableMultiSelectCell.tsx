@@ -144,13 +144,16 @@ function EditableMultiSelectCell({
 							})}
 							{value.length > 2 && (
 								<Tooltip title={`${value.slice(2).join(", ")}`}>
-									<Typography className={classes.additionalTags}>{`+${
+									<Typography
+										className={classes.additionalTags}>{`+${
 										value.length - 2
 									}`}</Typography>
 								</Tooltip>
 							)}
 						</div>
-						<StyledIconButton onClick={handleEdit} className={classes.addIcon}>
+						<StyledIconButton
+							onClick={handleEdit}
+							className={classes.addIcon}>
 							<AddIcon />
 						</StyledIconButton>
 					</div>

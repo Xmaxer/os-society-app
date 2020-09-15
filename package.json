@@ -30,20 +30,20 @@
 		"graphql-tag": "2.11.0"
 	},
 	"devDependencies": {
-		"apollo-codegen": "0.20.2",
+		"apollo": "2.30.3",
 		"prettier": "2.1.1"
 	},
 	"scripts": {
 		"install-modules": "pnpm install",
 		"start": "react-scripts start",
 		"build": "GENERATE_SOURCEMAP=false react-scripts build",
-		"test": "react-scripts test",
+		"test": "react-scripts test --passWithNoTests",
 		"eject": "react-scripts eject",
 		"prettier": "prettier --write .",
 		"prettier-ci": "prettier --write .",
 		"graphql-generate": "npm run graphql-generate-schema && npm run graphql-generate-typescript-interfaces",
-		"graphql-generate-typescript-interfaces": "apollo-codegen generate ./src/assets/api/queries.ts --schema ./src/assets/api/schema.json --target typescript --output ./src/assets/api/apiInterfaces.ts",
-		"graphql-generate-schema": "apollo-codegen introspect-schema http://192.168.79.131:3000/api --output ./src/assets/api/schema.json"
+		"graphql-generate-typescript-interfaces": "apollo client:codegen --includes=./src/assets/api/queries.ts --localSchemaFile=./src/assets/api/schema.json --target=typescript --outputFlat ./src/assets/api/apiInterfaces.ts",
+		"graphql-generate-schema": "apollo client:download-schema --endpoint=http://192.168.79.131:3000/api ./src/assets/api/schema.json"
 	},
 	"eslintConfig": {
 		"extends": "react-app"

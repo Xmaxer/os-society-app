@@ -80,7 +80,9 @@ function NewPlayerBar({ handleAddNewPlayer }: INewPlayerBarProps) {
 					/>
 				)
 			) : (
-				<StyledButton onClick={handleNewPlayerClick} variant={"outlined"}>
+				<StyledButton
+					onClick={handleNewPlayerClick}
+					variant={"outlined"}>
 					Click here to add a new player
 				</StyledButton>
 			)}

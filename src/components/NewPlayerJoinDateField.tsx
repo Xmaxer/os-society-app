@@ -135,7 +135,11 @@ function NewPlayerJoinDateField({
 		<LocalizationProvider locale={enGB} dateAdapter={DateFnsAdapter as any}>
 			<ThemeProvider theme={datePickerTheme}>
 				<DesktopDatePicker
-					InputProps={{ classes: { root: classes.datePickerRoot } }}
+					InputProps={{
+						classes: {
+							root: classes.datePickerRoot,
+						},
+					}}
 					renderInput={(props) => (
 						<StyledTextField
 							{...props}

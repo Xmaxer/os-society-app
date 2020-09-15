@@ -1,2230 +1,2029 @@
 {
-	"data": {
-		"__schema": {
-			"queryType": {
-				"name": "Query"
+	"__schema": {
+		"description": null,
+		"queryType": {
+			"name": "Query"
+		},
+		"mutationType": {
+			"name": "Mutation"
+		},
+		"subscriptionType": null,
+		"types": [
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "AuthInput",
+				"description": null,
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "username",
+						"description": "A valid email",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "password",
+						"description": "The password for the email user",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
 			},
-			"mutationType": {
-				"name": "Mutation"
+			{
+				"kind": "SCALAR",
+				"name": "String",
+				"description": "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.",
+				"fields": null,
+				"inputFields": null,
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
 			},
-			"subscriptionType": null,
-			"types": [
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "AuthInput",
-					"description": null,
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "username",
-							"description": "A valid email",
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "String",
+			{
+				"kind": "SCALAR",
+				"name": "BigInt",
+				"description": "Represents non-fractional signed whole numeric values. Since the value may exceed the size of a 32-bit integer, it's encoded as a string.",
+				"fields": null,
+				"inputFields": null,
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "Competition",
+				"description": "All the possible competition data",
+				"fields": [
+					{
+						"name": "competitionRecords",
+						"description": "Returns a list of competition records belonging to the object",
+						"args": [
+							{
+								"name": "filter",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "CompetitionRecordFilter",
 									"ofType": null
-								}
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "password",
-							"description": "The password for the email user",
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "String",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "SCALAR",
-					"name": "BigInt",
-					"description": "Represents non-fractional signed whole numeric values. Since the value may exceed the size of a 32-bit integer, it's encoded as a string.",
-					"fields": null,
-					"inputFields": null,
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "SCALAR",
-					"name": "Boolean",
-					"description": "Represents `true` or `false` values.",
-					"fields": null,
-					"inputFields": null,
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "Competition",
-					"description": "All the possible competition data",
-					"fields": [
-						{
-							"name": "competitionRecords",
-							"description": "Returns a list of competition records belonging to the object",
-							"args": [
-								{
-									"name": "filter",
-									"description": null,
-									"type": {
-										"kind": "INPUT_OBJECT",
-										"name": "CompetitionRecordFilter",
-										"ofType": null
-									},
-									"defaultValue": null
 								},
-								{
-									"name": "order",
-									"description": null,
-									"type": {
-										"kind": "INPUT_OBJECT",
-										"name": "CompetitionRecordOrder",
-										"ofType": null
-									},
-									"defaultValue": "{order: ASC}"
-								},
-								{
-									"name": "first",
-									"description": null,
-									"type": {
-										"kind": "SCALAR",
-										"name": "Int",
-										"ofType": null
-									},
-									"defaultValue": "3"
-								},
-								{
-									"name": "skip",
-									"description": null,
-									"type": {
-										"kind": "SCALAR",
-										"name": "Int",
-										"ofType": null
-									},
-									"defaultValue": "0"
-								},
-								{
-									"name": "competitionId",
-									"description": null,
-									"type": {
-										"kind": "SCALAR",
-										"name": "ID",
-										"ofType": null
-									},
-									"defaultValue": null
-								}
-							],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "LIST",
-									"name": null,
-									"ofType": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "OBJECT",
-											"name": "CompetitionRecord",
-											"ofType": null
-										}
-									}
-								}
+								"defaultValue": null
 							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "createdAt",
-							"description": "The date time the competition was created at",
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "externalUrl",
-							"description": "The external competition URL",
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "id",
-							"description": "The unique ID of the competition",
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "ID",
+							{
+								"name": "order",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "CompetitionRecordOrder",
 									"ofType": null
-								}
+								},
+								"defaultValue": "{order: ASC}"
 							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "CompetitionFilter",
-					"description": null,
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "externalUrlContains",
-							"description": "Filter by what the external URL contains",
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "CompetitionInput",
-					"description": "Arguments for editing or creating a new competition.",
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "externalUrl",
-							"description": "A valid external URL",
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "CompetitionOrder",
-					"description": null,
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "orderBy",
-							"description": "What to order the results by",
-							"type": {
-								"kind": "ENUM",
-								"name": "CompetitionOrderEnum",
-								"ofType": null
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "order",
-							"description": "Direction to order results by",
-							"type": {
-								"kind": "ENUM",
-								"name": "OrderEnum",
-								"ofType": null
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "ENUM",
-					"name": "CompetitionOrderEnum",
-					"description": null,
-					"fields": null,
-					"inputFields": null,
-					"interfaces": null,
-					"enumValues": [
-						{
-							"name": "CREATED_AT",
-							"description": null,
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "CompetitionRecord",
-					"description": "All the possible payout data",
-					"fields": [
-						{
-							"name": "id",
-							"description": "The unique ID of the competition",
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "ID",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "payout",
-							"description": "Gets a specific payout for the competition record",
-							"args": [],
-							"type": {
-								"kind": "OBJECT",
-								"name": "Payout",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "player",
-							"description": "The associated player",
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "OBJECT",
-									"name": "Player",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "position",
-							"description": "The ranking within the competition",
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
+							{
+								"name": "first",
+								"description": null,
+								"type": {
 									"kind": "SCALAR",
 									"name": "Int",
 									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "xp",
-							"description": "The XP gained",
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "BigInt",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "CompetitionRecordFilter",
-					"description": null,
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "startPosition",
-							"description": "Filter by minimum position",
-							"type": {
-								"kind": "SCALAR",
-								"name": "Int",
-								"ofType": null
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "endPosition",
-							"description": "Filter by maximum position",
-							"type": {
-								"kind": "SCALAR",
-								"name": "Int",
-								"ofType": null
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "startXp",
-							"description": "Filter by minimum xp",
-							"type": {
-								"kind": "SCALAR",
-								"name": "Int",
-								"ofType": null
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "endXp",
-							"description": "Filter by maximum xp",
-							"type": {
-								"kind": "SCALAR",
-								"name": "Int",
-								"ofType": null
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "CompetitionRecordInput",
-					"description": "Arguments for editing or creating a new competition record.",
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "xp",
-							"description": "The XP gained",
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "BigInt",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "position",
-							"description": "The position of the player",
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "BigInt",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "playerId",
-							"description": "The associated player ID",
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "ID",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "competitionId",
-							"description": "The associated competition ID",
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "ID",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "CompetitionRecordOrder",
-					"description": null,
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "orderBy",
-							"description": "What to order the results by",
-							"type": {
-								"kind": "ENUM",
-								"name": "CompetitionRecordOrderEnum",
-								"ofType": null
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "order",
-							"description": "Direction to order results by",
-							"type": {
-								"kind": "ENUM",
-								"name": "OrderEnum",
-								"ofType": null
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "ENUM",
-					"name": "CompetitionRecordOrderEnum",
-					"description": null,
-					"fields": null,
-					"inputFields": null,
-					"interfaces": null,
-					"enumValues": [
-						{
-							"name": "XP",
-							"description": null,
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "POSITION",
-							"description": null,
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "CreateCompetitionMutationInput",
-					"description": "Autogenerated input type of CreateCompetitionMutation",
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "attributes",
-							"description": null,
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "INPUT_OBJECT",
-									"name": "CompetitionInput",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "CreateCompetitionMutationPayload",
-					"description": "Autogenerated return type of CreateCompetitionMutation",
-					"fields": [
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "competition",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "OBJECT",
-									"name": "Competition",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "CreateCompetitionRecordMutationInput",
-					"description": "Autogenerated input type of CreateCompetitionRecordMutation",
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "attributes",
-							"description": null,
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "INPUT_OBJECT",
-									"name": "CompetitionRecordInput",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "CreateCompetitionRecordMutationPayload",
-					"description": "Autogenerated return type of CreateCompetitionRecordMutation",
-					"fields": [
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "competitionRecord",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "OBJECT",
-									"name": "CompetitionRecord",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "CreatePayoutMutationInput",
-					"description": "Autogenerated input type of CreatePayoutMutation",
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "attributes",
-							"description": null,
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "INPUT_OBJECT",
-									"name": "PayoutInput",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "CreatePayoutMutationPayload",
-					"description": "Autogenerated return type of CreatePayoutMutation",
-					"fields": [
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "payout",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "OBJECT",
-									"name": "Payout",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "CreatePlayerMutationInput",
-					"description": "Autogenerated input type of CreatePlayerMutation",
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "attributes",
-							"description": null,
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "INPUT_OBJECT",
-									"name": "PlayerInput",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "CreatePlayerMutationPayload",
-					"description": "Autogenerated return type of CreatePlayerMutation",
-					"fields": [
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "player",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "OBJECT",
-									"name": "Player",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "DeleteCompetitionMutationInput",
-					"description": "Autogenerated input type of DeleteCompetitionMutation",
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "id",
-							"description": null,
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "ID",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "DeleteCompetitionMutationPayload",
-					"description": "Autogenerated return type of DeleteCompetitionMutation",
-					"fields": [
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "competition",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "OBJECT",
-									"name": "Competition",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "DeleteCompetitionRecordMutationInput",
-					"description": "Autogenerated input type of DeleteCompetitionRecordMutation",
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "id",
-							"description": null,
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "ID",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "DeleteCompetitionRecordMutationPayload",
-					"description": "Autogenerated return type of DeleteCompetitionRecordMutation",
-					"fields": [
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "competitionRecord",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "OBJECT",
-									"name": "CompetitionRecord",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "DeletePayoutMutationInput",
-					"description": "Autogenerated input type of DeletePayoutMutation",
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "id",
-							"description": null,
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "ID",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "DeletePayoutMutationPayload",
-					"description": "Autogenerated return type of DeletePayoutMutation",
-					"fields": [
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "payout",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "OBJECT",
-									"name": "Payout",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "DeletePlayerMutationInput",
-					"description": "Autogenerated input type of DeletePlayerMutation",
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "id",
-							"description": null,
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "ID",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "DeletePlayerMutationPayload",
-					"description": "Autogenerated return type of DeletePlayerMutation",
-					"fields": [
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "player",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "OBJECT",
-									"name": "Player",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "SCALAR",
-					"name": "ID",
-					"description": "Represents a unique identifier that is Base64 obfuscated. It is often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `\"VXNlci0xMA==\"`) or integer (such as `4`) input value will be accepted as an ID.",
-					"fields": null,
-					"inputFields": null,
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "SCALAR",
-					"name": "ISO8601DateTime",
-					"description": "An ISO 8601-encoded datetime",
-					"fields": null,
-					"inputFields": null,
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "SCALAR",
-					"name": "Int",
-					"description": "Represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.",
-					"fields": null,
-					"inputFields": null,
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "LoginMutationInput",
-					"description": "Autogenerated input type of LoginMutation",
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "attributes",
-							"description": "Login Credentials",
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "INPUT_OBJECT",
-									"name": "AuthInput",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "LoginMutationPayload",
-					"description": "Autogenerated return type of LoginMutation",
-					"fields": [
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "token",
-							"description": "A valid token",
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "String",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "user",
-							"description": "A valid user",
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "OBJECT",
-									"name": "User",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "LogoutMutationInput",
-					"description": "Autogenerated input type of LogoutMutation",
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "LogoutMutationPayload",
-					"description": "Autogenerated return type of LogoutMutation",
-					"fields": [
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "success",
-							"description": "True if logged out of current session",
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "Boolean",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "Mutation",
-					"description": null,
-					"fields": [
-						{
-							"name": "createCompetition",
-							"description": null,
-							"args": [
-								{
-									"name": "input",
-									"description": null,
-									"type": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "INPUT_OBJECT",
-											"name": "CreateCompetitionMutationInput",
-											"ofType": null
-										}
-									},
-									"defaultValue": null
-								}
-							],
-							"type": {
-								"kind": "OBJECT",
-								"name": "CreateCompetitionMutationPayload",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "createCompetitionRecord",
-							"description": null,
-							"args": [
-								{
-									"name": "input",
-									"description": null,
-									"type": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "INPUT_OBJECT",
-											"name": "CreateCompetitionRecordMutationInput",
-											"ofType": null
-										}
-									},
-									"defaultValue": null
-								}
-							],
-							"type": {
-								"kind": "OBJECT",
-								"name": "CreateCompetitionRecordMutationPayload",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "createPayout",
-							"description": null,
-							"args": [
-								{
-									"name": "input",
-									"description": null,
-									"type": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "INPUT_OBJECT",
-											"name": "CreatePayoutMutationInput",
-											"ofType": null
-										}
-									},
-									"defaultValue": null
-								}
-							],
-							"type": {
-								"kind": "OBJECT",
-								"name": "CreatePayoutMutationPayload",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "createPlayer",
-							"description": null,
-							"args": [
-								{
-									"name": "input",
-									"description": null,
-									"type": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "INPUT_OBJECT",
-											"name": "CreatePlayerMutationInput",
-											"ofType": null
-										}
-									},
-									"defaultValue": null
-								}
-							],
-							"type": {
-								"kind": "OBJECT",
-								"name": "CreatePlayerMutationPayload",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "deleteCompetition",
-							"description": null,
-							"args": [
-								{
-									"name": "input",
-									"description": null,
-									"type": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "INPUT_OBJECT",
-											"name": "DeleteCompetitionMutationInput",
-											"ofType": null
-										}
-									},
-									"defaultValue": null
-								}
-							],
-							"type": {
-								"kind": "OBJECT",
-								"name": "DeleteCompetitionMutationPayload",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "deleteCompetitionRecord",
-							"description": null,
-							"args": [
-								{
-									"name": "input",
-									"description": null,
-									"type": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "INPUT_OBJECT",
-											"name": "DeleteCompetitionRecordMutationInput",
-											"ofType": null
-										}
-									},
-									"defaultValue": null
-								}
-							],
-							"type": {
-								"kind": "OBJECT",
-								"name": "DeleteCompetitionRecordMutationPayload",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "deletePayout",
-							"description": null,
-							"args": [
-								{
-									"name": "input",
-									"description": null,
-									"type": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "INPUT_OBJECT",
-											"name": "DeletePayoutMutationInput",
-											"ofType": null
-										}
-									},
-									"defaultValue": null
-								}
-							],
-							"type": {
-								"kind": "OBJECT",
-								"name": "DeletePayoutMutationPayload",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "deletePlayer",
-							"description": null,
-							"args": [
-								{
-									"name": "input",
-									"description": null,
-									"type": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "INPUT_OBJECT",
-											"name": "DeletePlayerMutationInput",
-											"ofType": null
-										}
-									},
-									"defaultValue": null
-								}
-							],
-							"type": {
-								"kind": "OBJECT",
-								"name": "DeletePlayerMutationPayload",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "login",
-							"description": "Login with valid credentials, returns a valid token if successful.",
-							"args": [
-								{
-									"name": "input",
-									"description": null,
-									"type": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "INPUT_OBJECT",
-											"name": "LoginMutationInput",
-											"ofType": null
-										}
-									},
-									"defaultValue": null
-								}
-							],
-							"type": {
-								"kind": "OBJECT",
-								"name": "LoginMutationPayload",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "logout",
-							"description": "Logout of the current session (Invalidates token)",
-							"args": [
-								{
-									"name": "input",
-									"description": null,
-									"type": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "INPUT_OBJECT",
-											"name": "LogoutMutationInput",
-											"ofType": null
-										}
-									},
-									"defaultValue": null
-								}
-							],
-							"type": {
-								"kind": "OBJECT",
-								"name": "LogoutMutationPayload",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "updateCompetition",
-							"description": null,
-							"args": [
-								{
-									"name": "input",
-									"description": null,
-									"type": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "INPUT_OBJECT",
-											"name": "UpdateCompetitionMutationInput",
-											"ofType": null
-										}
-									},
-									"defaultValue": null
-								}
-							],
-							"type": {
-								"kind": "OBJECT",
-								"name": "UpdateCompetitionMutationPayload",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "updateCompetitionRecord",
-							"description": null,
-							"args": [
-								{
-									"name": "input",
-									"description": null,
-									"type": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "INPUT_OBJECT",
-											"name": "UpdateCompetitionRecordMutationInput",
-											"ofType": null
-										}
-									},
-									"defaultValue": null
-								}
-							],
-							"type": {
-								"kind": "OBJECT",
-								"name": "UpdateCompetitionRecordMutationPayload",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "updatePayout",
-							"description": null,
-							"args": [
-								{
-									"name": "input",
-									"description": null,
-									"type": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "INPUT_OBJECT",
-											"name": "UpdatePayoutMutationInput",
-											"ofType": null
-										}
-									},
-									"defaultValue": null
-								}
-							],
-							"type": {
-								"kind": "OBJECT",
-								"name": "UpdatePayoutMutationPayload",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "updatePlayer",
-							"description": null,
-							"args": [
-								{
-									"name": "input",
-									"description": null,
-									"type": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "INPUT_OBJECT",
-											"name": "UpdatePlayerMutationInput",
-											"ofType": null
-										}
-									},
-									"defaultValue": null
-								}
-							],
-							"type": {
-								"kind": "OBJECT",
-								"name": "UpdatePlayerMutationPayload",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "updateUser",
-							"description": null,
-							"args": [
-								{
-									"name": "input",
-									"description": null,
-									"type": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "INPUT_OBJECT",
-											"name": "ResetPasswordMutationInput",
-											"ofType": null
-										}
-									},
-									"defaultValue": null
-								}
-							],
-							"type": {
-								"kind": "OBJECT",
-								"name": "ResetPasswordMutationPayload",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "ENUM",
-					"name": "OrderEnum",
-					"description": null,
-					"fields": null,
-					"inputFields": null,
-					"interfaces": null,
-					"enumValues": [
-						{
-							"name": "DESC",
-							"description": null,
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "ASC",
-							"description": null,
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "Payout",
-					"description": "All the possible payout data",
-					"fields": [
-						{
-							"name": "amount",
-							"description": "The amount paid out",
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "BigInt",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "id",
-							"description": "The unique ID of the payout",
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "ID",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "user",
-							"description": "The user that paid it",
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "OBJECT",
-									"name": "User",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "PayoutInput",
-					"description": "Arguments for editing or creating a new payout.",
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "amount",
-							"description": "The amount paid",
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
+								},
+								"defaultValue": "3"
+							},
+							{
+								"name": "skip",
+								"description": null,
+								"type": {
 									"kind": "SCALAR",
 									"name": "Int",
 									"ofType": null
-								}
+								},
+								"defaultValue": "0"
 							},
-							"defaultValue": null
-						},
-						{
-							"name": "paidById",
-							"description": "The user that paid it",
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
+							{
+								"name": "competitionId",
+								"description": null,
+								"type": {
 									"kind": "SCALAR",
 									"name": "ID",
 									"ofType": null
-								}
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "competitionRecordId",
-							"description": "The associated competition record ID the payment is for",
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "ID",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "Player",
-					"description": "All the possible player data",
-					"fields": [
-						{
-							"name": "comment",
-							"description": "Optional extra comments",
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "competitionRecords",
-							"description": "Returns a list of competition records belonging to the object",
-							"args": [
-								{
-									"name": "filter",
-									"description": null,
-									"type": {
-										"kind": "INPUT_OBJECT",
-										"name": "CompetitionRecordFilter",
-										"ofType": null
-									},
-									"defaultValue": null
 								},
-								{
-									"name": "order",
-									"description": null,
-									"type": {
-										"kind": "INPUT_OBJECT",
-										"name": "CompetitionRecordOrder",
-										"ofType": null
-									},
-									"defaultValue": "{order: ASC}"
-								},
-								{
-									"name": "first",
-									"description": null,
-									"type": {
-										"kind": "SCALAR",
-										"name": "Int",
-										"ofType": null
-									},
-									"defaultValue": "3"
-								},
-								{
-									"name": "skip",
-									"description": null,
-									"type": {
-										"kind": "SCALAR",
-										"name": "Int",
-										"ofType": null
-									},
-									"defaultValue": "0"
-								},
-								{
-									"name": "competitionId",
-									"description": null,
-									"type": {
-										"kind": "SCALAR",
-										"name": "ID",
-										"ofType": null
-									},
-									"defaultValue": null
-								}
-							],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "LIST",
-									"name": null,
-									"ofType": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "OBJECT",
-											"name": "CompetitionRecord",
-											"ofType": null
-										}
-									}
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "createdAt",
-							"description": "The date this player record was created",
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "ISO8601DateTime",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "id",
-							"description": "The unique ID of the player",
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "ID",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "joinDate",
-							"description": "A valid non-future join date",
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "ISO8601DateTime",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "previousNames",
-							"description": "Any previous names this player had",
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "LIST",
-									"name": null,
-									"ofType": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "SCALAR",
-											"name": "String",
-											"ofType": null
-										}
-									}
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "rank",
-							"description": "A valid rank number",
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "Int",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "updatedAt",
-							"description": "The date this player record was updated",
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "ISO8601DateTime",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "username",
-							"description": "A valid username",
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "String",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "PlayerFilter",
-					"description": null,
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "usernameContains",
-							"description": "Filter by username",
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "previousNameContains",
-							"description": "Filter by previous names",
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "usernameOrPreviousNameContains",
-							"description": "Filter by either username or previous name",
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "rankContains",
-							"description": "Filter by rank",
-							"type": {
+								"defaultValue": null
+							}
+						],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
 								"kind": "LIST",
 								"name": null,
 								"ofType": {
 									"kind": "NON_NULL",
 									"name": null,
 									"ofType": {
-										"kind": "SCALAR",
-										"name": "Int",
+										"kind": "OBJECT",
+										"name": "CompetitionRecord",
 										"ofType": null
 									}
 								}
-							},
-							"defaultValue": null
+							}
 						},
-						{
-							"name": "startJoinDate",
-							"description": "Filter by start join date",
-							"type": {
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "createdAt",
+						"description": "The date time the competition was created at",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "externalUrl",
+						"description": "The external competition URL",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "id",
+						"description": "The unique ID of the competition",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
 								"kind": "SCALAR",
-								"name": "ISO8601DateTime",
+								"name": "ID",
 								"ofType": null
-							},
-							"defaultValue": null
+							}
 						},
-						{
-							"name": "endJoinDate",
-							"description": "Filter by end join date",
-							"type": {
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "SCALAR",
+				"name": "Int",
+				"description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.",
+				"fields": null,
+				"inputFields": null,
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "SCALAR",
+				"name": "ID",
+				"description": "The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `\"4\"`) or integer (such as `4`) input value will be accepted as an ID.",
+				"fields": null,
+				"inputFields": null,
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "CompetitionFilter",
+				"description": null,
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "externalUrlContains",
+						"description": "Filter by what the external URL contains",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "CompetitionInput",
+				"description": "Arguments for editing or creating a new competition.",
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "externalUrl",
+						"description": "A valid external URL",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "CompetitionOrder",
+				"description": null,
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "orderBy",
+						"description": "What to order the results by",
+						"type": {
+							"kind": "ENUM",
+							"name": "CompetitionOrderEnum",
+							"ofType": null
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "order",
+						"description": "Direction to order results by",
+						"type": {
+							"kind": "ENUM",
+							"name": "OrderEnum",
+							"ofType": null
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "CompetitionOrderEnum",
+				"description": null,
+				"fields": null,
+				"inputFields": null,
+				"interfaces": null,
+				"enumValues": [
+					{
+						"name": "CREATED_AT",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "CompetitionRecord",
+				"description": "All the possible payout data",
+				"fields": [
+					{
+						"name": "id",
+						"description": "The unique ID of the competition",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
 								"kind": "SCALAR",
-								"name": "ISO8601DateTime",
+								"name": "ID",
 								"ofType": null
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "PlayerInput",
-					"description": "Arguments for editing or creating a new player.",
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "username",
-							"description": "A valid username",
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "String",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
+							}
 						},
-						{
-							"name": "joinDate",
-							"description": "A valid non-future join date",
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "ISO8601DateTime",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "payout",
+						"description": "Gets a specific payout for the competition record",
+						"args": [],
+						"type": {
+							"kind": "OBJECT",
+							"name": "Payout",
+							"ofType": null
 						},
-						{
-							"name": "rank",
-							"description": "A valid rank number",
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "Int",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "player",
+						"description": "The associated player",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "OBJECT",
+								"name": "Player",
+								"ofType": null
+							}
 						},
-						{
-							"name": "comment",
-							"description": "Optional extra comments",
-							"type": {
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "position",
+						"description": "The ranking within the competition",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "Int",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "xp",
+						"description": "The XP gained",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "BigInt",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "CompetitionRecordFilter",
+				"description": null,
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "startPosition",
+						"description": "Filter by minimum position",
+						"type": {
+							"kind": "SCALAR",
+							"name": "Int",
+							"ofType": null
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "endPosition",
+						"description": "Filter by maximum position",
+						"type": {
+							"kind": "SCALAR",
+							"name": "Int",
+							"ofType": null
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "startXp",
+						"description": "Filter by minimum xp",
+						"type": {
+							"kind": "SCALAR",
+							"name": "Int",
+							"ofType": null
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "endXp",
+						"description": "Filter by maximum xp",
+						"type": {
+							"kind": "SCALAR",
+							"name": "Int",
+							"ofType": null
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "CompetitionRecordInput",
+				"description": "Arguments for editing or creating a new competition record.",
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "xp",
+						"description": "The XP gained",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "BigInt",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "position",
+						"description": "The position of the player",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "BigInt",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "playerId",
+						"description": "The associated player ID",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "ID",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "competitionId",
+						"description": "The associated competition ID",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "ID",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "CompetitionRecordOrder",
+				"description": null,
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "orderBy",
+						"description": "What to order the results by",
+						"type": {
+							"kind": "ENUM",
+							"name": "CompetitionRecordOrderEnum",
+							"ofType": null
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "order",
+						"description": "Direction to order results by",
+						"type": {
+							"kind": "ENUM",
+							"name": "OrderEnum",
+							"ofType": null
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "CompetitionRecordOrderEnum",
+				"description": null,
+				"fields": null,
+				"inputFields": null,
+				"interfaces": null,
+				"enumValues": [
+					{
+						"name": "XP",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "POSITION",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "CreateCompetitionMutationInput",
+				"description": "Autogenerated input type of CreateCompetitionMutation",
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "attributes",
+						"description": null,
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "INPUT_OBJECT",
+								"name": "CompetitionInput",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "CreateCompetitionMutationPayload",
+				"description": "Autogenerated return type of CreateCompetitionMutation",
+				"fields": [
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "competition",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "OBJECT",
+								"name": "Competition",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "CreateCompetitionRecordMutationInput",
+				"description": "Autogenerated input type of CreateCompetitionRecordMutation",
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "attributes",
+						"description": null,
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "INPUT_OBJECT",
+								"name": "CompetitionRecordInput",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "CreateCompetitionRecordMutationPayload",
+				"description": "Autogenerated return type of CreateCompetitionRecordMutation",
+				"fields": [
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "competitionRecord",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "OBJECT",
+								"name": "CompetitionRecord",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "CreatePayoutMutationInput",
+				"description": "Autogenerated input type of CreatePayoutMutation",
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "attributes",
+						"description": null,
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "INPUT_OBJECT",
+								"name": "PayoutInput",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "CreatePayoutMutationPayload",
+				"description": "Autogenerated return type of CreatePayoutMutation",
+				"fields": [
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "payout",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "OBJECT",
+								"name": "Payout",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "CreatePlayerMutationInput",
+				"description": "Autogenerated input type of CreatePlayerMutation",
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "attributes",
+						"description": null,
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "INPUT_OBJECT",
+								"name": "PlayerInput",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "CreatePlayerMutationPayload",
+				"description": "Autogenerated return type of CreatePlayerMutation",
+				"fields": [
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "player",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "OBJECT",
+								"name": "Player",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "DeleteCompetitionMutationInput",
+				"description": "Autogenerated input type of DeleteCompetitionMutation",
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "id",
+						"description": null,
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "ID",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "DeleteCompetitionMutationPayload",
+				"description": "Autogenerated return type of DeleteCompetitionMutation",
+				"fields": [
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "competition",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "OBJECT",
+								"name": "Competition",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "DeleteCompetitionRecordMutationInput",
+				"description": "Autogenerated input type of DeleteCompetitionRecordMutation",
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "id",
+						"description": null,
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "ID",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "DeleteCompetitionRecordMutationPayload",
+				"description": "Autogenerated return type of DeleteCompetitionRecordMutation",
+				"fields": [
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "competitionRecord",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "OBJECT",
+								"name": "CompetitionRecord",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "DeletePayoutMutationInput",
+				"description": "Autogenerated input type of DeletePayoutMutation",
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "id",
+						"description": null,
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "ID",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "DeletePayoutMutationPayload",
+				"description": "Autogenerated return type of DeletePayoutMutation",
+				"fields": [
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "payout",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "OBJECT",
+								"name": "Payout",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "DeletePlayerMutationInput",
+				"description": "Autogenerated input type of DeletePlayerMutation",
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "id",
+						"description": null,
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "ID",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "DeletePlayerMutationPayload",
+				"description": "Autogenerated return type of DeletePlayerMutation",
+				"fields": [
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "player",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "OBJECT",
+								"name": "Player",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "SCALAR",
+				"name": "ISO8601DateTime",
+				"description": "An ISO 8601-encoded datetime",
+				"fields": null,
+				"inputFields": null,
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "LoginMutationInput",
+				"description": "Autogenerated input type of LoginMutation",
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "attributes",
+						"description": "Login Credentials",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "INPUT_OBJECT",
+								"name": "AuthInput",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "LoginMutationPayload",
+				"description": "Autogenerated return type of LoginMutation",
+				"fields": [
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "token",
+						"description": "A valid token",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
 								"kind": "SCALAR",
 								"name": "String",
 								"ofType": null
-							},
-							"defaultValue": null
+							}
 						},
-						{
-							"name": "previousNames",
-							"description": "Any previous names this player had",
-							"type": {
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "user",
+						"description": "A valid user",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "OBJECT",
+								"name": "User",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "LogoutMutationInput",
+				"description": "Autogenerated input type of LogoutMutation",
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "LogoutMutationPayload",
+				"description": "Autogenerated return type of LogoutMutation",
+				"fields": [
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "success",
+						"description": "True if logged out of current session",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "Boolean",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "SCALAR",
+				"name": "Boolean",
+				"description": "The `Boolean` scalar type represents `true` or `false`.",
+				"fields": null,
+				"inputFields": null,
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "Mutation",
+				"description": null,
+				"fields": [
+					{
+						"name": "createCompetition",
+						"description": null,
+						"args": [
+							{
+								"name": "input",
+								"description": null,
+								"type": {
+									"kind": "NON_NULL",
+									"name": null,
+									"ofType": {
+										"kind": "INPUT_OBJECT",
+										"name": "CreateCompetitionMutationInput",
+										"ofType": null
+									}
+								},
+								"defaultValue": null
+							}
+						],
+						"type": {
+							"kind": "OBJECT",
+							"name": "CreateCompetitionMutationPayload",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "createCompetitionRecord",
+						"description": null,
+						"args": [
+							{
+								"name": "input",
+								"description": null,
+								"type": {
+									"kind": "NON_NULL",
+									"name": null,
+									"ofType": {
+										"kind": "INPUT_OBJECT",
+										"name": "CreateCompetitionRecordMutationInput",
+										"ofType": null
+									}
+								},
+								"defaultValue": null
+							}
+						],
+						"type": {
+							"kind": "OBJECT",
+							"name": "CreateCompetitionRecordMutationPayload",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "createPayout",
+						"description": null,
+						"args": [
+							{
+								"name": "input",
+								"description": null,
+								"type": {
+									"kind": "NON_NULL",
+									"name": null,
+									"ofType": {
+										"kind": "INPUT_OBJECT",
+										"name": "CreatePayoutMutationInput",
+										"ofType": null
+									}
+								},
+								"defaultValue": null
+							}
+						],
+						"type": {
+							"kind": "OBJECT",
+							"name": "CreatePayoutMutationPayload",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "createPlayer",
+						"description": null,
+						"args": [
+							{
+								"name": "input",
+								"description": null,
+								"type": {
+									"kind": "NON_NULL",
+									"name": null,
+									"ofType": {
+										"kind": "INPUT_OBJECT",
+										"name": "CreatePlayerMutationInput",
+										"ofType": null
+									}
+								},
+								"defaultValue": null
+							}
+						],
+						"type": {
+							"kind": "OBJECT",
+							"name": "CreatePlayerMutationPayload",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "deleteCompetition",
+						"description": null,
+						"args": [
+							{
+								"name": "input",
+								"description": null,
+								"type": {
+									"kind": "NON_NULL",
+									"name": null,
+									"ofType": {
+										"kind": "INPUT_OBJECT",
+										"name": "DeleteCompetitionMutationInput",
+										"ofType": null
+									}
+								},
+								"defaultValue": null
+							}
+						],
+						"type": {
+							"kind": "OBJECT",
+							"name": "DeleteCompetitionMutationPayload",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "deleteCompetitionRecord",
+						"description": null,
+						"args": [
+							{
+								"name": "input",
+								"description": null,
+								"type": {
+									"kind": "NON_NULL",
+									"name": null,
+									"ofType": {
+										"kind": "INPUT_OBJECT",
+										"name": "DeleteCompetitionRecordMutationInput",
+										"ofType": null
+									}
+								},
+								"defaultValue": null
+							}
+						],
+						"type": {
+							"kind": "OBJECT",
+							"name": "DeleteCompetitionRecordMutationPayload",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "deletePayout",
+						"description": null,
+						"args": [
+							{
+								"name": "input",
+								"description": null,
+								"type": {
+									"kind": "NON_NULL",
+									"name": null,
+									"ofType": {
+										"kind": "INPUT_OBJECT",
+										"name": "DeletePayoutMutationInput",
+										"ofType": null
+									}
+								},
+								"defaultValue": null
+							}
+						],
+						"type": {
+							"kind": "OBJECT",
+							"name": "DeletePayoutMutationPayload",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "deletePlayer",
+						"description": null,
+						"args": [
+							{
+								"name": "input",
+								"description": null,
+								"type": {
+									"kind": "NON_NULL",
+									"name": null,
+									"ofType": {
+										"kind": "INPUT_OBJECT",
+										"name": "DeletePlayerMutationInput",
+										"ofType": null
+									}
+								},
+								"defaultValue": null
+							}
+						],
+						"type": {
+							"kind": "OBJECT",
+							"name": "DeletePlayerMutationPayload",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "login",
+						"description": "Login with valid credentials, returns a valid token if successful.",
+						"args": [
+							{
+								"name": "input",
+								"description": null,
+								"type": {
+									"kind": "NON_NULL",
+									"name": null,
+									"ofType": {
+										"kind": "INPUT_OBJECT",
+										"name": "LoginMutationInput",
+										"ofType": null
+									}
+								},
+								"defaultValue": null
+							}
+						],
+						"type": {
+							"kind": "OBJECT",
+							"name": "LoginMutationPayload",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "logout",
+						"description": "Logout of the current session (Invalidates token)",
+						"args": [
+							{
+								"name": "input",
+								"description": null,
+								"type": {
+									"kind": "NON_NULL",
+									"name": null,
+									"ofType": {
+										"kind": "INPUT_OBJECT",
+										"name": "LogoutMutationInput",
+										"ofType": null
+									}
+								},
+								"defaultValue": null
+							}
+						],
+						"type": {
+							"kind": "OBJECT",
+							"name": "LogoutMutationPayload",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "updateCompetition",
+						"description": null,
+						"args": [
+							{
+								"name": "input",
+								"description": null,
+								"type": {
+									"kind": "NON_NULL",
+									"name": null,
+									"ofType": {
+										"kind": "INPUT_OBJECT",
+										"name": "UpdateCompetitionMutationInput",
+										"ofType": null
+									}
+								},
+								"defaultValue": null
+							}
+						],
+						"type": {
+							"kind": "OBJECT",
+							"name": "UpdateCompetitionMutationPayload",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "updateCompetitionRecord",
+						"description": null,
+						"args": [
+							{
+								"name": "input",
+								"description": null,
+								"type": {
+									"kind": "NON_NULL",
+									"name": null,
+									"ofType": {
+										"kind": "INPUT_OBJECT",
+										"name": "UpdateCompetitionRecordMutationInput",
+										"ofType": null
+									}
+								},
+								"defaultValue": null
+							}
+						],
+						"type": {
+							"kind": "OBJECT",
+							"name": "UpdateCompetitionRecordMutationPayload",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "updatePayout",
+						"description": null,
+						"args": [
+							{
+								"name": "input",
+								"description": null,
+								"type": {
+									"kind": "NON_NULL",
+									"name": null,
+									"ofType": {
+										"kind": "INPUT_OBJECT",
+										"name": "UpdatePayoutMutationInput",
+										"ofType": null
+									}
+								},
+								"defaultValue": null
+							}
+						],
+						"type": {
+							"kind": "OBJECT",
+							"name": "UpdatePayoutMutationPayload",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "updatePlayer",
+						"description": null,
+						"args": [
+							{
+								"name": "input",
+								"description": null,
+								"type": {
+									"kind": "NON_NULL",
+									"name": null,
+									"ofType": {
+										"kind": "INPUT_OBJECT",
+										"name": "UpdatePlayerMutationInput",
+										"ofType": null
+									}
+								},
+								"defaultValue": null
+							}
+						],
+						"type": {
+							"kind": "OBJECT",
+							"name": "UpdatePlayerMutationPayload",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "updateUser",
+						"description": null,
+						"args": [
+							{
+								"name": "input",
+								"description": null,
+								"type": {
+									"kind": "NON_NULL",
+									"name": null,
+									"ofType": {
+										"kind": "INPUT_OBJECT",
+										"name": "ResetPasswordMutationInput",
+										"ofType": null
+									}
+								},
+								"defaultValue": null
+							}
+						],
+						"type": {
+							"kind": "OBJECT",
+							"name": "ResetPasswordMutationPayload",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "OrderEnum",
+				"description": null,
+				"fields": null,
+				"inputFields": null,
+				"interfaces": null,
+				"enumValues": [
+					{
+						"name": "DESC",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "ASC",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "Payout",
+				"description": "All the possible payout data",
+				"fields": [
+					{
+						"name": "amount",
+						"description": "The amount paid out",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "BigInt",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "id",
+						"description": "The unique ID of the payout",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "ID",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "user",
+						"description": "The user that paid it",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "OBJECT",
+								"name": "User",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "PayoutInput",
+				"description": "Arguments for editing or creating a new payout.",
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "amount",
+						"description": "The amount paid",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "Int",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "paidById",
+						"description": "The user that paid it",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "ID",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "competitionRecordId",
+						"description": "The associated competition record ID the payment is for",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "ID",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "Player",
+				"description": "All the possible player data",
+				"fields": [
+					{
+						"name": "comment",
+						"description": "Optional extra comments",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "competitionRecords",
+						"description": "Returns a list of competition records belonging to the object",
+						"args": [
+							{
+								"name": "filter",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "CompetitionRecordFilter",
+									"ofType": null
+								},
+								"defaultValue": null
+							},
+							{
+								"name": "order",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "CompetitionRecordOrder",
+									"ofType": null
+								},
+								"defaultValue": "{order: ASC}"
+							},
+							{
+								"name": "first",
+								"description": null,
+								"type": {
+									"kind": "SCALAR",
+									"name": "Int",
+									"ofType": null
+								},
+								"defaultValue": "3"
+							},
+							{
+								"name": "skip",
+								"description": null,
+								"type": {
+									"kind": "SCALAR",
+									"name": "Int",
+									"ofType": null
+								},
+								"defaultValue": "0"
+							},
+							{
+								"name": "competitionId",
+								"description": null,
+								"type": {
+									"kind": "SCALAR",
+									"name": "ID",
+									"ofType": null
+								},
+								"defaultValue": null
+							}
+						],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "LIST",
+								"name": null,
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": null,
+									"ofType": {
+										"kind": "OBJECT",
+										"name": "CompetitionRecord",
+										"ofType": null
+									}
+								}
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "createdAt",
+						"description": "The date this player record was created",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "ISO8601DateTime",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "id",
+						"description": "The unique ID of the player",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "ID",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "joinDate",
+						"description": "A valid non-future join date",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "ISO8601DateTime",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "previousNames",
+						"description": "Any previous names this player had",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
 								"kind": "LIST",
 								"name": null,
 								"ofType": {
@@ -2236,346 +2035,108 @@
 										"ofType": null
 									}
 								}
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "PlayerOrder",
-					"description": null,
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "orderBy",
-							"description": "What to order the results by",
-							"type": {
-								"kind": "ENUM",
-								"name": "PlayerOrderEnum",
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "rank",
+						"description": "A valid rank number",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "Int",
 								"ofType": null
-							},
-							"defaultValue": null
+							}
 						},
-						{
-							"name": "order",
-							"description": "Direction to order results by",
-							"type": {
-								"kind": "ENUM",
-								"name": "OrderEnum",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "updatedAt",
+						"description": "The date this player record was updated",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "ISO8601DateTime",
 								"ofType": null
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "ENUM",
-					"name": "PlayerOrderEnum",
-					"description": null,
-					"fields": null,
-					"inputFields": null,
-					"interfaces": null,
-					"enumValues": [
-						{
-							"name": "USERNAME",
-							"description": null,
-							"isDeprecated": false,
-							"deprecationReason": null
+							}
 						},
-						{
-							"name": "ID",
-							"description": null,
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "JOIN_DATE",
-							"description": null,
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "CREATED_AT",
-							"description": null,
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "UPDATED_AT",
-							"description": null,
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "RANK",
-							"description": null,
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "Query",
-					"description": null,
-					"fields": [
-						{
-							"name": "competition",
-							"description": "Gets a specific competition object",
-							"args": [
-								{
-									"name": "id",
-									"description": null,
-									"type": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "SCALAR",
-											"name": "ID",
-											"ofType": null
-										}
-									},
-									"defaultValue": null
-								}
-							],
-							"type": {
-								"kind": "OBJECT",
-								"name": "Competition",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "username",
+						"description": "A valid username",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
 								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
+							}
 						},
-						{
-							"name": "competitionRecords",
-							"description": "Returns a list of competition records belonging to the object",
-							"args": [
-								{
-									"name": "filter",
-									"description": null,
-									"type": {
-										"kind": "INPUT_OBJECT",
-										"name": "CompetitionRecordFilter",
-										"ofType": null
-									},
-									"defaultValue": null
-								},
-								{
-									"name": "order",
-									"description": null,
-									"type": {
-										"kind": "INPUT_OBJECT",
-										"name": "CompetitionRecordOrder",
-										"ofType": null
-									},
-									"defaultValue": "{order: ASC}"
-								},
-								{
-									"name": "first",
-									"description": null,
-									"type": {
-										"kind": "SCALAR",
-										"name": "Int",
-										"ofType": null
-									},
-									"defaultValue": "3"
-								},
-								{
-									"name": "skip",
-									"description": null,
-									"type": {
-										"kind": "SCALAR",
-										"name": "Int",
-										"ofType": null
-									},
-									"defaultValue": "0"
-								},
-								{
-									"name": "competitionId",
-									"description": null,
-									"type": {
-										"kind": "SCALAR",
-										"name": "ID",
-										"ofType": null
-									},
-									"defaultValue": null
-								}
-							],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "LIST",
-									"name": null,
-									"ofType": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "OBJECT",
-											"name": "CompetitionRecord",
-											"ofType": null
-										}
-									}
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "PlayerFilter",
+				"description": null,
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "usernameContains",
+						"description": "Filter by username",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
 						},
-						{
-							"name": "competitions",
-							"description": "Returns a list of competitions",
-							"args": [
-								{
-									"name": "filter",
-									"description": null,
-									"type": {
-										"kind": "INPUT_OBJECT",
-										"name": "CompetitionFilter",
-										"ofType": null
-									},
-									"defaultValue": null
-								},
-								{
-									"name": "order",
-									"description": null,
-									"type": {
-										"kind": "INPUT_OBJECT",
-										"name": "CompetitionOrder",
-										"ofType": null
-									},
-									"defaultValue": "{order: DESC}"
-								},
-								{
-									"name": "first",
-									"description": null,
-									"type": {
-										"kind": "SCALAR",
-										"name": "Int",
-										"ofType": null
-									},
-									"defaultValue": "100"
-								},
-								{
-									"name": "skip",
-									"description": null,
-									"type": {
-										"kind": "SCALAR",
-										"name": "Int",
-										"ofType": null
-									},
-									"defaultValue": "0"
-								}
-							],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "LIST",
-									"name": null,
-									"ofType": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "OBJECT",
-											"name": "Competition",
-											"ofType": null
-										}
-									}
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
+						"defaultValue": null
+					},
+					{
+						"name": "previousNameContains",
+						"description": "Filter by previous names",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
 						},
-						{
-							"name": "isAuthenticated",
-							"description": "Checks whether the login you're authenticated or not",
-							"args": [],
-							"type": {
-								"kind": "OBJECT",
-								"name": "User",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
+						"defaultValue": null
+					},
+					{
+						"name": "usernameOrPreviousNameContains",
+						"description": "Filter by either username or previous name",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
 						},
-						{
-							"name": "players",
-							"description": "Returns a list of players",
-							"args": [
-								{
-									"name": "filter",
-									"description": null,
-									"type": {
-										"kind": "INPUT_OBJECT",
-										"name": "PlayerFilter",
-										"ofType": null
-									},
-									"defaultValue": null
-								},
-								{
-									"name": "order",
-									"description": null,
-									"type": {
-										"kind": "INPUT_OBJECT",
-										"name": "PlayerOrder",
-										"ofType": null
-									},
-									"defaultValue": "{order: DESC}"
-								},
-								{
-									"name": "first",
-									"description": null,
-									"type": {
-										"kind": "SCALAR",
-										"name": "Int",
-										"ofType": null
-									},
-									"defaultValue": "100"
-								},
-								{
-									"name": "skip",
-									"description": null,
-									"type": {
-										"kind": "SCALAR",
-										"name": "Int",
-										"ofType": null
-									},
-									"defaultValue": "0"
-								}
-							],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "LIST",
-									"name": null,
-									"ofType": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "OBJECT",
-											"name": "Player",
-											"ofType": null
-										}
-									}
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "totalPlayers",
-							"description": "Counts the total number of players",
-							"args": [],
-							"type": {
+						"defaultValue": null
+					},
+					{
+						"name": "rankContains",
+						"description": "Filter by rank",
+						"type": {
+							"kind": "LIST",
+							"name": null,
+							"ofType": {
 								"kind": "NON_NULL",
 								"name": null,
 								"ofType": {
@@ -2583,508 +2144,100 @@
 									"name": "Int",
 									"ofType": null
 								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "ResetPasswordMutationInput",
-					"description": "Autogenerated input type of ResetPasswordMutation",
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "id",
-							"description": null,
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "ID",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
+							}
 						},
-						{
-							"name": "attributes",
-							"description": null,
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "INPUT_OBJECT",
-									"name": "UserInput",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
+						"defaultValue": null
+					},
+					{
+						"name": "startJoinDate",
+						"description": "Filter by start join date",
+						"type": {
+							"kind": "SCALAR",
+							"name": "ISO8601DateTime",
+							"ofType": null
 						},
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"type": {
+						"defaultValue": null
+					},
+					{
+						"name": "endJoinDate",
+						"description": "Filter by end join date",
+						"type": {
+							"kind": "SCALAR",
+							"name": "ISO8601DateTime",
+							"ofType": null
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "PlayerInput",
+				"description": "Arguments for editing or creating a new player.",
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "username",
+						"description": "A valid username",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
 								"kind": "SCALAR",
 								"name": "String",
 								"ofType": null
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "ResetPasswordMutationPayload",
-					"description": "Autogenerated return type of ResetPasswordMutation",
-					"fields": [
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"args": [],
-							"type": {
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "joinDate",
+						"description": "A valid non-future join date",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
 								"kind": "SCALAR",
-								"name": "String",
+								"name": "ISO8601DateTime",
 								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
+							}
 						},
-						{
-							"name": "user",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "OBJECT",
-									"name": "User",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "SCALAR",
-					"name": "String",
-					"description": "Represents textual data as UTF-8 character sequences. This type is most often used by GraphQL to represent free-form human-readable text.",
-					"fields": null,
-					"inputFields": null,
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "UpdateCompetitionMutationInput",
-					"description": "Autogenerated input type of UpdateCompetitionMutation",
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "id",
-							"description": null,
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "ID",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "attributes",
-							"description": null,
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "INPUT_OBJECT",
-									"name": "CompetitionInput",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"type": {
+						"defaultValue": null
+					},
+					{
+						"name": "rank",
+						"description": "A valid rank number",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
 								"kind": "SCALAR",
-								"name": "String",
+								"name": "Int",
 								"ofType": null
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "UpdateCompetitionMutationPayload",
-					"description": "Autogenerated return type of UpdateCompetitionMutation",
-					"fields": [
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
+							}
 						},
-						{
-							"name": "competition",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "OBJECT",
-									"name": "Competition",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "UpdateCompetitionRecordMutationInput",
-					"description": "Autogenerated input type of UpdateCompetitionRecordMutation",
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "id",
-							"description": null,
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "ID",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
+						"defaultValue": null
+					},
+					{
+						"name": "comment",
+						"description": "Optional extra comments",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
 						},
-						{
-							"name": "attributes",
-							"description": null,
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "INPUT_OBJECT",
-									"name": "CompetitionRecordInput",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "UpdateCompetitionRecordMutationPayload",
-					"description": "Autogenerated return type of UpdateCompetitionRecordMutation",
-					"fields": [
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "competitionRecord",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "OBJECT",
-									"name": "CompetitionRecord",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "UpdatePayoutMutationInput",
-					"description": "Autogenerated input type of UpdatePayoutMutation",
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "id",
-							"description": null,
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "ID",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "attributes",
-							"description": null,
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "INPUT_OBJECT",
-									"name": "PayoutInput",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "UpdatePayoutMutationPayload",
-					"description": "Autogenerated return type of UpdatePayoutMutation",
-					"fields": [
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "payout",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "OBJECT",
-									"name": "Payout",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "UpdatePlayerMutationInput",
-					"description": "Autogenerated input type of UpdatePlayerMutation",
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "id",
-							"description": null,
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "ID",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "attributes",
-							"description": null,
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "INPUT_OBJECT",
-									"name": "PlayerInput",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
-						},
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "UpdatePlayerMutationPayload",
-					"description": "Autogenerated return type of UpdatePlayerMutation",
-					"fields": [
-						{
-							"name": "clientMutationId",
-							"description": "A unique identifier for the client performing the mutation.",
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "player",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "OBJECT",
-									"name": "Player",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "User",
-					"description": "All the possible user data",
-					"fields": [
-						{
-							"name": "id",
-							"description": "The unique ID of the user",
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "ID",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "resetPassword",
-							"description": "Whether the user needs a password reset or not",
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "Boolean",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "username",
-							"description": "A valid username",
-							"args": [],
-							"type": {
+						"defaultValue": null
+					},
+					{
+						"name": "previousNames",
+						"description": "Any previous names this player had",
+						"type": {
+							"kind": "LIST",
+							"name": null,
+							"ofType": {
 								"kind": "NON_NULL",
 								"name": null,
 								"ofType": {
@@ -3092,668 +2245,184 @@
 									"name": "String",
 									"ofType": null
 								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "INPUT_OBJECT",
-					"name": "UserInput",
-					"description": "Arguments for editing a user",
-					"fields": null,
-					"inputFields": [
-						{
-							"name": "password",
-							"description": "A valid new password",
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "String",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
-						}
-					],
-					"interfaces": null,
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "__Directive",
-					"description": "A Directive provides a way to describe alternate runtime execution and type validation behavior in a GraphQL document.\n\nIn some cases, you need to provide options to alter GraphQL's execution behavior in ways field arguments will not suffice, such as conditionally including or skipping a field. Directives provide this by describing additional information to the executor.",
-					"fields": [
-						{
-							"name": "args",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "LIST",
+							}
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "PlayerOrder",
+				"description": null,
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "orderBy",
+						"description": "What to order the results by",
+						"type": {
+							"kind": "ENUM",
+							"name": "PlayerOrderEnum",
+							"ofType": null
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "order",
+						"description": "Direction to order results by",
+						"type": {
+							"kind": "ENUM",
+							"name": "OrderEnum",
+							"ofType": null
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "PlayerOrderEnum",
+				"description": null,
+				"fields": null,
+				"inputFields": null,
+				"interfaces": null,
+				"enumValues": [
+					{
+						"name": "USERNAME",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "ID",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "JOIN_DATE",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "CREATED_AT",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "UPDATED_AT",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "RANK",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "Query",
+				"description": null,
+				"fields": [
+					{
+						"name": "competition",
+						"description": "Gets a specific competition object",
+						"args": [
+							{
+								"name": "id",
+								"description": null,
+								"type": {
+									"kind": "NON_NULL",
 									"name": null,
 									"ofType": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "OBJECT",
-											"name": "__InputValue",
-											"ofType": null
-										}
-									}
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "description",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "locations",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "LIST",
-									"name": null,
-									"ofType": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "ENUM",
-											"name": "__DirectiveLocation",
-											"ofType": null
-										}
-									}
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "name",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "String",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "onField",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "Boolean",
-									"ofType": null
-								}
-							},
-							"isDeprecated": true,
-							"deprecationReason": "Use `locations`."
-						},
-						{
-							"name": "onFragment",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "Boolean",
-									"ofType": null
-								}
-							},
-							"isDeprecated": true,
-							"deprecationReason": "Use `locations`."
-						},
-						{
-							"name": "onOperation",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "Boolean",
-									"ofType": null
-								}
-							},
-							"isDeprecated": true,
-							"deprecationReason": "Use `locations`."
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "ENUM",
-					"name": "__DirectiveLocation",
-					"description": "A Directive can be adjacent to many parts of the GraphQL language, a __DirectiveLocation describes one such possible adjacencies.",
-					"fields": null,
-					"inputFields": null,
-					"interfaces": null,
-					"enumValues": [
-						{
-							"name": "QUERY",
-							"description": "Location adjacent to a query operation.",
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "MUTATION",
-							"description": "Location adjacent to a mutation operation.",
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "SUBSCRIPTION",
-							"description": "Location adjacent to a subscription operation.",
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "FIELD",
-							"description": "Location adjacent to a field.",
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "FRAGMENT_DEFINITION",
-							"description": "Location adjacent to a fragment definition.",
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "FRAGMENT_SPREAD",
-							"description": "Location adjacent to a fragment spread.",
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "INLINE_FRAGMENT",
-							"description": "Location adjacent to an inline fragment.",
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "SCHEMA",
-							"description": "Location adjacent to a schema definition.",
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "SCALAR",
-							"description": "Location adjacent to a scalar definition.",
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "OBJECT",
-							"description": "Location adjacent to an object type definition.",
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "FIELD_DEFINITION",
-							"description": "Location adjacent to a field definition.",
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "ARGUMENT_DEFINITION",
-							"description": "Location adjacent to an argument definition.",
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "INTERFACE",
-							"description": "Location adjacent to an interface definition.",
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "UNION",
-							"description": "Location adjacent to a union definition.",
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "ENUM",
-							"description": "Location adjacent to an enum definition.",
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "ENUM_VALUE",
-							"description": "Location adjacent to an enum value definition.",
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "INPUT_OBJECT",
-							"description": "Location adjacent to an input object type definition.",
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "INPUT_FIELD_DEFINITION",
-							"description": "Location adjacent to an input object field definition.",
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "__EnumValue",
-					"description": "One possible value for a given Enum. Enum values are unique values, not a placeholder for a string or numeric value. However an Enum value is returned in a JSON response as a string.",
-					"fields": [
-						{
-							"name": "deprecationReason",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "description",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "isDeprecated",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "Boolean",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "name",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "String",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "__Field",
-					"description": "Object and Interface types are described by a list of Fields, each of which has a name, potentially a list of arguments, and a return type.",
-					"fields": [
-						{
-							"name": "args",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "LIST",
-									"name": null,
-									"ofType": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "OBJECT",
-											"name": "__InputValue",
-											"ofType": null
-										}
-									}
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "deprecationReason",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "description",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "isDeprecated",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "Boolean",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "name",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "String",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "type",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "OBJECT",
-									"name": "__Type",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "__InputValue",
-					"description": "Arguments provided to Fields or Directives and the input fields of an InputObject are represented as Input Values which describe their type and optionally a default value.",
-					"fields": [
-						{
-							"name": "defaultValue",
-							"description": "A GraphQL-formatted string representing the default value for this input value.",
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "description",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "name",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "String",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "type",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "OBJECT",
-									"name": "__Type",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "__Schema",
-					"description": "A GraphQL Schema defines the capabilities of a GraphQL server. It exposes all available types and directives on the server, as well as the entry points for query, mutation, and subscription operations.",
-					"fields": [
-						{
-							"name": "directives",
-							"description": "A list of all directives supported by this server.",
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "LIST",
-									"name": null,
-									"ofType": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "OBJECT",
-											"name": "__Directive",
-											"ofType": null
-										}
-									}
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "mutationType",
-							"description": "If this server supports mutation, the type that mutation operations will be rooted at.",
-							"args": [],
-							"type": {
-								"kind": "OBJECT",
-								"name": "__Type",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "queryType",
-							"description": "The type that query operations will be rooted at.",
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "OBJECT",
-									"name": "__Type",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "subscriptionType",
-							"description": "If this server support subscription, the type that subscription operations will be rooted at.",
-							"args": [],
-							"type": {
-								"kind": "OBJECT",
-								"name": "__Type",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "types",
-							"description": "A list of all types supported by this server.",
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "LIST",
-									"name": null,
-									"ofType": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "OBJECT",
-											"name": "__Type",
-											"ofType": null
-										}
-									}
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "OBJECT",
-					"name": "__Type",
-					"description": "The fundamental unit of any GraphQL Schema is the type. There are many kinds of types in GraphQL as represented by the `__TypeKind` enum.\n\nDepending on the kind of a type, certain fields describe information about that type. Scalar types provide no information beyond a name and description, while Enum types provide their values. Object and Interface types provide the fields they describe. Abstract types, Union and Interface, provide the Object types possible at runtime. List and NonNull types compose other types.",
-					"fields": [
-						{
-							"name": "description",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "enumValues",
-							"description": null,
-							"args": [
-								{
-									"name": "includeDeprecated",
-									"description": null,
-									"type": {
 										"kind": "SCALAR",
-										"name": "Boolean",
+										"name": "ID",
 										"ofType": null
-									},
-									"defaultValue": "false"
-								}
-							],
-							"type": {
+									}
+								},
+								"defaultValue": null
+							}
+						],
+						"type": {
+							"kind": "OBJECT",
+							"name": "Competition",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "competitionRecords",
+						"description": "Returns a list of competition records belonging to the object",
+						"args": [
+							{
+								"name": "filter",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "CompetitionRecordFilter",
+									"ofType": null
+								},
+								"defaultValue": null
+							},
+							{
+								"name": "order",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "CompetitionRecordOrder",
+									"ofType": null
+								},
+								"defaultValue": "{order: ASC}"
+							},
+							{
+								"name": "first",
+								"description": null,
+								"type": {
+									"kind": "SCALAR",
+									"name": "Int",
+									"ofType": null
+								},
+								"defaultValue": "3"
+							},
+							{
+								"name": "skip",
+								"description": null,
+								"type": {
+									"kind": "SCALAR",
+									"name": "Int",
+									"ofType": null
+								},
+								"defaultValue": "0"
+							},
+							{
+								"name": "competitionId",
+								"description": null,
+								"type": {
+									"kind": "SCALAR",
+									"name": "ID",
+									"ofType": null
+								},
+								"defaultValue": null
+							}
+						],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
 								"kind": "LIST",
 								"name": null,
 								"ofType": {
@@ -3761,30 +2430,64 @@
 									"name": null,
 									"ofType": {
 										"kind": "OBJECT",
-										"name": "__EnumValue",
+										"name": "CompetitionRecord",
 										"ofType": null
 									}
 								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
+							}
 						},
-						{
-							"name": "fields",
-							"description": null,
-							"args": [
-								{
-									"name": "includeDeprecated",
-									"description": null,
-									"type": {
-										"kind": "SCALAR",
-										"name": "Boolean",
-										"ofType": null
-									},
-									"defaultValue": "false"
-								}
-							],
-							"type": {
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "competitions",
+						"description": "Returns a list of competitions",
+						"args": [
+							{
+								"name": "filter",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "CompetitionFilter",
+									"ofType": null
+								},
+								"defaultValue": null
+							},
+							{
+								"name": "order",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "CompetitionOrder",
+									"ofType": null
+								},
+								"defaultValue": "{order: DESC}"
+							},
+							{
+								"name": "first",
+								"description": null,
+								"type": {
+									"kind": "SCALAR",
+									"name": "Int",
+									"ofType": null
+								},
+								"defaultValue": "100"
+							},
+							{
+								"name": "skip",
+								"description": null,
+								"type": {
+									"kind": "SCALAR",
+									"name": "Int",
+									"ofType": null
+								},
+								"defaultValue": "0"
+							}
+						],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
 								"kind": "LIST",
 								"name": null,
 								"ofType": {
@@ -3792,19 +2495,1046 @@
 									"name": null,
 									"ofType": {
 										"kind": "OBJECT",
-										"name": "__Field",
+										"name": "Competition",
 										"ofType": null
 									}
 								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
+							}
 						},
-						{
-							"name": "inputFields",
-							"description": null,
-							"args": [],
-							"type": {
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "isAuthenticated",
+						"description": "Checks whether the login you're authenticated or not",
+						"args": [],
+						"type": {
+							"kind": "OBJECT",
+							"name": "User",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "players",
+						"description": "Returns a list of players",
+						"args": [
+							{
+								"name": "filter",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "PlayerFilter",
+									"ofType": null
+								},
+								"defaultValue": null
+							},
+							{
+								"name": "order",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "PlayerOrder",
+									"ofType": null
+								},
+								"defaultValue": "{order: DESC}"
+							},
+							{
+								"name": "first",
+								"description": null,
+								"type": {
+									"kind": "SCALAR",
+									"name": "Int",
+									"ofType": null
+								},
+								"defaultValue": "100"
+							},
+							{
+								"name": "skip",
+								"description": null,
+								"type": {
+									"kind": "SCALAR",
+									"name": "Int",
+									"ofType": null
+								},
+								"defaultValue": "0"
+							}
+						],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "LIST",
+								"name": null,
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": null,
+									"ofType": {
+										"kind": "OBJECT",
+										"name": "Player",
+										"ofType": null
+									}
+								}
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "totalPlayers",
+						"description": "Counts the total number of players",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "Int",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "ResetPasswordMutationInput",
+				"description": "Autogenerated input type of ResetPasswordMutation",
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "id",
+						"description": null,
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "ID",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "attributes",
+						"description": null,
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "INPUT_OBJECT",
+								"name": "UserInput",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "ResetPasswordMutationPayload",
+				"description": "Autogenerated return type of ResetPasswordMutation",
+				"fields": [
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "user",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "OBJECT",
+								"name": "User",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateCompetitionMutationInput",
+				"description": "Autogenerated input type of UpdateCompetitionMutation",
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "id",
+						"description": null,
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "ID",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "attributes",
+						"description": null,
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "INPUT_OBJECT",
+								"name": "CompetitionInput",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateCompetitionMutationPayload",
+				"description": "Autogenerated return type of UpdateCompetitionMutation",
+				"fields": [
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "competition",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "OBJECT",
+								"name": "Competition",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateCompetitionRecordMutationInput",
+				"description": "Autogenerated input type of UpdateCompetitionRecordMutation",
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "id",
+						"description": null,
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "ID",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "attributes",
+						"description": null,
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "INPUT_OBJECT",
+								"name": "CompetitionRecordInput",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateCompetitionRecordMutationPayload",
+				"description": "Autogenerated return type of UpdateCompetitionRecordMutation",
+				"fields": [
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "competitionRecord",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "OBJECT",
+								"name": "CompetitionRecord",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdatePayoutMutationInput",
+				"description": "Autogenerated input type of UpdatePayoutMutation",
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "id",
+						"description": null,
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "ID",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "attributes",
+						"description": null,
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "INPUT_OBJECT",
+								"name": "PayoutInput",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdatePayoutMutationPayload",
+				"description": "Autogenerated return type of UpdatePayoutMutation",
+				"fields": [
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "payout",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "OBJECT",
+								"name": "Payout",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdatePlayerMutationInput",
+				"description": "Autogenerated input type of UpdatePlayerMutation",
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "id",
+						"description": null,
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "ID",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "attributes",
+						"description": null,
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "INPUT_OBJECT",
+								"name": "PlayerInput",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdatePlayerMutationPayload",
+				"description": "Autogenerated return type of UpdatePlayerMutation",
+				"fields": [
+					{
+						"name": "clientMutationId",
+						"description": "A unique identifier for the client performing the mutation.",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "player",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "OBJECT",
+								"name": "Player",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "User",
+				"description": "All the possible user data",
+				"fields": [
+					{
+						"name": "id",
+						"description": "The unique ID of the user",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "ID",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "resetPassword",
+						"description": "Whether the user needs a password reset or not",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "Boolean",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "username",
+						"description": "A valid username",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UserInput",
+				"description": "Arguments for editing a user",
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "password",
+						"description": "A valid new password",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "__Schema",
+				"description": "A GraphQL Schema defines the capabilities of a GraphQL server. It exposes all available types and directives on the server, as well as the entry points for query, mutation, and subscription operations.",
+				"fields": [
+					{
+						"name": "description",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "types",
+						"description": "A list of all types supported by this server.",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "LIST",
+								"name": null,
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": null,
+									"ofType": {
+										"kind": "OBJECT",
+										"name": "__Type",
+										"ofType": null
+									}
+								}
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "queryType",
+						"description": "The type that query operations will be rooted at.",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "OBJECT",
+								"name": "__Type",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "mutationType",
+						"description": "If this server supports mutation, the type that mutation operations will be rooted at.",
+						"args": [],
+						"type": {
+							"kind": "OBJECT",
+							"name": "__Type",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "subscriptionType",
+						"description": "If this server support subscription, the type that subscription operations will be rooted at.",
+						"args": [],
+						"type": {
+							"kind": "OBJECT",
+							"name": "__Type",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "directives",
+						"description": "A list of all directives supported by this server.",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "LIST",
+								"name": null,
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": null,
+									"ofType": {
+										"kind": "OBJECT",
+										"name": "__Directive",
+										"ofType": null
+									}
+								}
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "__Type",
+				"description": "The fundamental unit of any GraphQL Schema is the type. There are many kinds of types in GraphQL as represented by the `__TypeKind` enum.\n\nDepending on the kind of a type, certain fields describe information about that type. Scalar types provide no information beyond a name, description and optional `specifiedByUrl`, while Enum types provide their values. Object and Interface types provide the fields they describe. Abstract types, Union and Interface, provide the Object types possible at runtime. List and NonNull types compose other types.",
+				"fields": [
+					{
+						"name": "kind",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "ENUM",
+								"name": "__TypeKind",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "name",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "description",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "specifiedByUrl",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "fields",
+						"description": null,
+						"args": [
+							{
+								"name": "includeDeprecated",
+								"description": null,
+								"type": {
+									"kind": "SCALAR",
+									"name": "Boolean",
+									"ofType": null
+								},
+								"defaultValue": "false"
+							}
+						],
+						"type": {
+							"kind": "LIST",
+							"name": null,
+							"ofType": {
+								"kind": "NON_NULL",
+								"name": null,
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "__Field",
+									"ofType": null
+								}
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "interfaces",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "LIST",
+							"name": null,
+							"ofType": {
+								"kind": "NON_NULL",
+								"name": null,
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "__Type",
+									"ofType": null
+								}
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "possibleTypes",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "LIST",
+							"name": null,
+							"ofType": {
+								"kind": "NON_NULL",
+								"name": null,
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "__Type",
+									"ofType": null
+								}
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "enumValues",
+						"description": null,
+						"args": [
+							{
+								"name": "includeDeprecated",
+								"description": null,
+								"type": {
+									"kind": "SCALAR",
+									"name": "Boolean",
+									"ofType": null
+								},
+								"defaultValue": "false"
+							}
+						],
+						"type": {
+							"kind": "LIST",
+							"name": null,
+							"ofType": {
+								"kind": "NON_NULL",
+								"name": null,
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "__EnumValue",
+									"ofType": null
+								}
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "inputFields",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "LIST",
+							"name": null,
+							"ofType": {
+								"kind": "NON_NULL",
+								"name": null,
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "__InputValue",
+									"ofType": null
+								}
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "ofType",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "OBJECT",
+							"name": "__Type",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "__TypeKind",
+				"description": "An enum describing what kind of type a given `__Type` is.",
+				"fields": null,
+				"inputFields": null,
+				"interfaces": null,
+				"enumValues": [
+					{
+						"name": "SCALAR",
+						"description": "Indicates this type is a scalar.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "OBJECT",
+						"description": "Indicates this type is an object. `fields` and `interfaces` are valid fields.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "INTERFACE",
+						"description": "Indicates this type is an interface. `fields`, `interfaces`, and `possibleTypes` are valid fields.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "UNION",
+						"description": "Indicates this type is a union. `possibleTypes` is a valid field.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "ENUM",
+						"description": "Indicates this type is an enum. `enumValues` is a valid field.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "INPUT_OBJECT",
+						"description": "Indicates this type is an input object. `inputFields` is a valid field.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "LIST",
+						"description": "Indicates this type is a list. `ofType` is a valid field.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "NON_NULL",
+						"description": "Indicates this type is a non-null. `ofType` is a valid field.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "__Field",
+				"description": "Object and Interface types are described by a list of Fields, each of which has a name, potentially a list of arguments, and a return type.",
+				"fields": [
+					{
+						"name": "name",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "description",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "args",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
 								"kind": "LIST",
 								"name": null,
 								"ofType": {
@@ -3816,75 +3546,276 @@
 										"ofType": null
 									}
 								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
+							}
 						},
-						{
-							"name": "interfaces",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "LIST",
-								"name": null,
-								"ofType": {
-									"kind": "NON_NULL",
-									"name": null,
-									"ofType": {
-										"kind": "OBJECT",
-										"name": "__Type",
-										"ofType": null
-									}
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "kind",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "ENUM",
-									"name": "__TypeKind",
-									"ofType": null
-								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "name",
-							"description": null,
-							"args": [],
-							"type": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "ofType",
-							"description": null,
-							"args": [],
-							"type": {
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "type",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
 								"kind": "OBJECT",
 								"name": "__Type",
 								"ofType": null
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
+							}
 						},
-						{
-							"name": "possibleTypes",
-							"description": null,
-							"args": [],
-							"type": {
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "isDeprecated",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "Boolean",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "deprecationReason",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "__InputValue",
+				"description": "Arguments provided to Fields or Directives and the input fields of an InputObject are represented as Input Values which describe their type and optionally a default value.",
+				"fields": [
+					{
+						"name": "name",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "description",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "type",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "OBJECT",
+								"name": "__Type",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "defaultValue",
+						"description": "A GraphQL-formatted string representing the default value for this input value.",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "__EnumValue",
+				"description": "One possible value for a given Enum. Enum values are unique values, not a placeholder for a string or numeric value. However an Enum value is returned in a JSON response as a string.",
+				"fields": [
+					{
+						"name": "name",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "description",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "isDeprecated",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "Boolean",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "deprecationReason",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "__Directive",
+				"description": "A Directive provides a way to describe alternate runtime execution and type validation behavior in a GraphQL document.\n\nIn some cases, you need to provide options to alter GraphQL's execution behavior in ways field arguments will not suffice, such as conditionally including or skipping a field. Directives provide this by describing additional information to the executor.",
+				"fields": [
+					{
+						"name": "name",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "description",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "isRepeatable",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "Boolean",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "locations",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "LIST",
+								"name": null,
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": null,
+									"ofType": {
+										"kind": "ENUM",
+										"name": "__DirectiveLocation",
+										"ofType": null
+									}
+								}
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "args",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
 								"kind": "LIST",
 								"name": null,
 								"ofType": {
@@ -3892,141 +3823,316 @@
 									"name": null,
 									"ofType": {
 										"kind": "OBJECT",
-										"name": "__Type",
+										"name": "__InputValue",
 										"ofType": null
 									}
 								}
-							},
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"inputFields": null,
-					"interfaces": [],
-					"enumValues": null,
-					"possibleTypes": null
-				},
-				{
-					"kind": "ENUM",
-					"name": "__TypeKind",
-					"description": "An enum describing what kind of type a given `__Type` is.",
-					"fields": null,
-					"inputFields": null,
-					"interfaces": null,
-					"enumValues": [
-						{
-							"name": "SCALAR",
-							"description": "Indicates this type is a scalar.",
-							"isDeprecated": false,
-							"deprecationReason": null
+							}
 						},
-						{
-							"name": "OBJECT",
-							"description": "Indicates this type is an object. `fields` and `interfaces` are valid fields.",
-							"isDeprecated": false,
-							"deprecationReason": null
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "__DirectiveLocation",
+				"description": "A Directive can be adjacent to many parts of the GraphQL language, a __DirectiveLocation describes one such possible adjacencies.",
+				"fields": null,
+				"inputFields": null,
+				"interfaces": null,
+				"enumValues": [
+					{
+						"name": "QUERY",
+						"description": "Location adjacent to a query operation.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "MUTATION",
+						"description": "Location adjacent to a mutation operation.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "SUBSCRIPTION",
+						"description": "Location adjacent to a subscription operation.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "FIELD",
+						"description": "Location adjacent to a field.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "FRAGMENT_DEFINITION",
+						"description": "Location adjacent to a fragment definition.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "FRAGMENT_SPREAD",
+						"description": "Location adjacent to a fragment spread.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "INLINE_FRAGMENT",
+						"description": "Location adjacent to an inline fragment.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "VARIABLE_DEFINITION",
+						"description": "Location adjacent to a variable definition.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "SCHEMA",
+						"description": "Location adjacent to a schema definition.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "SCALAR",
+						"description": "Location adjacent to a scalar definition.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "OBJECT",
+						"description": "Location adjacent to an object type definition.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "FIELD_DEFINITION",
+						"description": "Location adjacent to a field definition.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "ARGUMENT_DEFINITION",
+						"description": "Location adjacent to an argument definition.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "INTERFACE",
+						"description": "Location adjacent to an interface definition.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "UNION",
+						"description": "Location adjacent to a union definition.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "ENUM",
+						"description": "Location adjacent to an enum definition.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "ENUM_VALUE",
+						"description": "Location adjacent to an enum value definition.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "INPUT_OBJECT",
+						"description": "Location adjacent to an input object type definition.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "INPUT_FIELD_DEFINITION",
+						"description": "Location adjacent to an input object field definition.",
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"possibleTypes": null
+			}
+		],
+		"directives": [
+			{
+				"name": "skip",
+				"description": "Directs the executor to skip this field or fragment when the `if` argument is true.",
+				"isRepeatable": false,
+				"locations": ["FIELD", "FRAGMENT_SPREAD", "INLINE_FRAGMENT"],
+				"args": [
+					{
+						"name": "if",
+						"description": "Skipped when true.",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "Boolean",
+								"ofType": null
+							}
 						},
-						{
-							"name": "INTERFACE",
-							"description": "Indicates this type is an interface. `fields` and `possibleTypes` are valid fields.",
-							"isDeprecated": false,
-							"deprecationReason": null
+						"defaultValue": null
+					}
+				]
+			},
+			{
+				"name": "include",
+				"description": "Directs the executor to include this field or fragment only when the `if` argument is true.",
+				"isRepeatable": false,
+				"locations": ["FIELD", "FRAGMENT_SPREAD", "INLINE_FRAGMENT"],
+				"args": [
+					{
+						"name": "if",
+						"description": "Included when true.",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "Boolean",
+								"ofType": null
+							}
 						},
-						{
-							"name": "UNION",
-							"description": "Indicates this type is a union. `possibleTypes` is a valid field.",
-							"isDeprecated": false,
-							"deprecationReason": null
+						"defaultValue": null
+					}
+				]
+			},
+			{
+				"name": "deprecated",
+				"description": "Marks an element of a GraphQL schema as no longer supported.",
+				"isRepeatable": false,
+				"locations": ["FIELD_DEFINITION", "ENUM_VALUE"],
+				"args": [
+					{
+						"name": "reason",
+						"description": "Explains why this element was deprecated, usually also including a suggestion for how to access supported similar data. Formatted using the Markdown syntax, as specified by [CommonMark](https://commonmark.org/).",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
 						},
-						{
-							"name": "ENUM",
-							"description": "Indicates this type is an enum. `enumValues` is a valid field.",
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "INPUT_OBJECT",
-							"description": "Indicates this type is an input object. `inputFields` is a valid field.",
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "LIST",
-							"description": "Indicates this type is a list. `ofType` is a valid field.",
-							"isDeprecated": false,
-							"deprecationReason": null
-						},
-						{
-							"name": "NON_NULL",
-							"description": "Indicates this type is a non-null. `ofType` is a valid field.",
-							"isDeprecated": false,
-							"deprecationReason": null
-						}
-					],
-					"possibleTypes": null
-				}
-			],
-			"directives": [
-				{
-					"name": "include",
-					"description": "Directs the executor to include this field or fragment only when the `if` argument is true.",
-					"locations": ["FIELD", "FRAGMENT_SPREAD", "INLINE_FRAGMENT"],
-					"args": [
-						{
-							"name": "if",
-							"description": "Included when true.",
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "Boolean",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
-						}
-					]
-				},
-				{
-					"name": "skip",
-					"description": "Directs the executor to skip this field or fragment when the `if` argument is true.",
-					"locations": ["FIELD", "FRAGMENT_SPREAD", "INLINE_FRAGMENT"],
-					"args": [
-						{
-							"name": "if",
-							"description": "Skipped when true.",
-							"type": {
-								"kind": "NON_NULL",
-								"name": null,
-								"ofType": {
-									"kind": "SCALAR",
-									"name": "Boolean",
-									"ofType": null
-								}
-							},
-							"defaultValue": null
-						}
-					]
-				},
-				{
-					"name": "deprecated",
-					"description": "Marks an element of a GraphQL schema as no longer supported.",
-					"locations": ["FIELD_DEFINITION", "ENUM_VALUE"],
-					"args": [
-						{
-							"name": "reason",
-							"description": "Explains why this element was deprecated, usually also including a suggestion for how to access supported similar data. Formatted in [Markdown](https://daringfireball.net/projects/markdown/).",
-							"type": {
+						"defaultValue": "\"No longer supported\""
+					}
+				]
+			},
+			{
+				"name": "specifiedBy",
+				"description": "Exposes a URL that specifies the behaviour of this scalar.",
+				"isRepeatable": false,
+				"locations": ["SCALAR"],
+				"args": [
+					{
+						"name": "url",
+						"description": "The URL that specifies the behaviour of this scalar.",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
 								"kind": "SCALAR",
 								"name": "String",
 								"ofType": null
-							},
-							"defaultValue": "\"No longer supported\""
-						}
-					]
-				}
-			]
-		}
+							}
+						},
+						"defaultValue": null
+					}
+				]
+			},
+			{
+				"name": "client",
+				"description": "Direct the client to resolve this field locally, either from the cache or local resolvers.",
+				"isRepeatable": false,
+				"locations": [
+					"FIELD",
+					"FRAGMENT_DEFINITION",
+					"INLINE_FRAGMENT"
+				],
+				"args": [
+					{
+						"name": "always",
+						"description": "When true, the client will never use the cache for this value. See\nhttps://www.apollographql.com/docs/react/essentials/local-state/#forcing-resolvers-with-clientalways-true",
+						"type": {
+							"kind": "SCALAR",
+							"name": "Boolean",
+							"ofType": null
+						},
+						"defaultValue": null
+					}
+				]
+			},
+			{
+				"name": "export",
+				"description": "Export this locally resolved field as a variable to be used in the remainder of this query. See\nhttps://www.apollographql.com/docs/react/essentials/local-state/#using-client-fields-as-variables",
+				"isRepeatable": false,
+				"locations": ["FIELD"],
+				"args": [
+					{
+						"name": "as",
+						"description": "The variable name to export this field as.",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					}
+				]
+			},
+			{
+				"name": "connection",
+				"description": "Specify a custom store key for this result. See\nhttps://www.apollographql.com/docs/react/advanced/caching/#the-connection-directive",
+				"isRepeatable": false,
+				"locations": ["FIELD"],
+				"args": [
+					{
+						"name": "key",
+						"description": "Specify the store key.",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
+						},
+						"defaultValue": null
+					},
+					{
+						"name": "filter",
+						"description": "An array of query argument names to include in the generated custom store key.",
+						"type": {
+							"kind": "LIST",
+							"name": null,
+							"ofType": {
+								"kind": "NON_NULL",
+								"name": null,
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "String",
+									"ofType": null
+								}
+							}
+						},
+						"defaultValue": null
+					}
+				]
+			}
+		]
 	}
 }

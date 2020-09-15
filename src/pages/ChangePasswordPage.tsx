@@ -132,16 +132,23 @@ function ChangePasswordPage() {
 						</Typography>
 						<Divider className={classes.divider} />
 					</div>
-					<Typography variant={"subtitle1"} className={classes.subText}>
+					<Typography
+						variant={"subtitle1"}
+						className={classes.subText}>
 						{"Hey " + user.username + ", set your new password"}
 					</Typography>
 					<Formik
-						initialValues={{ password: "" }}
+						initialValues={{
+							password: "",
+						}}
 						onSubmit={(values, { setSubmitting }) => {
 							setSubmitting(true)
 							if (user) {
 								request({
-									variables: { ...values, id: user.id },
+									variables: {
+										...values,
+										id: user.id,
+									},
 									handleComplete: () => {
 										setSubmitting(false)
 									},
@@ -149,8 +156,15 @@ function ChangePasswordPage() {
 								})
 							}
 						}}>
-						{({ values, handleChange, handleSubmit, isSubmitting }) => (
-							<form onSubmit={handleSubmit} className={classes.form}>
+						{({
+							values,
+							handleChange,
+							handleSubmit,
+							isSubmitting,
+						}) => (
+							<form
+								onSubmit={handleSubmit}
+								className={classes.form}>
 								<StyledTextField
 									label={"password"}
 									type={"password"}

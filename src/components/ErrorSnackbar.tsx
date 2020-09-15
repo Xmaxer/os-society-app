@@ -25,7 +25,9 @@ function ErrorSnackbar() {
 				onClose={onClose}
 				autoHideDuration={5000}>
 				<Alert severity={ERROR} onClose={onClose}>
-					{errors && errors.fetchError ? errors.fetchError.message : ""}
+					{errors && errors.fetchError
+						? errors.fetchError.message
+						: ""}
 				</Alert>
 			</Snackbar>
 			<Snackbar
@@ -43,7 +45,9 @@ function ErrorSnackbar() {
 				onClose={onClose}
 				autoHideDuration={5000}>
 				<Alert severity={ERROR} onClose={onClose}>
-					{errors && errors.httpError ? errors.httpError.statusText : ""}
+					{errors && errors.httpError
+						? errors.httpError.statusText
+						: ""}
 				</Alert>
 			</Snackbar>
 		</>

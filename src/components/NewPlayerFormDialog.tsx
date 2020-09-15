@@ -107,7 +107,9 @@ function NewPlayerFormDialog({
 				onSubmit={(values, { setSubmitting, resetForm }) => {
 					setSubmitting(true)
 					request({
-						variables: { ...values },
+						variables: {
+							...values,
+						},
 						handleComplete: () => {
 							resetForm()
 							setSubmitting(false)
@@ -116,7 +118,9 @@ function NewPlayerFormDialog({
 					})
 				}}
 				validate={(values) => {
-					const errors: { [key: string]: any } = {}
+					const errors: {
+						[key: string]: any
+					} = {}
 					if (!values.username) {
 						errors.username = "Invalid username"
 					}
@@ -128,7 +132,13 @@ function NewPlayerFormDialog({
 					}
 					return errors
 				}}>
-				{({ values, handleChange, handleSubmit, setFieldValue, isValid }) => (
+				{({
+					values,
+					handleChange,
+					handleSubmit,
+					setFieldValue,
+					isValid,
+				}) => (
 					<form
 						className={classes.formContainer}
 						onSubmit={(event) => {
@@ -142,13 +152,19 @@ function NewPlayerFormDialog({
 							/>
 							<NewPlayerJoinDateField
 								changeHandler={(date) => {
-									setFieldValue("joinDate", date ? toDate(date) : null)
+									setFieldValue(
+										"joinDate",
+										date ? toDate(date) : null
+									)
 								}}
 								value={values.joinDate}
 							/>
 							<NewPlayerRankField
 								changeHandler={(event, option) => {
-									setFieldValue("rank", option ? option.id : null)
+									setFieldValue(
+										"rank",
+										option ? option.id : null
+									)
 								}}
 							/>
 							<NewPlayerPreviousNameField
@@ -168,13 +184,17 @@ function NewPlayerFormDialog({
 								variant={"contained"}
 								onClick={(event) =>
 									handleSubmit(
-										(event as unknown) as React.FormEvent<HTMLFormElement>
+										(event as unknown) as React.FormEvent<
+											HTMLFormElement
+										>
 									)
 								}
 								disabled={!isValid}>
 								Save
 							</StyledButton>
-							<StyledButton variant={"contained"} onClick={handleCancel}>
+							<StyledButton
+								variant={"contained"}
+								onClick={handleCancel}>
 								Close
 							</StyledButton>
 						</div>

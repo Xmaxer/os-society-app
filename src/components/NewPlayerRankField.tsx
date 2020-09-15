@@ -59,9 +59,15 @@ function NewPlayerRankField({ changeHandler }: INewPlayerRankFieldProps) {
 			return (
 				<div className={classes.option}>
 					{item.img ? (
-						<img src={item.img} alt={""} className={classes.image} />
+						<img
+							src={item.img}
+							alt={""}
+							className={classes.image}
+						/>
 					) : null}
-					<Typography className={classes.optionText}>{item.label}</Typography>
+					<Typography className={classes.optionText}>
+						{item.label}
+					</Typography>
 				</div>
 			)
 		}
@@ -81,7 +87,10 @@ function NewPlayerRankField({ changeHandler }: INewPlayerRankFieldProps) {
 			onChange={changeHandler}
 			renderOption={renderOption}
 			defaultValue={RANK_OPTIONS.find((e) => e.id === 0)}
-			classes={{ paper: classes.paper, option: classes.paperOption }}
+			classes={{
+				paper: classes.paper,
+				option: classes.paperOption,
+			}}
 		/>
 	)
 }

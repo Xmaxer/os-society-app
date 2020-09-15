@@ -1,21 +1,23 @@
 language: node_js
 node_js:
-  - "14"
+    - "14"
 cache:
-  npm: false
-  directories:
-    - "~/.pnpm-store"
+    npm: false
+    directories:
+        - "~/.pnpm-store"
 before_install:
-  - curl -L https://unpkg.com/@pnpm/self-installer | node
-  - pnpm config set store-dir ~/.pnpm-store
+    - curl -L https://unpkg.com/@pnpm/self-installer | node
+    - pnpm config set store-dir ~/.pnpm-store
 
 jobs:
-  include:
-    - stage: install modules
-      install: pnpm install
-    - stage: prettier
-      script: npm run prettier-ci
-    - stage: test
-      script: npm run test
-    - stage: build
-      script: npm run build
+    include:
+        - stage: install modules
+          install: pnpm install
+          script:
+              - "true"
+        - stage: prettier
+          script: npm run prettier-ci
+        - stage: test
+          script: npm run test
+        - stage: build
+          script: npm run build

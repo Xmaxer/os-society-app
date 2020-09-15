@@ -42,7 +42,8 @@ function Header() {
 	}
 
 	const handleSuccess = (data: Logout) => {
-		if (data && data.logout && data.logout.success) history.push(LOGIN_ROUTE)
+		if (data && data.logout && data.logout.success)
+			history.push(LOGIN_ROUTE)
 	}
 
 	return (

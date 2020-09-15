@@ -125,7 +125,9 @@ function PlayerTable({ days, ranks, search }: IPlayerTableProps) {
 
 	const handleSort = (id: PlayerOrderEnum | PLAYER_ORDER_ENUM) => {
 		setOrder(
-			orderBy === id && order === OrderEnum.ASC ? OrderEnum.DESC : OrderEnum.ASC
+			orderBy === id && order === OrderEnum.ASC
+				? OrderEnum.DESC
+				: OrderEnum.ASC
 		)
 		setPage(0)
 		setOrderBy(id)
@@ -201,7 +203,9 @@ function PlayerTable({ days, ranks, search }: IPlayerTableProps) {
 	}
 	return (
 		<>
-			<TableContainer component={Paper} className={classes.tableContainer}>
+			<TableContainer
+				component={Paper}
+				className={classes.tableContainer}>
 				<Table size={"small"} className={classes.table}>
 					<SortableTableHead
 						orderBy={orderBy}
@@ -213,8 +217,12 @@ function PlayerTable({ days, ranks, search }: IPlayerTableProps) {
 							? [...Array(rowsPerPage)].map((e, i) => {
 									return (
 										<TableRow key={i}>
-											<TableCell width={"100%"} colSpan={headers.length}>
-												<Skeleton className={classes.skeleton} />
+											<TableCell
+												width={"100%"}
+												colSpan={headers.length}>
+												<Skeleton
+													className={classes.skeleton}
+												/>
 											</TableCell>
 										</TableRow>
 									)
@@ -233,7 +241,10 @@ function PlayerTable({ days, ranks, search }: IPlayerTableProps) {
 								<TableCell colSpan={headers.length}>
 									<div
 										style={{
-											height: (rowsPerPage - players.length) * 40 + "px",
+											height:
+												(rowsPerPage - players.length) *
+													40 +
+												"px",
 										}}
 									/>
 								</TableCell>

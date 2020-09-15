@@ -48,7 +48,9 @@ function ApiDownPage() {
 				<Typography variant={"h3"}>API is offline</Typography>
 			</div>
 			<div>
-				<StyledButton onClick={handleOnRetry}>Retry Connection</StyledButton>
+				<StyledButton onClick={handleOnRetry}>
+					Retry Connection
+				</StyledButton>
 			</div>
 		</div>
 	)

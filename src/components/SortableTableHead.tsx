@@ -102,7 +102,12 @@ export const headers = [
 		sortable: true,
 		align: "left",
 	},
-	{ id: PlayerOrderEnum.RANK, label: "Rank", sortable: true, align: "left" },
+	{
+		id: PlayerOrderEnum.RANK,
+		label: "Rank",
+		sortable: true,
+		align: "left",
+	},
 	{
 		id: PLAYER_ORDER_ENUM.DAYS_IN_CC,
 		label: "Number of Days in CC",
@@ -170,7 +175,9 @@ function SortableTableHead({ orderBy, order, handleSort }: ISortableTableHead) {
 							key={header.id}
 							width={headerDistribution[index].percentage}
 							align={header.align as TableCellProps["align"]}
-							style={{ minWidth: headerDistribution[index].min }}>
+							style={{
+								minWidth: headerDistribution[index].min,
+							}}>
 							<TableSortLabel
 								active={orderBy === header.id}
 								direction={
@@ -194,7 +201,9 @@ function SortableTableHead({ orderBy, order, handleSort }: ISortableTableHead) {
 							key={header.id}
 							width={headerDistribution[index].percentage}
 							align={header.align as TableCellProps["align"]}
-							style={{ minWidth: headerDistribution[index].min }}>
+							style={{
+								minWidth: headerDistribution[index].min,
+							}}>
 							{header.label}
 						</TableCell>
 					)

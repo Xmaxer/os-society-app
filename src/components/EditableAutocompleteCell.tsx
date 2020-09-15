@@ -79,9 +79,15 @@ function EditableAutocompleteCell({
 			return (
 				<div className={classes.option}>
 					{item.img ? (
-						<img src={item.img} alt={""} className={classes.image} />
+						<img
+							src={item.img}
+							alt={""}
+							className={classes.image}
+						/>
 					) : null}
-					<Typography className={classes.optionText}>{item.label}</Typography>
+					<Typography className={classes.optionText}>
+						{item.label}
+					</Typography>
 				</div>
 			)
 		}

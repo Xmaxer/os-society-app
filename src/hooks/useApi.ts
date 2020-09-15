@@ -62,38 +62,40 @@ function useApi<DataType, VariablesType = {}>({ query }: IUseApiProps) {
 		handleError,
 	}: IRequestHandler<DataType, VariablesType>) => {
 		setLoading(true)
-		call(variables ? { variables: { ...variables } } : {}).then((response) => {
-			if (!response.error) {
-				setData(response.data)
-				if (handleSuccess) handleSuccess(response.data)
-			} else {
-				if (
-					response.error &&
-					response.error.fetchError &&
-					response.error.fetchError.message === "Failed to fetch"
-				) {
-					history.push(API_OFFLINE_ERROR)
-					return
-				} else if (
-					response.error.graphQLErrors &&
-					response.error.graphQLErrors.find(
-						(e: any) => e.extensions && e.extensions.code === -1
-					)
-				) {
-					history.push(LOGIN_ROUTE)
-					return
+		call(variables ? { variables: { ...variables } } : {}).then(
+			(response) => {
+				if (!response.error) {
+					setData(response.data)
+					if (handleSuccess) handleSuccess(response.data)
 				} else {
-					dispatch({
-						type: ADD_ERRORS,
-						errors: response.error,
-					})
-					setError(response.error)
-					if (handleError) handleError(response.error)
+					if (
+						response.error &&
+						response.error.fetchError &&
+						response.error.fetchError.message === "Failed to fetch"
+					) {
+						history.push(API_OFFLINE_ERROR)
+						return
+					} else if (
+						response.error.graphQLErrors &&
+						response.error.graphQLErrors.find(
+							(e: any) => e.extensions && e.extensions.code === -1
+						)
+					) {
+						history.push(LOGIN_ROUTE)
+						return
+					} else {
+						dispatch({
+							type: ADD_ERRORS,
+							errors: response.error,
+						})
+						setError(response.error)
+						if (handleError) handleError(response.error)
+					}
 				}
+				setLoading(false)
+				if (handleComplete) handleComplete()
 			}
-			setLoading(false)
-			if (handleComplete) handleComplete()
-		})
+		)
 	}
 
 	return { request, loading, error, data }
