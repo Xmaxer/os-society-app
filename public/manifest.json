@@ -1,54 +1,54 @@
 {
-  "short_name": "OS Society UM",
-  "name": "OS Society User Management",
-  "icons": [
-    {
-      "src": "images/oss-logo-small.png",
-      "type": "image/png"
-    },
-    {
-      "src": "images/oss-logo-large.png",
-      "type": "image/png"
-    },
-    {
-      "src": "images/captain_rank.png",
-      "type": "image/png"
-    },
-    {
-      "src": "images/corporal_rank.png",
-      "type": "image/png"
-    },
-    {
-      "src": "images/friend_rank.png",
-      "type": "image/png"
-    },
-    {
-      "src": "images/general_rank.png",
-      "type": "image/png"
-    },
-    {
-      "src": "images/lieutenant_rank.png",
-      "type": "image/png"
-    },
-    {
-      "src": "images/owner_rank.png",
-      "type": "image/png"
-    },
-    {
-      "src": "images/recruit_rank.png",
-      "type": "image/png"
-    },
-    {
-      "src": "images/sergeant_rank.png",
-      "type": "image/png"
-    },
-    {
-      "src": "svgs/sad_face.svg",
-      "sizes": "106x106"
-    }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+	"short_name": "OS Society UM",
+	"name": "OS Society User Management",
+	"icons": [
+		{
+			"src": "images/oss-logo-small.png",
+			"type": "image/png"
+		},
+		{
+			"src": "images/oss-logo-large.png",
+			"type": "image/png"
+		},
+		{
+			"src": "images/captain_rank.png",
+			"type": "image/png"
+		},
+		{
+			"src": "images/corporal_rank.png",
+			"type": "image/png"
+		},
+		{
+			"src": "images/friend_rank.png",
+			"type": "image/png"
+		},
+		{
+			"src": "images/general_rank.png",
+			"type": "image/png"
+		},
+		{
+			"src": "images/lieutenant_rank.png",
+			"type": "image/png"
+		},
+		{
+			"src": "images/owner_rank.png",
+			"type": "image/png"
+		},
+		{
+			"src": "images/recruit_rank.png",
+			"type": "image/png"
+		},
+		{
+			"src": "images/sergeant_rank.png",
+			"type": "image/png"
+		},
+		{
+			"src": "svgs/sad_face.svg",
+			"sizes": "106x106"
+		}
+	],
+	"start_url": ".",
+	"display": "standalone",
+	"theme_color": "#000000",
+	"background_color": "#ffffff"
 }
