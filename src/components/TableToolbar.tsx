@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { forwardRef, useEffect, useState } from "react"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import { StyledButton } from "../assets/theme/styledComponents"
 import DaysFilter, { MAX_DAYS, MIN_DAYS } from "./DaysFilter"
@@ -103,9 +103,11 @@ const useStyles = makeStyles((theme) => ({
 	},
 }))
 
-const Transition = React.forwardRef<unknown, SlideProps>((props, ref) => {
+const Transition = forwardRef<unknown, SlideProps>((props, ref) => {
 	return <Slide direction="up" ref={ref} {...props} />
 })
+
+Transition.displayName = "SlideTransition"
 
 let days: Array<number> | undefined = undefined
 let ranks: IRankFilter | undefined = undefined
@@ -152,7 +154,7 @@ function TableToolbar({ handleApplyFilters }: ITableToolbarProps) {
 			handleApplyFilters(undefined, undefined, undefined)
 			setResetFilter(false)
 		}
-	}, [resetFilter])
+	}, [handleApplyFilters, resetFilter])
 
 	const rankHandler = (newRanks: IRankFilter) => {
 		ranks = newRanks

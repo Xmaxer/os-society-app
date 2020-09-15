@@ -75,7 +75,9 @@ function PlayerTableRow({ defaultPlayer, onDelete }: PlayerTableRowProps) {
 	}
 
 	const onEditSuccess = (data: UpdatePlayer) => {
-		setPlayer(data!.updatePlayer!.player)
+		if (data && data.updatePlayer) {
+			setPlayer(data.updatePlayer.player)
+		}
 	}
 
 	const handleDelete = () => {
@@ -93,7 +95,6 @@ function PlayerTableRow({ defaultPlayer, onDelete }: PlayerTableRowProps) {
 		<TableRow key={player.id}>
 			<EditableTextfieldCell
 				defaultValue={player.username}
-				id={player.id}
 				name={"username"}
 				width={"10%"}
 				align={"left"}
@@ -102,7 +103,6 @@ function PlayerTableRow({ defaultPlayer, onDelete }: PlayerTableRowProps) {
 			<EditableDatePickerCell
 				width={"10%"}
 				defaultValue={player.joinDate}
-				id={player.id}
 				name={"joinDate"}
 				onChange={handleChange}
 				align={"left"}
@@ -110,7 +110,6 @@ function PlayerTableRow({ defaultPlayer, onDelete }: PlayerTableRowProps) {
 			<EditableAutocompleteCell
 				width={"10%"}
 				defaultValue={player.rank}
-				id={player.id}
 				name={"rank"}
 				align={"left"}
 				onChange={handleChange}
@@ -133,7 +132,6 @@ function PlayerTableRow({ defaultPlayer, onDelete }: PlayerTableRowProps) {
 			<EditableMultiSelectCell
 				width={"20%"}
 				defaultValue={player.previousNames}
-				id={player.id}
 				name={"previousNames"}
 				align={"center"}
 				onChange={handleChange}
@@ -141,7 +139,6 @@ function PlayerTableRow({ defaultPlayer, onDelete }: PlayerTableRowProps) {
 			<EditableTextfieldCell
 				width={"18%"}
 				defaultValue={player.comment}
-				id={player.id}
 				name={"comment"}
 				multiline={true}
 				maxLength={200}

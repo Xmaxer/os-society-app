@@ -2,12 +2,11 @@ import React, { useState } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import TableCell from "@material-ui/core/TableCell"
 import ClickAwayListener from "@material-ui/core/ClickAwayListener"
-import { MAX_USERNAME_LENGTH } from "../assets/constants/constants"
 import NewPlayerUsernameTextField from "./NewPlayerUsernameTextField"
 import NewPlayerCommentField from "./NewPlayerCommentField"
 import { Tooltip } from "@material-ui/core"
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
 	cellWrapper: {
 		height: 70,
 		overflow: "hidden",
@@ -25,9 +24,7 @@ const useStyles = makeStyles((theme) => ({
 export interface EditableTextfieldCellProps {
 	defaultValue?: string | null
 	name: string
-	id: string
 	multiline?: boolean
-	maxLength?: number
 	onChange: (name: string, value?: string | null) => void
 
 	[key: string]: any
@@ -36,9 +33,7 @@ export interface EditableTextfieldCellProps {
 function EditableTextfieldCell({
 	defaultValue,
 	name,
-	id,
 	multiline = false,
-	maxLength = MAX_USERNAME_LENGTH,
 	onChange,
 	...rest
 }: EditableTextfieldCellProps) {

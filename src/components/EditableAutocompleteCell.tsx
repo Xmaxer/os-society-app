@@ -33,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
 export interface EditableAutocompleteCellProps {
 	defaultValue: number
 	name: string
-	id: string
 	onChange: (name: string, value: number) => void
 
 	[key: string]: any
@@ -42,7 +41,6 @@ export interface EditableAutocompleteCellProps {
 function EditableAutocompleteCell({
 	defaultValue,
 	name,
-	id,
 	onChange,
 	...rest
 }: EditableAutocompleteCellProps) {
@@ -58,7 +56,7 @@ function EditableAutocompleteCell({
 	}
 
 	const handleChange = (
-		event: React.ChangeEvent<{}>,
+		event: React.ChangeEvent<Record<string, unknown>>,
 		option: typeof RANK_OPTIONS[0] | null
 	) => {
 		if (option !== null) {

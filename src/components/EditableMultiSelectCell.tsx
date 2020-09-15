@@ -54,7 +54,6 @@ const useStyles = makeStyles((theme) => ({
 export interface EditableMultiSelectCellProps {
 	defaultValue: Array<string>
 	name: string
-	id: string
 	onChange: (name: string, value: Array<string>) => void
 
 	[key: string]: any
@@ -63,7 +62,6 @@ export interface EditableMultiSelectCellProps {
 function EditableMultiSelectCell({
 	defaultValue,
 	name,
-	id,
 	onChange,
 	...rest
 }: EditableMultiSelectCellProps) {
@@ -77,7 +75,7 @@ function EditableMultiSelectCell({
 	}
 
 	const handleChange = (
-		event: React.ChangeEvent<{}>,
+		event: React.ChangeEvent<unknown>,
 		option: Array<string> | null
 	) => {
 		if (option !== null) {
@@ -141,6 +139,7 @@ function EditableMultiSelectCell({
 										/>
 									)
 								}
+								return null
 							})}
 							{value.length > 2 && (
 								<Tooltip title={`${value.slice(2).join(", ")}`}>

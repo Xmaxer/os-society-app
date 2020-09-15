@@ -2,6 +2,3 @@
 !/src
 !/public
 !.travis.yml
-!package.json
-!tsconfig.json
-!.prettierrc.json

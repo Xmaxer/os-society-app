@@ -1,4 +1,4 @@
-import React from "react"
+import React, { forwardRef } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Typography from "@material-ui/core/Typography"
 import { StyledButton } from "../assets/theme/styledComponents"
@@ -71,9 +71,11 @@ export interface INewPlayerFormDialogProps {
 	open: boolean
 }
 
-const Transition = React.forwardRef<unknown, SlideProps>((props, ref) => {
+const Transition = forwardRef<unknown, SlideProps>((props, ref) => {
 	return <Slide direction="up" ref={ref} {...props} />
 })
+
+Transition.displayName = "SlideTransition"
 
 function NewPlayerFormDialog({
 	successHandler,

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useCallback, useContext, useState } from "react"
 import { useHistory } from "react-router-dom"
 import {
 	APIError,
@@ -31,7 +31,9 @@ export interface IRequestHandler<DataType, VariablesType> {
 	handleError?: (error: APIError<IGraphQLError>) => void
 }
 
-function useApi<DataType, VariablesType = {}>({ query }: IUseApiProps) {
+function useApi<DataType, VariablesType = Record<string, unknown>>({
+	query,
+}: IUseApiProps) {
 	const [{}, dispatch] = useGlobalState()
 	const history = useHistory()
 
@@ -55,48 +57,56 @@ function useApi<DataType, VariablesType = {}>({ query }: IUseApiProps) {
 	)
 	const call = query.type === MUTATION_OPERATION ? mutationCall : queryCall
 
-	const request = ({
-		variables = {} as VariablesType,
-		handleComplete,
-		handleSuccess,
-		handleError,
-	}: IRequestHandler<DataType, VariablesType>) => {
-		setLoading(true)
-		call(variables ? { variables: { ...variables } } : {}).then(
-			(response) => {
-				if (!response.error) {
-					setData(response.data)
-					if (handleSuccess) handleSuccess(response.data)
-				} else {
-					if (
-						response.error &&
-						response.error.fetchError &&
-						response.error.fetchError.message === "Failed to fetch"
-					) {
-						history.push(API_OFFLINE_ERROR)
-						return
-					} else if (
-						response.error.graphQLErrors &&
-						response.error.graphQLErrors.find(
-							(e: any) => e.extensions && e.extensions.code === -1
-						)
-					) {
-						history.push(LOGIN_ROUTE)
-						return
+	// This is potentially one of the dumbest things I've seen in my life
+	// Why does 'useCallback' destroy all types...
+	// @ts-ignore
+	const request = useCallback(
+		({
+			variables = {} as VariablesType,
+			handleComplete,
+			handleSuccess,
+			handleError,
+		}: IRequestHandler<DataType, VariablesType>) => {
+			setLoading(true)
+			call(variables ? { variables: { ...variables } } : {}).then(
+				(response) => {
+					if (!response.error) {
+						setData(response.data)
+						if (handleSuccess) handleSuccess(response.data)
 					} else {
-						dispatch({
-							type: ADD_ERRORS,
-							errors: response.error,
-						})
-						setError(response.error)
-						if (handleError) handleError(response.error)
+						if (
+							response.error &&
+							response.error.fetchError &&
+							response.error.fetchError.message ===
+								"Failed to fetch"
+						) {
+							history.push(API_OFFLINE_ERROR)
+							return
+						} else if (
+							response.error.graphQLErrors &&
+							response.error.graphQLErrors.find(
+								(e: any) =>
+									e.extensions && e.extensions.code === -1
+							)
+						) {
+							history.push(LOGIN_ROUTE)
+							return
+						} else {
+							dispatch({
+								type: ADD_ERRORS,
+								errors: response.error,
+							})
+							setError(response.error)
+							if (handleError) handleError(response.error)
+						}
 					}
+					setLoading(false)
+					if (handleComplete) handleComplete()
 				}
-				setLoading(false)
-				if (handleComplete) handleComplete()
-			}
-		)
-	}
+			)
+		},
+		[call, dispatch, history]
+	)
 
 	return { request, loading, error, data }
 }

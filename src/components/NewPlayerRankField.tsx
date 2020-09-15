@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 export interface INewPlayerRankFieldProps {
 	changeHandler: (
-		event: React.ChangeEvent<{}>,
+		event: React.ChangeEvent<Record<string, unknown>>,
 		option: typeof RANK_OPTIONS[0] | null
 	) => void
 }

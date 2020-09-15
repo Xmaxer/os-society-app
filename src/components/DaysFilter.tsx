@@ -43,7 +43,7 @@ function DaysFilter({ handler, reset, ...rest }: IDaysFilterProps) {
 	])
 
 	const handleDaysFilterChange = (
-		event: React.ChangeEvent<{}>,
+		event: React.ChangeEvent<Record<string, unknown>>,
 		value: Array<number> | number
 	) => {
 		if (Array.isArray(value)) {

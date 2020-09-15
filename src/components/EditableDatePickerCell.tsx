@@ -6,7 +6,7 @@ import format from "date-fns/format"
 import ClickAwayListener from "@material-ui/core/ClickAwayListener"
 import NewPlayerJoinDateField from "./NewPlayerJoinDateField"
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
 	cellWrapper: {
 		height: 70,
 		overflow: "hidden",
@@ -22,7 +22,6 @@ function formatDate(datetime: string) {
 export interface EditableDatePickerCellProps {
 	defaultValue: string
 	name: string
-	id: string
 	onChange: (name: string, value: Date) => void
 
 	[key: string]: any
@@ -31,7 +30,6 @@ export interface EditableDatePickerCellProps {
 function EditableDatePickerCell({
 	defaultValue,
 	name,
-	id,
 	onChange,
 	...rest
 }: EditableDatePickerCellProps) {

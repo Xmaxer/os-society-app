@@ -9,7 +9,7 @@ import { useHistory } from "react-router-dom"
 import { LOGIN_ROUTE } from "../assets/constants/routes"
 import { Logout } from "../assets/api/apiInterfaces"
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
 	root: {
 		flexGrow: 1,
 	},

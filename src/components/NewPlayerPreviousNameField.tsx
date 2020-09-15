@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 export interface INewPlayerPreviousNameFieldProps {
 	changeHandler: (
-		event: React.ChangeEvent<{}>,
+		event: React.ChangeEvent<unknown>,
 		option: Array<string> | null
 	) => void
 	value: Array<string>

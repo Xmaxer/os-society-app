@@ -1,12 +1,9 @@
 import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
 import { useGlobalState } from "../state/state"
 import Snackbar from "@material-ui/core/Snackbar"
 import { REMOVE_ERRORS } from "../state/actions"
 import MuiAlert from "@material-ui/lab/Alert"
 import { ERROR } from "../assets/constants/severities"
-
-const useStyles = makeStyles((theme) => ({}))
 
 function Alert(props: { [key: string]: any }) {
 	return <MuiAlert elevation={6} variant="filled" {...props} />

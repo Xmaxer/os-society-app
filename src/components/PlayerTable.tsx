@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import Table from "@material-ui/core/Table"
 import TableBody from "@material-ui/core/TableBody"
@@ -78,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
 	paginationSpacer: {
 		flex: "inherit",
 	},
-	pagnationToolbar: {
+	paginationToolbar: {
 		display: "flex",
 		justifyContent: "center",
 	},
@@ -119,29 +119,11 @@ function PlayerTable({ days, ranks, search }: IPlayerTableProps) {
 	})
 
 	const handleGetPlayersSuccess = (data: Players) => {
-		setPlayers(data.players!)
+		setPlayers(data.players)
 		setTotalPlayers(data.totalPlayers)
 	}
 
-	const handleSort = (id: PlayerOrderEnum | PLAYER_ORDER_ENUM) => {
-		setOrder(
-			orderBy === id && order === OrderEnum.ASC
-				? OrderEnum.DESC
-				: OrderEnum.ASC
-		)
-		setPage(0)
-		setOrderBy(id)
-	}
-
-	useEffect(() => {
-		setPage(0)
-	}, [days, ranks, search])
-
-	useEffect(() => {
-		getPlayers()
-	}, [orderBy, order, page, rowsPerPage, days, ranks, search])
-
-	const getPlayers = () => {
+	const getPlayers = useCallback(() => {
 		let convertedRanks: Array<number> | null = null
 		let start_join_date = null
 		let end_join_date = null
@@ -179,7 +161,25 @@ function PlayerTable({ days, ranks, search }: IPlayerTableProps) {
 			},
 			handleSuccess: handleGetPlayersSuccess,
 		})
+	}, [days, order, orderBy, page, ranks, request, rowsPerPage, search])
+
+	const handleSort = (id: PlayerOrderEnum | PLAYER_ORDER_ENUM) => {
+		setOrder(
+			orderBy === id && order === OrderEnum.ASC
+				? OrderEnum.DESC
+				: OrderEnum.ASC
+		)
+		setPage(0)
+		setOrderBy(id)
 	}
+
+	useEffect(() => {
+		setPage(0)
+	}, [days, ranks, search])
+
+	useEffect(() => {
+		getPlayers()
+	}, [orderBy, order, page, rowsPerPage, days, ranks, search, getPlayers])
 
 	const handlePageChange = (
 		event: React.MouseEvent<HTMLButtonElement> | null,
@@ -268,7 +268,7 @@ function PlayerTable({ days, ranks, search }: IPlayerTableProps) {
 					selectRoot: classes.paginationSelectRoot,
 					caption: classes.paginationCaption,
 					spacer: classes.paginationSpacer,
-					toolbar: classes.pagnationToolbar,
+					toolbar: classes.paginationToolbar,
 				}}
 				component={"div"}
 			/>

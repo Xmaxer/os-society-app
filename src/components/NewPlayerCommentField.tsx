@@ -2,7 +2,7 @@ import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import { StyledTextField } from "../assets/theme/styledComponents"
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
 	formCommentField: {
 		width: 300,
 		"& *::-webkit-scrollbar": {

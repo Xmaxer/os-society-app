@@ -185,7 +185,7 @@ function SortableTableHead({ orderBy, order, handleSort }: ISortableTableHead) {
 										? order.toLowerCase()
 										: OrderEnum.ASC.toLowerCase()) as TableSortLabelTypeMap["props"]["direction"]
 								}
-								onClick={(e) => {
+								onClick={() => {
 									handleSort(header.id as PlayerOrderEnum)
 								}}
 								className={classes.sortLabel}
