@@ -33,4 +33,6 @@ export const StateProvider = ({
 )
 
 export const useGlobalState = () =>
-	useContext<[IGlobalState, React.Dispatch<IAction>]>(StateContext)
+	useContext<{ state: IGlobalState; dispatch: React.Dispatch<IAction> }>(
+		StateContext
+	)

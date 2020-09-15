@@ -34,7 +34,7 @@ export interface IRequestHandler<DataType, VariablesType> {
 function useApi<DataType, VariablesType = Record<string, unknown>>({
 	query,
 }: IUseApiProps) {
-	const [{}, dispatch] = useGlobalState()
+	const { dispatch } = useGlobalState()
 	const history = useHistory()
 
 	// Include the access token if one exists

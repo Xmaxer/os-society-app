@@ -134,6 +134,7 @@ function PlayerTable({ days, ranks, search }: IPlayerTableProps) {
 				(Object.entries(ranks)
 					.map((rank, i) => {
 						if (rank[1]) return i
+						else return undefined
 					})
 					.filter((rank) => rank !== undefined) as Array<number>)
 		}

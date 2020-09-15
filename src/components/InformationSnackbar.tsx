@@ -10,7 +10,10 @@ function Alert(props: { [key: string]: any }) {
 }
 
 function InformationSnackbar() {
-	const [{ info }, dispatch] = useGlobalState()
+	const {
+		state: { info },
+		dispatch,
+	} = useGlobalState()
 
 	const onClose = () => {
 		dispatch({ type: REMOVE_INFO })

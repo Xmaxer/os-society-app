@@ -10,7 +10,10 @@ function Alert(props: { [key: string]: any }) {
 }
 
 function ErrorSnackbar() {
-	const [{ errors }, dispatch] = useGlobalState()
+	const {
+		state: { errors },
+		dispatch,
+	} = useGlobalState()
 
 	const onClose = () => {
 		dispatch({ type: REMOVE_ERRORS })
