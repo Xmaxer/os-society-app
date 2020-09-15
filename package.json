@@ -50,7 +50,7 @@
     "prettier": "prettier --write .",
     "prettier-ci": "prettier --check .",
     "eslint": "eslint src/ --ext .js,.jsx,.ts,.tsx --fix",
-    "eslint-ci": "eslint --strict",
+    "eslint-ci": "eslint src/ --ext .js,.jsx,.ts,.tsx",
     "check-all": "npm run prettier && npm run eslint",
     "graphql-generate": "npm run graphql-generate-schema && npm run graphql-generate-typescript-interfaces",
     "graphql-generate-typescript-interfaces": "apollo client:codegen --includes=./src/assets/api/queries.ts --localSchemaFile=./src/assets/api/schema.json --target=typescript --outputFlat ./src/assets/api/apiInterfaces.ts",
