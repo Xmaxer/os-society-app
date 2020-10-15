@@ -1,19 +1,14 @@
 import React from "react"
-import {makeStyles} from "@material-ui/core/styles"
-import {BrowserRouter, Route, Switch} from "react-router-dom"
-import {
-	API_OFFLINE_ERROR,
-	CHANGE_PASSWORD_ROUTE,
-	HOME_ROUTE,
-	LOGIN_ROUTE,
-} from "./assets/constants/routes"
+import { makeStyles } from "@material-ui/core/styles"
+import { BrowserRouter, Route, Switch } from "react-router-dom"
+import { API_OFFLINE_ERROR, CHANGE_PASSWORD_ROUTE, HOME_ROUTE, LOGIN_ROUTE } from "./assets/constants/routes"
 import HomePage from "./pages/HomePage"
 import ChangePasswordPage from "./pages/ChangePasswordPage"
 import LoginPage from "./pages/LoginPage"
 import ApiDownPage from "./pages/ApiDownPage"
 import ErrorSnackbar from "./components/ErrorSnackbar"
 import InformationSnackbar from "./components/InformationSnackbar"
-import {IUser} from "./App"
+import { IUser } from "./App"
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -25,6 +20,8 @@ const useStyles = makeStyles((theme) => ({
 		"& *::-webkit-scrollbar-thumb": {
 			backgroundColor: theme.palette.primary.light,
 		},
+		display: 'flex',
+		flexDirection: 'column'
 	},
 }))
 
@@ -41,7 +38,6 @@ function AppRouter({state}: IAppRouterProps) {
 			<BrowserRouter>
 				<>
 					<Switch>
-						<Route path={HOME_ROUTE} component={HomePage} exact />
 						<Route
 							path={CHANGE_PASSWORD_ROUTE}
 							component={ChangePasswordPage}
@@ -54,6 +50,7 @@ function AppRouter({state}: IAppRouterProps) {
 							component={ApiDownPage}
 							exact
 						/>
+						<Route path={HOME_ROUTE} component={HomePage} />
 					</Switch>
 					<ErrorSnackbar />
 					<InformationSnackbar />

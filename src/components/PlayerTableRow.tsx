@@ -1,5 +1,5 @@
-import React, {useState} from "react"
-import {makeStyles} from "@material-ui/core/styles"
+import React, { useState } from "react"
+import { makeStyles } from "@material-ui/core/styles"
 import TableRow from "@material-ui/core/TableRow"
 import EditableTextfieldCell from "./EditableTextfieldCell"
 import EditableDatePickerCell from "./EditableDatePickerCell"
@@ -10,11 +10,8 @@ import format from "date-fns/format"
 import parseISO from "date-fns/parseISO"
 import differenceInDays from "date-fns/differenceInDays"
 import useApi from "../hooks/useApi"
-import {
-	DELETE_PLAYER_MUTATION,
-	UPDATE_PLAYER_MUTATION,
-} from "../assets/api/queries"
-import {StyledIconButton} from "../assets/theme/styledComponents"
+import { DELETE_PLAYER_MUTATION, UPDATE_PLAYER_MUTATION } from "../assets/api/queries"
+import { StyledIconButton } from "../assets/theme/styledComponents"
 import Delete from "@material-ui/icons/Delete"
 import Tooltip from "@material-ui/core/Tooltip"
 import {
@@ -22,7 +19,7 @@ import {
 	DeletePlayerVariables,
 	Players_players,
 	UpdatePlayer,
-	UpdatePlayerVariables,
+	UpdatePlayerVariables
 } from "../assets/api/apiInterfaces"
 
 const useStyles = makeStyles((theme) => ({

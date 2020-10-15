@@ -1,8 +1,8 @@
 import * as React from "react"
-import {createContext, useContext, useReducer} from "react"
-import {IGlobalState, IInfo} from "./initialState"
-import {APIError} from "graphql-hooks"
-import {IGraphQLError} from "../hooks/useApi"
+import { createContext, useContext, useReducer } from "react"
+import { IGlobalState, IInfo } from "./initialState"
+import { APIError } from "graphql-hooks"
+import { IGraphQLError } from "../hooks/useApi"
 
 export interface IAction {
 	type: string

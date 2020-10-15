@@ -1,9 +1,9 @@
 import React from "react"
-import {useHistory} from "react-router-dom"
-import {makeStyles} from "@material-ui/core/styles"
+import { useHistory } from "react-router-dom"
+import { makeStyles } from "@material-ui/core/styles"
 import Typography from "@material-ui/core/Typography"
-import {StyledButton} from "../assets/theme/styledComponents"
-import {HOME_ROUTE} from "../assets/constants/routes"
+import { StyledButton } from "../assets/theme/styledComponents"
+import { HOME_ROUTE } from "../assets/constants/routes"
 
 const useStyles = makeStyles((theme) => ({
 	container: {

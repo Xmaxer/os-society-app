@@ -1,9 +1,9 @@
-import React, {useState} from "react"
-import {makeStyles} from "@material-ui/core/styles"
+import React, { useState } from "react"
+import { makeStyles } from "@material-ui/core/styles"
 import ClickAwayListener from "@material-ui/core/ClickAwayListener"
 import TableCell from "@material-ui/core/TableCell"
 import Typography from "@material-ui/core/Typography"
-import {RANK_OPTIONS} from "../assets/constants/constants"
+import { RANK_OPTIONS } from "../assets/constants/constants"
 import NewPlayerRankField from "./NewPlayerRankField"
 
 const useStyles = makeStyles((theme) => ({

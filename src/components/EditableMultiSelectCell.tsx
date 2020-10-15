@@ -1,14 +1,14 @@
-import React, {useState} from "react"
-import {makeStyles} from "@material-ui/core/styles"
+import React, { useState } from "react"
+import { makeStyles } from "@material-ui/core/styles"
 import TableCell from "@material-ui/core/TableCell"
-import {StyledIconButton} from "../assets/theme/styledComponents"
+import { StyledIconButton } from "../assets/theme/styledComponents"
 import Chip from "@material-ui/core/Chip"
 import ClickAwayListener from "@material-ui/core/ClickAwayListener"
 import AddIcon from "@material-ui/icons/Add"
 import CloseIcon from "@material-ui/icons/Close"
 import Tooltip from "@material-ui/core/Tooltip"
 import NewPlayerPreviousNameField from "./NewPlayerPreviousNameField"
-import {Typography} from "@material-ui/core"
+import { Typography } from "@material-ui/core"
 
 const useStyles = makeStyles((theme) => ({
 	textfield: {

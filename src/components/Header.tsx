@@ -1,15 +1,16 @@
 import React from "react"
-import {makeStyles} from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core/styles"
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
-import {StyledButton} from "../assets/theme/styledComponents"
+import { StyledButton } from "../assets/theme/styledComponents"
 import useApi from "../hooks/useApi"
-import {LOGOUT_MUTATION} from "../assets/api/queries"
-import {useHistory} from "react-router-dom"
-import {LOGIN_ROUTE} from "../assets/constants/routes"
-import {Logout} from "../assets/api/apiInterfaces"
+import { LOGOUT_MUTATION } from "../assets/api/queries"
+import { useHistory } from "react-router-dom"
+import { LOGIN_ROUTE } from "../assets/constants/routes"
+import { Logout } from "../assets/api/apiInterfaces"
+import HomeTabs from "./HomeTabs"
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1,
 	},
@@ -18,7 +19,8 @@ const useStyles = makeStyles(() => ({
 	},
 	logo: {
 		height: "100%",
-		marginLeft: "auto",
+		marginRight: "auto",
+		marginLeft: theme.spacing(2)
 	},
 	logoutButton: {
 		marginLeft: "auto",
@@ -54,6 +56,7 @@ function Header() {
 					alt={"OSS Logo"}
 					className={classes.logo}
 				/>
+				<HomeTabs/>
 				<StyledButton
 					className={classes.logoutButton}
 					onClick={handleLogout}

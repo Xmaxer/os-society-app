@@ -1,6 +1,6 @@
 import React from "react"
-import {Button, Slider, TextField} from "@material-ui/core"
-import {makeStyles, withStyles} from "@material-ui/core/styles"
+import { Button, Slider, Tab, Tabs, TextField } from "@material-ui/core"
+import { makeStyles, withStyles } from "@material-ui/core/styles"
 import FormControlLabel from "@material-ui/core/FormControlLabel"
 import Checkbox from "@material-ui/core/Checkbox"
 import IconButton from "@material-ui/core/IconButton"
@@ -109,6 +109,26 @@ export const StyledIconButton = withStyles((theme) => ({
 		},
 	},
 }))(IconButton)
+
+export const StyledTab = withStyles((theme) => ({
+	root: {
+		"&:hover": {
+			backgroundColor: theme.palette.secondary.main
+		}
+	},
+}))(Tab)
+
+export const StyledTabs = withStyles((theme) => ({
+	root: {
+		height: '100%'
+	},
+	flexContainer: {
+		height: '100%'
+	},
+	indicator: {
+
+	}
+}))(Tabs)
 
 const useFormControlLabelStyles = makeStyles((theme) => ({
 	root: {

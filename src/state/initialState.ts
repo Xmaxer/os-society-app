@@ -1,5 +1,5 @@
-import {APIError} from "graphql-hooks"
-import {IGraphQLError} from "../hooks/useApi"
+import { APIError } from "graphql-hooks"
+import { IGraphQLError } from "../hooks/useApi"
 
 export interface IInfo {
 	type?: string

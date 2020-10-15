@@ -1,10 +1,10 @@
 import React from "react"
 import theme from "./assets/theme/theme"
-import {ClientContext, GraphQLClient} from "graphql-hooks"
-import {StateProvider} from "./state/state"
+import { ClientContext, GraphQLClient } from "graphql-hooks"
+import { StateProvider } from "./state/state"
 import initialState from "./state/initialState"
 import rootReducer from "./state/reducers/rootReducer"
-import {ThemeProvider} from "@material-ui/core/styles"
+import { ThemeProvider } from "@material-ui/core/styles"
 import AppRouter from "./AppRouter"
 
 const client = new GraphQLClient({

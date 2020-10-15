@@ -1,6 +1,6 @@
 import React from "react"
-import {makeStyles} from "@material-ui/core/styles"
-import {StyledTextField} from "../assets/theme/styledComponents"
+import { makeStyles } from "@material-ui/core/styles"
+import { StyledTextField } from "../assets/theme/styledComponents"
 
 const useStyles = makeStyles(() => ({
 	formCommentField: {

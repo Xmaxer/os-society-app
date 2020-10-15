@@ -1,7 +1,7 @@
-import React, {useState} from "react"
-import {makeStyles, useTheme} from "@material-ui/core/styles"
-import {StyledButton} from "../assets/theme/styledComponents"
-import {useMediaQuery} from "@material-ui/core"
+import React, { useState } from "react"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import { StyledButton } from "../assets/theme/styledComponents"
+import { useMediaQuery } from "@material-ui/core"
 import NewPlayerForm from "./NewPlayerForm"
 import NewPlayerFormDialog from "./NewPlayerFormDialog"
 

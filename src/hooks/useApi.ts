@@ -1,17 +1,12 @@
-import {useCallback, useContext, useState} from "react"
-import {useHistory} from "react-router-dom"
-import {
-	APIError,
-	ClientContext,
-	useManualQuery,
-	useMutation,
-} from "graphql-hooks"
-import {useGlobalState} from "../state/state"
-import {ADD_ERRORS} from "../state/actions"
-import {API_OFFLINE_ERROR, LOGIN_ROUTE} from "../assets/constants/routes"
-import {MUTATION_OPERATION} from "../assets/constants/operations"
-import {IRequest} from "../assets/api/queries"
-import {print} from "graphql"
+import { useCallback, useContext, useState } from "react"
+import { useHistory } from "react-router-dom"
+import { APIError, ClientContext, useManualQuery, useMutation } from "graphql-hooks"
+import { useGlobalState } from "../state/state"
+import { ADD_ERRORS } from "../state/actions"
+import { API_OFFLINE_ERROR, LOGIN_ROUTE } from "../assets/constants/routes"
+import { MUTATION_OPERATION } from "../assets/constants/operations"
+import { IRequest } from "../assets/api/queries"
+import { print } from "graphql"
 
 export interface IGraphQLError {
 	message: string

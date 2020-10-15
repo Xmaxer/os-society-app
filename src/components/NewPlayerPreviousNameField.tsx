@@ -1,9 +1,9 @@
 import React from "react"
-import {makeStyles} from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core/styles"
 import Autocomplete from "@material-ui/lab/Autocomplete"
-import {StyledTextField} from "../assets/theme/styledComponents"
+import { StyledTextField } from "../assets/theme/styledComponents"
 import Chip from "@material-ui/core/Chip"
-import {FormikHelpers} from "formik"
+import { FormikHelpers } from "formik"
 
 const useStyles = makeStyles((theme) => ({
 	chip: {

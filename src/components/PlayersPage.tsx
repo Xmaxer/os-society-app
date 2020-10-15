@@ -1,14 +1,14 @@
-import React, {useState} from "react"
-import {makeStyles} from "@material-ui/core/styles"
+import React, { useState } from "react"
+import { makeStyles } from "@material-ui/core/styles"
 import Paper from "@material-ui/core/Paper"
-import TableToolbar from "./TableToolbar"
+import PlayerTableToolbar from "./PlayerTableToolbar"
 import PlayerTable from "./PlayerTable"
-import {IRankFilter} from "./RankFilter"
+import { IRankFilter } from "./RankFilter"
 
 const useStyles = makeStyles((theme) => ({
 	root: {
 		width: "100%",
-		height: "calc(100% - 80px)",
+		height: "100%",
 		overflow: "hidden",
 	},
 	paper: {
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }))
 
-function UsersTable() {
+function PlayersPage() {
 	const classes = useStyles()
 	const [days, setDays] = useState<Array<number> | undefined>(undefined)
 	const [ranks, setRanks] = useState<IRankFilter | undefined>(undefined)
@@ -39,11 +39,11 @@ function UsersTable() {
 	return (
 		<div className={classes.root}>
 			<Paper className={classes.paper} square>
-				<TableToolbar handleApplyFilters={handleApplyFilters} />
+				<PlayerTableToolbar handleApplyFilters={handleApplyFilters} />
 				<PlayerTable days={days} ranks={ranks} search={search} />
 			</Paper>
 		</div>
 	)
 }
 
-export default UsersTable
+export default PlayersPage

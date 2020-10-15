@@ -1,27 +1,24 @@
-import React, {forwardRef, useEffect, useState} from "react"
-import {makeStyles, useTheme} from "@material-ui/core/styles"
-import {StyledButton} from "../assets/theme/styledComponents"
-import DaysFilter, {MAX_DAYS, MIN_DAYS} from "./DaysFilter"
-import FilterListIcon from "@material-ui/icons/FilterList"
-import CloseIcon from "@material-ui/icons/Close"
+import React, { forwardRef, useEffect, useState } from "react"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import { SlideProps, useMediaQuery } from "@material-ui/core"
 import Toolbar from "@material-ui/core/Toolbar"
+import SearchField from "./SearchField"
 import IconButton from "@material-ui/core/IconButton"
+import clsx from "clsx"
+import CloseIcon from "@material-ui/icons/Close"
+import FilterListIcon from "@material-ui/icons/FilterList"
 import Collapse from "@material-ui/core/Collapse"
 import Paper from "@material-ui/core/Paper"
-import clsx from "clsx"
-import RankFilter, {IRankFilter} from "./RankFilter"
-import SearchField from "./SearchField"
-import Slide from "@material-ui/core/Slide"
+import { StyledButton } from "../assets/theme/styledComponents"
 import Dialog from "@material-ui/core/Dialog"
 import Typography from "@material-ui/core/Typography"
-import Divider from "@material-ui/core/Divider"
-import {SlideProps, useMediaQuery} from "@material-ui/core"
+import Slide from "@material-ui/core/Slide"
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
 	toolbar: {
 		backgroundColor: theme.palette.primary.dark,
 		justifyContent: "flex-end",
-		padding: 0,
+		padding: 0
 	},
 	filterButton: {
 		color: theme.palette.primary.dark,
@@ -34,8 +31,8 @@ const useStyles = makeStyles((theme) => ({
 		"&:hover": {
 			color: theme.palette.secondary.light,
 			backgroundColor: theme.palette.primary.dark,
-			border: "2px solid " + theme.palette.secondary.main,
-		},
+			border: "2px solid " + theme.palette.secondary.main
+		}
 	},
 	filterButtonActive: {
 		color: theme.palette.secondary.light,
@@ -43,11 +40,11 @@ const useStyles = makeStyles((theme) => ({
 		border: "2px solid " + theme.palette.secondary.main,
 		borderBottom: "none",
 		"&:hover": {
-			borderBottom: "none",
-		},
+			borderBottom: "none"
+		}
 	},
 	closeButton: {
-		color: theme.palette.secondary.main,
+		color: theme.palette.secondary.main
 	},
 	paperFilter: {
 		backgroundColor: theme.palette.primary.dark,
@@ -57,19 +54,19 @@ const useStyles = makeStyles((theme) => ({
 		alignItems: "center",
 		justifyContent: "flex-start",
 		"& > *": {
-			marginTop: 0,
+			marginTop: 0
 		},
 		border: "2px solid " + theme.palette.secondary.main,
 		[theme.breakpoints.down("md")]: {
 			justifyContent: "center",
 			flexDirection: "column",
 			"& > *": {
-				marginTop: 30,
-			},
-		},
+				marginTop: 30
+			}
+		}
 	},
 	collapseContainer: {
-		flexShrink: 0,
+		flexShrink: 0
 	},
 	actionsContainer: {
 		marginLeft: "auto",
@@ -77,13 +74,13 @@ const useStyles = makeStyles((theme) => ({
 		alignSelf: "flex-end",
 		marginBottom: 20,
 		"& > button": {
-			marginLeft: 20,
+			marginLeft: 20
 		},
 		[theme.breakpoints.down("md")]: {
 			alignSelf: "center",
 			marginLeft: 0,
-			marginRight: 0,
-		},
+			marginRight: 0
+		}
 	},
 	dialogContainer: {
 		"& .MuiDialog-paper": {
@@ -91,17 +88,21 @@ const useStyles = makeStyles((theme) => ({
 			backgroundColor: theme.palette.primary.main,
 			textAlign: "center",
 			"&:first-child": {
-				color: theme.palette.secondary.light,
-			},
-		},
+				color: theme.palette.secondary.light
+			}
+		}
 	},
 	rankFilter: {
-		marginLeft: 40,
+		marginLeft: 40
 	},
 	daysFilter: {
-		marginLeft: 40,
-	},
+		marginLeft: 40
+	}
 }))
+
+export interface ICompetitionTableToolbarProps {
+	handleApplyFilters: (search?: string) => void
+}
 
 const Transition = forwardRef<unknown, SlideProps>((props, ref) => {
 	return <Slide direction="up" ref={ref} {...props} />
@@ -109,19 +110,9 @@ const Transition = forwardRef<unknown, SlideProps>((props, ref) => {
 
 Transition.displayName = "SlideTransition"
 
-let days: Array<number> | undefined = undefined
-let ranks: IRankFilter | undefined = undefined
 let search: string | undefined = undefined
 
-export interface ITableToolbarProps {
-	handleApplyFilters: (
-		days?: Array<number>,
-		ranks?: IRankFilter,
-		search?: string
-	) => void
-}
-
-function TableToolbar({handleApplyFilters}: ITableToolbarProps) {
+function CompetitionTableToolbar({ handleApplyFilters }: ICompetitionTableToolbarProps) {
 	const theme = useTheme()
 	const matches = useMediaQuery(theme.breakpoints.down("md"))
 	const classes = useStyles()
@@ -137,7 +128,7 @@ function TableToolbar({handleApplyFilters}: ITableToolbarProps) {
 		if (matches) {
 			setOpenFilter(false)
 		}
-		handleApplyFilters(days, ranks, search)
+		handleApplyFilters(search)
 	}
 
 	const handleSearch = (newValue: string) => {
@@ -151,30 +142,10 @@ function TableToolbar({handleApplyFilters}: ITableToolbarProps) {
 
 	useEffect(() => {
 		if (resetFilter) {
-			handleApplyFilters(undefined, undefined, undefined)
+			handleApplyFilters(undefined)
 			setResetFilter(false)
 		}
 	}, [handleApplyFilters, resetFilter])
-
-	const rankHandler = (newRanks: IRankFilter) => {
-		ranks = newRanks
-		setDisableActions(
-			(ranks === undefined ||
-				Object.values(ranks).find((v) => !v) === undefined) &&
-				(days === undefined ||
-					(days[0] === MIN_DAYS && days[1] === MAX_DAYS))
-		)
-	}
-
-	const daysHandler = (newDays: Array<number>) => {
-		days = newDays
-		setDisableActions(
-			(ranks === undefined ||
-				Object.values(ranks).find((v) => !v) === undefined) &&
-				(days === undefined ||
-					(days[0] === MIN_DAYS && days[1] === MAX_DAYS))
-		)
-	}
 
 	return (
 		<>
@@ -184,9 +155,9 @@ function TableToolbar({handleApplyFilters}: ITableToolbarProps) {
 					className={
 						openFilter
 							? clsx(
-									classes.filterButton,
-									classes.filterButtonActive
-							  )
+							classes.filterButton,
+							classes.filterButtonActive
+							)
 							: classes.filterButton
 					}
 					onClick={handleOpenFilter}>
@@ -196,19 +167,11 @@ function TableToolbar({handleApplyFilters}: ITableToolbarProps) {
 			{!matches ? (
 				<Collapse
 					in={Boolean(openFilter)}
-					addEndListener={() => {}}
+					addEndListener={() => {
+					}}
 					className={classes.collapseContainer}>
 					<Paper className={classes.paperFilter} square>
-						<DaysFilter
-							handler={daysHandler}
-							className={classes.daysFilter}
-							reset={resetFilter}
-						/>
-						<RankFilter
-							handler={rankHandler}
-							className={classes.rankFilter}
-							reset={resetFilter}
-						/>
+
 						<div className={classes.actionsContainer}>
 							<StyledButton
 								variant={"contained"}
@@ -233,10 +196,7 @@ function TableToolbar({handleApplyFilters}: ITableToolbarProps) {
 					className={classes.dialogContainer}>
 					<Typography variant={"h5"}>Filters</Typography>
 					<Paper className={classes.paperFilter} square>
-						<DaysFilter handler={daysHandler} />
-						<Divider />
-						<RankFilter handler={rankHandler} />
-						<Divider />
+
 						<div className={classes.actionsContainer}>
 							<StyledButton
 								variant={"contained"}
@@ -263,4 +223,4 @@ function TableToolbar({handleApplyFilters}: ITableToolbarProps) {
 	)
 }
 
-export default TableToolbar
+export default CompetitionTableToolbar

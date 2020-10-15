@@ -1,20 +1,11 @@
-import {MUTATION_OPERATION, QUERY_OPERATION} from "../constants/operations"
+import { MUTATION_OPERATION, QUERY_OPERATION } from "../constants/operations"
 import gql from "graphql-tag"
-import {DocumentNode} from "graphql"
+import { DocumentNode } from "graphql"
 
 export interface IRequest {
 	type: typeof MUTATION_OPERATION | typeof QUERY_OPERATION
 	query: DocumentNode
 }
-
-export type IOrderEnum = "ASC" | "DESC"
-export type IPlayerOrderEnum =
-	| "USERNAME"
-	| "ID"
-	| "JOIN_DATE"
-	| "CREATED_AT"
-	| "UPDATED_AT"
-export type Maybe<T> = T | null
 
 export const LOGIN_MUTATION: IRequest = {
 	type: MUTATION_OPERATION,

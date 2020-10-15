@@ -1,19 +1,15 @@
 import React from "react"
-import {makeStyles} from "@material-ui/core/styles"
-import {useHistory, useLocation} from "react-router-dom"
+import { makeStyles } from "@material-ui/core/styles"
+import { useHistory, useLocation } from "react-router-dom"
 import useApi from "../hooks/useApi"
-import {
-	ISetPasswordMutationData,
-	ISetPasswordMutationVariables,
-	SET_PASSWORD_MUTATION,
-} from "../assets/api/queries"
-import {HOME_ROUTE} from "../assets/constants/routes"
+import { ISetPasswordMutationData, ISetPasswordMutationVariables, SET_PASSWORD_MUTATION } from "../assets/api/queries"
+import { HOME_ROUTE } from "../assets/constants/routes"
 import Typography from "@material-ui/core/Typography"
 import Divider from "@material-ui/core/Divider"
-import {Formik} from "formik"
-import {StyledButton, StyledTextField} from "../assets/theme/styledComponents"
+import { Formik } from "formik"
+import { StyledButton, StyledTextField } from "../assets/theme/styledComponents"
 import CircularProgress from "@material-ui/core/CircularProgress"
-import {IUser} from "../App"
+import { IUser } from "../App"
 
 const useStyles = makeStyles((theme) => ({
 	background: {

@@ -1,15 +1,15 @@
 import React from "react"
-import {useHistory} from "react-router-dom"
-import {makeStyles} from "@material-ui/core/styles"
+import { useHistory } from "react-router-dom"
+import { makeStyles } from "@material-ui/core/styles"
 import Typography from "@material-ui/core/Typography"
 import Divider from "@material-ui/core/Divider"
-import {Formik} from "formik"
+import { Formik } from "formik"
 import CircularProgress from "@material-ui/core/CircularProgress"
 import useApi from "../hooks/useApi"
-import {LOGIN_MUTATION} from "../assets/api/queries"
-import {CHANGE_PASSWORD_ROUTE, HOME_ROUTE} from "../assets/constants/routes"
-import {StyledButton, StyledTextField} from "../assets/theme/styledComponents"
-import {Login, LoginVariables} from "../assets/api/apiInterfaces"
+import { LOGIN_MUTATION } from "../assets/api/queries"
+import { CHANGE_PASSWORD_ROUTE, HOME_ROUTE } from "../assets/constants/routes"
+import { StyledButton, StyledTextField } from "../assets/theme/styledComponents"
+import { Login, LoginVariables } from "../assets/api/apiInterfaces"
 
 const useStyles = makeStyles((theme) => ({
 	background: {

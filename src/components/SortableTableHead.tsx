@@ -1,13 +1,11 @@
 import React from "react"
-import {makeStyles} from "@material-ui/core/styles"
-import TableCell, {TableCellProps} from "@material-ui/core/TableCell"
+import { makeStyles } from "@material-ui/core/styles"
+import TableCell, { TableCellProps } from "@material-ui/core/TableCell"
 import TableRow from "@material-ui/core/TableRow"
 import TableHead from "@material-ui/core/TableHead"
-import TableSortLabel, {
-	TableSortLabelTypeMap,
-} from "@material-ui/core/TableSortLabel"
-import {OrderEnum, PlayerOrderEnum} from "../assets/api/apiInterfaces"
-import {PLAYER_ORDER_ENUM} from "../assets/constants/constants"
+import TableSortLabel, { TableSortLabelTypeMap } from "@material-ui/core/TableSortLabel"
+import { OrderEnum, PlayerOrderEnum } from "../assets/api/apiInterfaces"
+import { PLAYER_ORDER_ENUM } from "../assets/constants/constants"
 
 const useStyles = makeStyles((theme) => ({
 	thead: {
